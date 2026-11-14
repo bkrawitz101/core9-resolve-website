@@ -34,3 +34,4 @@ Then open `http://localhost:8080/` in a browser.
 
 - Approved Function (`functions/`) and Assessment (`assessments/test*.html`) HTML files are preserved byte-for-byte from the verified source packages.
 - Staging pages still include `<meta name="robots" content="noindex,nofollow">` until all open items in `docs/LAUNCH_CHECKLIST.md` (booking URL, YouTube embeds, Team bios, Function 2/5 approvals, and browser QA) are completed.
+

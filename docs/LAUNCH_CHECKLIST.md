@@ -25,3 +25,4 @@
 - [ ] Add shared site navigation wrapper (or move into a static site generator / framework) for `functions/FUNCTION_01..09` and `assessments/test*.html` once approved for integration edits.
 - [ ] Remove `<meta name="robots" content="noindex,nofollow">` and staging notices across all public pages when ready to go live.
 - [ ] Run desktop & mobile cross-browser QA, accessibility audit, and link validation.
+
