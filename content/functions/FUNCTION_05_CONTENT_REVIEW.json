@@ -1,0 +1,102 @@
+{
+  "main": {
+    "title": "The words you almost kept to yourself",
+    "story": "Imagine you've spent years noticing something that could make life better for other people. Perhaps it's a simple idea, a practical improvement, or a perspective that helped you overcome a difficult experience. Until now, you've mostly kept it to yourself. One day, you see someone struggling with exactly the problem you understand. You feel an unexpected urge to contribute. Then a familiar thought interrupts: ‘Who am I to say something? Maybe nobody will care.’ You could remain silent. Nobody expects anything from you. But you wonder what might happen if you allowed your contribution to travel further.",
+    "question": "What would you do?",
+    "choices": [
+      [
+        "Keep your idea to yourself.",
+        "Your contribution remains invisible",
+        "You keep the idea to yourself. Nothing changes immediately, but the people who might have benefited never discover what you could offer.",
+        "What possibilities remain unopened when you underestimate your contribution?"
+      ],
+      [
+        "Try to reach as many people as possible immediately.",
+        "Trying to reach everyone at once",
+        "You begin sharing your idea everywhere, accepting every request and opportunity. Your enthusiasm is genuine, but without direction and boundaries, your energy becomes scattered and your message loses focus.",
+        "Are you expanding your influence—or multiplying your obligations?"
+      ],
+      [
+        "Find a meaningful way to bring your contribution into the world.",
+        "Your contribution finds its own form",
+        "You identify where your idea could be useful and choose a way to express it that fits your strengths. Perhaps you speak up at work, write something others can discover, create a useful tool, or take an initiative nobody has taken before. One meaningful action creates possibilities you could not have predicted.",
+        "What is one way your contribution could reach beyond its current boundaries?"
+      ]
+    ]
+  },
+  "personal": {
+    "title": "The morning that changed more than your life",
+    "story": "Imagine you've finally begun taking morning walks after years of feeling tired and disconnected from your body. At first, it's difficult. Then you notice you're happier, more energetic, and excited to begin your day. One morning, a neighbor sees you and says, ‘You look different lately.’ A week later, you notice that neighbor walking too. Soon, several people on your street have started their mornings differently. You never invited anyone. You simply changed how you lived.",
+    "question": "What would you do when you realize your example is influencing others?",
+    "choices": [
+      [
+        "Dismiss the effect and keep your new habit entirely to yourself.",
+        "An influence you don’t recognize",
+        "Your personal change remains valuable, but you may overlook the possibility that your example can encourage others.",
+        "Could your way of living already be affecting people around you?"
+      ],
+      [
+        "Feel responsible for motivating everyone and making sure they continue.",
+        "Inspiration becomes responsibility",
+        "You begin monitoring other people’s progress. What gave you freedom starts feeling like an obligation.",
+        "Can you inspire change without becoming responsible for everyone’s choices?"
+      ],
+      [
+        "Continue living your example and share what helped when others are interested.",
+        "Your energy reaches beyond you",
+        "You protect the habit that restored your vitality. Others discover their own reasons to become active, and your positive influence spreads naturally.",
+        "What could change around you simply because you live differently?"
+      ]
+    ]
+  },
+  "relationships": {
+    "title": "The message that traveled further than expected",
+    "story": "Imagine a close friend tells you she's considering giving up something she once loved. You recognize the disappointment in her voice because you've experienced something similar. Instead of offering instructions, you share a few sincere words about what helped you rediscover your courage. Months later, she tells you she wrote those words down. She shared them with her sister, who passed them to someone else. You realize that one honest conversation has traveled into lives you know nothing about.",
+    "question": "How would you respond to discovering the wider impact of your words?",
+    "choices": [
+      [
+        "Treat it as an accident and avoid sharing personal experiences again.",
+        "A gift left unrecognized",
+        "Your words helped, but you may continue underestimating the value of your experience.",
+        "What might others receive from a perspective you consider ordinary?"
+      ],
+      [
+        "Start advising everyone, even when they haven’t asked for help.",
+        "Connection turns into pressure",
+        "Your desire to help becomes unsolicited guidance. Others may feel judged rather than encouraged.",
+        "When does contribution stop respecting another person’s freedom?"
+      ],
+      [
+        "Recognize the value of authentic communication and continue contributing when it’s welcome.",
+        "One connection opens many possibilities",
+        "You continue building relationships through sincerity and mutual respect. Your influence grows through the meaning people find in your words, not through controlling what they do.",
+        "How can your contribution travel further while remaining personal and genuine?"
+      ]
+    ]
+  },
+  "business": {
+    "title": "The idea you were afraid to propose",
+    "story": "Imagine you work in a company where an inefficient procedure frustrates employees and customers. You've noticed the problem for months. You aren't a manager, and nobody has asked for your opinion. One day, a customer becomes upset because of another preventable mistake. You know there could be a better way. You have an idea that might improve the experience for hundreds of people, but proposing it means stepping beyond your familiar role.",
+    "question": "What would you do?",
+    "choices": [
+      [
+        "Stay silent because improving the system isn’t officially your responsibility.",
+        "A possibility that never enters the system",
+        "The problem continues, and your knowledge remains unused because you don’t see yourself as someone who can influence change.",
+        "Who decides how much value you’re allowed to contribute?"
+      ],
+      [
+        "Promise to fix the entire process yourself without involving the people who understand it.",
+        "Ambition without a foundation",
+        "Your intention is valuable, but acting alone can create resistance or unintended consequences when the wider system isn’t understood.",
+        "How could cooperation and analysis make your initiative more effective?"
+      ],
+      [
+        "Develop a clear proposal, connect it to the company’s goals, and bring it to the people who can help implement it.",
+        "Your contribution changes the scale of your role",
+        "You present a practical improvement, explain its benefits, and invite the right people to evaluate it. Whether the proposal is adopted immediately or refined, you’ve begun contributing beyond your assigned tasks.",
+        "What could become possible if your role grew through the value you create?"
+      ]
+    ]
+  }
+}

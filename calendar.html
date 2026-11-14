@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Personal Calendar | CORE9 RESOLVE™</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: #f7f6f3;
+      color: #172338;
+      font: 16px/1.65 system-ui, -apple-system, Segoe UI, sans-serif;
+    }
+    header {
+      background: #15243a;
+      color: white;
+      padding: 18px max(22px, calc((100vw - 1080px) / 2));
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+    header strong { letter-spacing: .06em; }
+    nav { display: flex; gap: 18px; flex-wrap: wrap; }
+    header a { color: white; text-decoration: none; font-size: .95rem; }
+    nav a[aria-current="page"] { color: #b79a69; font-weight: 650; }
+    main { max-width: 1080px; margin: auto; padding: 30px 22px 85px; }
+    .hero { padding: 55px 0 40px; border-bottom: 1px solid #ddd; }
+    h1 { font-size: clamp(2.2rem, 5vw, 3.7rem); line-height: 1.14; margin: 10px 0; }
+    h2 { font-size: 1.8rem; line-height: 1.2; }
+    h3 { font-size: 1.2rem; }
+    .eyebrow { color: #977342; text-transform: uppercase; letter-spacing: .15em; font-size: .8rem; font-weight: 700; }
+    .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+    .card { padding: 26px; background: white; border: 1px solid #d8d5ce; border-left: 3px solid #b79a69; }
+    .card p { margin-top: 0; }
+    .section { padding-top: 42px; }
+    .button {
+      display: inline-block;
+      background: #b79a69;
+      color: #15243a;
+      text-decoration: none;
+      font-weight: 650;
+      border: 0;
+      border-radius: 3px;
+      padding: 12px 19px;
+      margin: 14px 8px 8px 0;
+      cursor: pointer;
+    }
+    .media {
+      aspect-ratio: 16 / 9;
+      background: #e6e7e8;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 24px;
+      border: 1px solid #d4d7da;
+      color: #42536a;
+    }
+    .muted { color: #536070; }
+    .result { font-size: 1.5rem; font-weight: 700; }
+    label { display: block; font-weight: 600; margin-bottom: 5px; }
+    select, input {
+      font: inherit;
+      padding: 10px;
+      width: 100%;
+      max-width: 260px;
+      border: 1px solid #999;
+      border-radius: 3px;
+    }
+    .inputs { display: flex; gap: 16px; flex-wrap: wrap; }
+    footer { background: #101d2e; color: white; text-align: center; padding: 28px 15px; font-size: .85rem; }
+    footer a { color: white; margin: 0 9px; }
+    a:focus-visible, button:focus-visible { outline: 3px solid #bd8a34; outline-offset: 3px; }
+    @media (max-width: 700px) {
+      .grid { grid-template-columns: 1fr; }
+      .hero { padding: 32px 0; }
+      nav { gap: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <strong>CORE9 RESOLVE™</strong>
+    <nav aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="functions.html">Nine Functions</a>
+      <a href="assessments/index.html">Assessments</a>
+      <a href="shows.html">Shows</a>
+      <a href="watch-and-learn.html">Watch &amp; Learn</a>
+      <a href="calendar.html" aria-current="page">Calendar</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="eyebrow">Your time. Your rhythm.</div>
+      <h1>Personal Calendar</h1>
+      <p>Watch a short introduction, find your Personal Cycle Year, and choose the calendar that matches your number.</p>
+    </section>
+
+    <section class="section">
+      <h2>Discover the Calendar</h2>
+      <div class="media" role="img" aria-label="Calendar YouTube video placeholder">Your existing short Calendar introduction video will appear here.</div>
+    </section>
+
+    <section class="section">
+      <h2>Find Your Personal Cycle Year</h2>
+      <p>Add the individual digits of your <strong>birth month, birth day, and the calendar year</strong>. Keep adding until you get a single number from 1 to 9.</p>
+      <p><strong>Example: Born June 13 | Year 2027</strong></p>
+      <p>6 + 1 + 3 + 2 + 0 + 2 + 7 = 21<br>2 + 1 = <strong>3</strong></p>
+      <h3>Select Your Calendar</h3>
+      <p>Your Personal Cycle Year is <strong>3</strong>, so choose <strong>Calendar 3 for 2027</strong>.</p>
+      <p>Recalculate each year to find your new calendar.</p>
+
+      <div class="card">
+        <h3>Calculate yours — no signup required</h3>
+        <form id="cycle-form">
+          <div class="inputs">
+            <div>
+              <label for="birth-month">Birth month</label>
+              <select id="birth-month" required>
+                <option value="">Select month</option>
+                <option value="1">January</option>
+                <option value="2">February</option>
+                <option value="3">March</option>
+                <option value="4">April</option>
+                <option value="5">May</option>
+                <option value="6">June</option>
+                <option value="7">July</option>
+                <option value="8">August</option>
+                <option value="9">September</option>
+                <option value="10">October</option>
+                <option value="11">November</option>
+                <option value="12">December</option>
+              </select>
+            </div>
+            <div>
+              <label for="birth-day">Birth day</label>
+              <select id="birth-day" required>
+                <option value="">Select day</option>
+                <option value="1">1</option><option value="2">2</option><option value="3">3</option>
+                <option value="4">4</option><option value="5">5</option><option value="6">6</option>
+                <option value="7">7</option><option value="8">8</option><option value="9">9</option>
+                <option value="10">10</option><option value="11">11</option><option value="12">12</option>
+                <option value="13">13</option><option value="14">14</option><option value="15">15</option>
+                <option value="16">16</option><option value="17">17</option><option value="18">18</option>
+                <option value="19">19</option><option value="20">20</option><option value="21">21</option>
+                <option value="22">22</option><option value="23">23</option><option value="24">24</option>
+                <option value="25">25</option><option value="26">26</option><option value="27">27</option>
+                <option value="28">28</option><option value="29">29</option><option value="30">30</option>
+                <option value="31">31</option>
+              </select>
+            </div>
+            <div>
+              <label for="calendar-year">Calendar year</label>
+              <input id="calendar-year" type="number" min="1900" max="9999" value="2027" required>
+            </div>
+          </div>
+          <button class="button" type="submit">Find My Calendar</button>
+        </form>
+        <div id="cycle-result" role="status" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Choose Your Calendar</h2>
+      <p>After calculating, choose the matching calendar for your selected year.</p>
+      <div class="grid">
+        <article class="card">
+          <h3>Individual Calendar</h3>
+          <p>Completed English PDF with short explanations, designed for quick reference.</p>
+          <p class="muted">Product file and checkout link to be connected.</p>
+        </article>
+        <article class="card">
+          <h3>Family Calendar Bundle</h3>
+          <p>Choose multiple calendars for family members.</p>
+          <p class="muted">Bundle pricing and fulfillment to be confirmed.</p>
+        </article>
+        <article class="card">
+          <h3>Illustrated Companion Guide</h3>
+          <p>A separate, deeper reading experience alongside the calendar.</p>
+          <p class="muted">English workbook exists; refinement is pending.</p>
+        </article>
+        <article class="card">
+          <h3>Calendar + Guide</h3>
+          <p>A combined purchase option with separate, easy-to-use files.</p>
+          <p class="muted">Available when the guide is finalized.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    CORE9 RESOLVE™ · <a href="index.html">Home</a> · <a href="functions.html">Nine Functions</a> · <a href="assessments/index.html">Assessments</a> · <a href="shows.html">Shows</a> · <a href="watch-and-learn.html">Watch &amp; Learn</a>
+    <p>Staging build · Consultation booking, contact details, and legal policies will be linked after approval.</p>
+  </footer>
+
+  <script>
+    (function () {
+      const form = document.getElementById('cycle-form');
+      const result = document.getElementById('cycle-result');
+      function digitSum(n) {
+        return String(n).split('').reduce((s, d) => s + Number(d), 0);
+      }
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const m = Number(document.getElementById('birth-month').value);
+        const d = Number(document.getElementById('birth-day').value);
+        const y = Number(document.getElementById('calendar-year').value);
+        if (!m || !d || !Number.isInteger(y) || y < 1900 || y > 9999 || d > new Date(2024, m, 0).getDate()) {
+          result.textContent = 'Please enter a valid birth month, birth day, and calendar year.';
+          return;
+        }
+        let n = digitSum(m) + digitSum(d) + digitSum(y);
+        while (n > 9) n = digitSum(n);
+        result.innerHTML =
+          '<p class="result">Your Personal Cycle Year: ' + n + '</p>' +
+          '<p>Select <strong>Calendar ' + n + ' for ' + y + '</strong>.</p>' +
+          '<p class="muted">The matching calendar purchase link will be available when the product catalog is connected.</p>';
+      });
+    })();
+  </script>
+</body>
+</html>

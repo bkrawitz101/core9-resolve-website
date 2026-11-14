@@ -1,0 +1,39 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Distribution and podcast hosting — implementation guidance (checked 14 Nov 2026)</title><style>body{font-family:Inter,Arial,sans-serif;background:#f2f5f8;color:#192b43;margin:0;line-height:1.6}main{max-width:960px;margin:35px auto;background:white;padding:58px 70px;box-shadow:0 15px 50px #17294318;border-top:12px solid #c5a45b}h1{font-size:32px;color:#102b51;line-height:1.16}h2{font-size:23px;color:#173a62;margin-top:38px;border-bottom:1px solid #d9e1e9;padding-bottom:9px}h3{color:#254b70;margin-top:28px}a{color:#245c92}p,li{font-size:15px}code{background:#f1f3f5;padding:2px 4px;border-radius:3px}blockquote{border-left:4px solid #c5a45b;padding-left:20px;color:#3b526c}table{border-collapse:collapse;width:100%;font-size:13px}td,th{border:1px solid #d8e0e9;padding:8px;text-align:left;vertical-align:top}th{background:#102b51;color:white}.eyebrow{color:#b18b3c;font-weight:bold;letter-spacing:2px;font-size:12px;text-transform:uppercase}.footer{margin-top:55px;border-top:1px solid #d9e1e9;padding-top:14px;color:#61758c;font-size:12px}@media print{body{background:white}main{margin:0;padding:22px 35px;box-shadow:none}h2,h3{break-after:avoid}table{break-inside:auto}tr{break-inside:avoid}}@media(max-width:700px){main{padding:25px;margin:0}h1{font-size:26px}}</style></head><body><main><div class="eyebrow">CORE9 RESOLVE™ · PRODUCTION HANDOFF · 14 NOV 2026</div><h1>Distribution and podcast hosting — implementation guidance (checked 14 Nov 2026)</h1>
+<h2>Recommended architecture</h2>
+<p><strong>One podcast host, two distinct shows, two RSS feeds</strong>, each with its own cover, description and stable feed URL. Host each MP3 once. Connect feeds to listening directories; place verified directory links on each show page. The CORE9 site is the marketing hub and canonical email destination, not necessarily the audio file host.</p>
+<h2>Host choices to evaluate</h2>
+<p><strong>Buzzsprout:</strong> publisher-oriented hosting and directory workflow; offers RSS, embedded players and directory submissions. Confirm plan supports two shows, sufficient monthly audio, storage, ownership, analytics, costs and desired embedding before buying. Official: https://www.buzzsprout.com/features/distribution
+<strong>Spotify for Creators:</strong> Spotify-hosted shows are on Spotify; external directory distribution requires enabling RSS and submitting feeds to other services. RSS contact email may be publicly visible; use a dedicated podcast contact address. Official: https://support.spotify.com/us/creators/article/finding-and-enabling-your-rss-feed/ and https://support.spotify.com/lc/creators/article/distributing-your-show-to-other-platforms/
+<strong>Other hosts:</strong> compare Podbean, Libsyn, Transistor or another RSS-compatible host against the same requirements; do not assume pricing or features without verification.</p>
+<h2>Directory rollout</h2>
+<ol>
+<li>Create show identities, art, owner-controlled email and podcast host accounts.</li>
+<li>Upload a trailer or first episode to each show; obtain two valid RSS feeds.</li>
+<li>Validate each feed and enclosure; submit to <strong>Apple Podcasts</strong> and <strong>Spotify</strong> (if not automatically hosted there); then <strong>Amazon Music</strong>, <strong>iHeartRadio</strong>, <strong>Pocket Casts</strong>, <strong>Overcast</strong>, and other host-supported directories.</li>
+<li>Verify actual public show links and add to website only when live.</li>
+<li>Once accepted, routine episodes distribute via RSS; producer uploads once to host. Review host-specific timing, since directory indexing can lag.</li>
+<li>Optional: audio RSS ingestion to YouTube/YouTube Music where supported, but this creates a static-image video representation; <strong>not required</strong> for the audio-only initial launch.</li>
+</ol>
+<h2>Technical RSS checklist</h2>
+<p>Apple requires a public RSS 2.0 feed, required metadata, cover artwork, at least one episode, valid audio enclosures, unique immutable GUIDs, and servers supporting byte-range and HEAD requests. Use a hosting service to avoid implementing RSS manually. Validate in Apple Podcasts Connect and confirm playback on actual apps. See https://podcasters.apple.com/support/823-podcast-requirements and https://podcasters.apple.com/support/897-submit-a-show</p>
+<h2>Editorial/brand details for feeds</h2>
+<ul>
+<li>Show-specific titles and descriptions; publisher <code>CORE9 RESOLVE™</code>; appropriate categories selected by producer.</li>
+<li>Website URL points to the matching CORE9 show page; episode links to individual CORE9 episode page where supported by host metadata.</li>
+<li>Explicit/clean flag chosen correctly per episode; no profanity assumption.</li>
+<li>Artwork should meet host/directory specifications; verify current requirements before final export.</li>
+<li>Include a concise fictional-show disclosure, not a misleading claim of real interviews.</li>
+<li>Use dedicated public RSS contact email, not a private personal email.</li>
+</ul>
+<h2>Sources checked 14 Nov 2026</h2>
+<ul>
+<li>Apple RSS: https://podcasters.apple.com/support/823-podcast-requirements</li>
+<li>Apple submit: https://podcasters.apple.com/support/897-submit-a-show</li>
+<li>Spotify RSS: https://support.spotify.com/us/creators/article/finding-and-enabling-your-rss-feed/</li>
+<li>Spotify external distribution: https://support.spotify.com/lc/creators/article/distributing-your-show-to-other-platforms/</li>
+<li>Buzzsprout distribution: https://www.buzzsprout.com/features/distribution</li>
+<li>Buzzsprout directories: https://www.buzzsprout.com/help/139-submitting-to-directories</li>
+<li>YouTube RSS availability: https://support.google.com/youtube/answer/14106258?hl=en</li>
+</ul>
+<p><strong>Note:</strong> Third-party platform capabilities and prices may change. Developer must recheck live requirements at implementation. No service has been connected, subscribed to or deployed as part of this handoff.</p>
+<div class="footer">Implementation reference • Draft public copy requires final publishing review • Original methodology archived separately</div></main></body></html>

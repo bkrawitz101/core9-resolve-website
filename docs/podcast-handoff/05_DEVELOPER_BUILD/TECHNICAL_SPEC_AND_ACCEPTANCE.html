@@ -1,0 +1,43 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Technical specification and acceptance criteria</title><style>body{font-family:Inter,Arial,sans-serif;background:#f2f5f8;color:#192b43;margin:0;line-height:1.6}main{max-width:960px;margin:35px auto;background:white;padding:58px 70px;box-shadow:0 15px 50px #17294318;border-top:12px solid #c5a45b}h1{font-size:32px;color:#102b51;line-height:1.16}h2{font-size:23px;color:#173a62;margin-top:38px;border-bottom:1px solid #d9e1e9;padding-bottom:9px}h3{color:#254b70;margin-top:28px}a{color:#245c92}p,li{font-size:15px}code{background:#f1f3f5;padding:2px 4px;border-radius:3px}blockquote{border-left:4px solid #c5a45b;padding-left:20px;color:#3b526c}table{border-collapse:collapse;width:100%;font-size:13px}td,th{border:1px solid #d8e0e9;padding:8px;text-align:left;vertical-align:top}th{background:#102b51;color:white}.eyebrow{color:#b18b3c;font-weight:bold;letter-spacing:2px;font-size:12px;text-transform:uppercase}.footer{margin-top:55px;border-top:1px solid #d9e1e9;padding-top:14px;color:#61758c;font-size:12px}@media print{body{background:white}main{margin:0;padding:22px 35px;box-shadow:none}h2,h3{break-after:avoid}table{break-inside:auto}tr{break-inside:avoid}}@media(max-width:700px){main{padding:25px;margin:0}h1{font-size:26px}}</style></head><body><main><div class="eyebrow">CORE9 RESOLVE™ · PRODUCTION HANDOFF · 14 NOV 2026</div><h1>Technical specification and acceptance criteria</h1>
+<h2>Data model (two shows, many episodes)</h2>
+<p><strong>Show:</strong> show_id, title, slug, tagline, long_description, cover_art, trailer_url, host_id, rss_url, directory_links map, default_cta, published_status.
+<strong>Episode:</strong> episode_id, show_id, episode_number, season, title, slug, teaser, summary, transcript, tags, audio_url/host_embed, duration_seconds, artwork, published_at_utc, status, related_episode_ids, internal_source_refs, content_version, SEO metadata, email_campaign_id.
+<strong>Editorial job:</strong> job_id, episode_id, status, assigned_to, source_verified_by, audio_qa_by, approved_at, scheduled_at, published_at, incident_notes.</p>
+<h2>CMS and security</h2>
+<p>Use existing CORE9 site stack; avoid a separate site unless necessary. Nontechnical producer must create/edit/schedule episodes without developer. Separate private source notes from public episode metadata. Use role-based access; protect unpublished audio; audit changes. Do not store credentials in code, source ZIP or CMS plaintext.</p>
+<h2>Frontend</h2>
+<p>Responsive shows hub, two archives, episode detail template. Accessible player; no autoplay; reliable mobile playback; seek, keyboard support, speed if available; transcript and cross-navigation. Show only live directory badges. Keep booking CTA visible on hub, archive and episode pages without blocking listening. Optimize image/audio loading.</p>
+<h2>Integrations</h2>
+<ul>
+<li>Podcast host API or documented manual upload process. RSS URLs stable and distinct per show.</li>
+<li>Newsletter platform: two show-specific email templates and scheduling; trigger only after successful publish check; unsubscribe and consent compliance.</li>
+<li>Consultation booking: real owner-supplied URL or embedded booking service, with clear outbound behavior.</li>
+<li>Analytics: page view, play start, play complete (only if measurable), episode next click, show switch, subscribe click, CTA click, booking conversion where consent/technical integration allows.</li>
+<li>Automation: queue alerts, release preflight, post-publish validation, email send guard; human QA gate remains mandatory.</li>
+</ul>
+<h2>Publishing atomicity and idempotency</h2>
+<ol>
+<li>Producer approves episode and audio.</li>
+<li>Publish audio to podcast host; confirm valid audio URL and RSS inclusion.</li>
+<li>Publish CORE9 episode page with player, transcript, metadata and booking CTA.</li>
+<li>Verify public playback, correct links, and 200 response.</li>
+<li>Send email once using unique episode/campaign key; if retry occurs, do not duplicate sends.</li>
+<li>Record timestamps, public URLs and failures; alert producer on any issue.</li>
+</ol>
+<h2>Acceptance tests</h2>
+<ul>
+<li>Both show archives render 20 planned topics internally; only published episodes publicly visible.</li>
+<li>Any published episode plays on iPhone Safari, Android Chrome and desktop; seek and keyboard controls work.</li>
+<li>New episode can be added by producer without developer and appears in proper archive order.</li>
+<li>An episode email opens the correct CORE9 episode page and the audio starts by user action.</li>
+<li>From any episode, user can reach both show archives, a related episode and a working consultation booking link.</li>
+<li>Each show has independent RSS feed, distinct cover and verified directory links.</li>
+<li>Scheduled email is blocked if audio or page fails preflight.</li>
+<li>Transcripts, titles, canonical links, mobile layout, screen-reader labels and sitemap verified.</li>
+<li>Booking CTA clicks track without exposing personal data; actual bookings only counted if verified integration exists.</li>
+<li>Draft/unapproved content cannot be published by automation; founder approval not required for routine episodes after pilot signoff.</li>
+<li>Invalid RSS, missing media, broken booking URL and unsubscribe failure all raise actionable alerts.</li>
+</ul>
+<h2>Handoff and documentation</h2>
+<p>Developer supplies admin guide with screenshots, architecture diagram, source repo/config ownership, staging and production URLs, domain/DNS notes, account inventory, backup/restore, credential transfer through secure channel, acceptance test evidence, directory feed links, and short producer training. No secrets in shared archive.</p>
+<div class="footer">Implementation reference • Draft public copy requires final publishing review • Original methodology archived separately</div></main></body></html>

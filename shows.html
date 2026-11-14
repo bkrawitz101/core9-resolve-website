@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Shows | CORE9 RESOLVE™</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: #f7f6f3;
+      color: #172338;
+      font: 16px/1.65 system-ui, -apple-system, Segoe UI, sans-serif;
+    }
+    header {
+      background: #15243a;
+      color: white;
+      padding: 18px max(22px, calc((100vw - 1080px) / 2));
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+    header strong { letter-spacing: .06em; }
+    nav { display: flex; gap: 18px; flex-wrap: wrap; }
+    header a { color: white; text-decoration: none; font-size: .95rem; }
+    nav a[aria-current="page"] { color: #b79a69; font-weight: 650; }
+    main { max-width: 1080px; margin: auto; padding: 30px 22px 85px; }
+    .hero { padding: 55px 0 40px; border-bottom: 1px solid #ddd; }
+    h1 { font-size: clamp(2.2rem, 5vw, 3.7rem); line-height: 1.14; margin: 10px 0; max-width: 820px; }
+    h2 { font-size: 1.8rem; line-height: 1.2; margin-top: 0; }
+    h3 { font-size: 1.25rem; margin-top: 0; }
+    p { max-width: 740px; }
+    .eyebrow { color: #977342; text-transform: uppercase; letter-spacing: .15em; font-size: .8rem; font-weight: 700; }
+    .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+    .card {
+      padding: 26px;
+      background: white;
+      border: 1px solid #d8d5ce;
+      border-left: 3px solid #b79a69;
+      display: flex;
+      flex-direction: column;
+    }
+    .card p { margin-top: 0; }
+    .section { padding-top: 48px; }
+    .button {
+      display: inline-block;
+      background: #b79a69;
+      color: #15243a;
+      text-decoration: none;
+      font-weight: 650;
+      border: 0;
+      border-radius: 3px;
+      padding: 12px 19px;
+      margin: 8px 8px 8px 0;
+      cursor: pointer;
+    }
+    .button.alt { background: #15243a; color: white; }
+    .button.disabled { opacity: .6; cursor: not-allowed; }
+    .media {
+      aspect-ratio: 16 / 9;
+      background: #17263d;
+      color: #f7f6f3;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 24px;
+      border: 1px solid #d4d7da;
+      margin-bottom: 18px;
+    }
+    .media span { color: #b79a69; text-transform: uppercase; letter-spacing: .12em; font-size: .78rem; display: block; margin-bottom: 6px; }
+    .tagline { font-style: italic; color: #7a613d; font-weight: 600; }
+    .muted { color: #536070; font-size: .92rem; }
+    .note { padding: 15px 18px; background: #eee9df; border-left: 3px solid #b79a69; max-width: 820px; }
+    .bridge {
+      background: #f0eee9;
+      padding: 28px;
+      border-left: 3px solid #b79a69;
+    }
+    .cta-panel {
+      background: #15243a;
+      color: #fff;
+      padding: 36px;
+      border-radius: 4px;
+      margin-top: 48px;
+    }
+    .cta-panel .note { color: #283442; }
+    footer { background: #101d2e; color: white; text-align: center; padding: 28px 15px; font-size: .85rem; }
+    footer a { color: white; margin: 0 9px; }
+    a:focus-visible, button:focus-visible { outline: 3px solid #bd8a34; outline-offset: 3px; }
+    @media (max-width: 700px) {
+      .grid { grid-template-columns: 1fr; }
+      .hero { padding: 32px 0; }
+      nav { gap: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <strong>CORE9 RESOLVE™</strong>
+    <nav aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="functions.html">Nine Functions</a>
+      <a href="assessments/index.html">Assessments</a>
+      <a href="shows.html" aria-current="page">Shows</a>
+      <a href="watch-and-learn.html">Watch &amp; Learn</a>
+      <a href="calendar.html">Calendar</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="eyebrow">CORE9 Audio Shows</div>
+      <h1>Life Is Complicated. At Least We Can Laugh About It.</h1>
+      <p>Two fictional audio comedies about the ridiculous things we do at work, at home, and with the people who matter most. Quick conversations. Familiar disasters. Unexpected insights.</p>
+      <p class="muted">Two new five-minute episodes every week — one about business, one about life and relationships.</p>
+      <div>
+        <a class="button" href="#archive">Listen to the Latest Episode</a>
+        <a class="button alt" href="#both-shows">Explore Both Shows</a>
+      </div>
+    </section>
+
+    <section class="section grid" id="both-shows">
+      <article class="card">
+        <div class="media">
+          <div>
+            <span>Show 01 · Business Owners &amp; Leaders</span>
+            <strong>Business Unusual</strong>
+          </div>
+        </div>
+        <h2>Business Unusual</h2>
+        <p class="tagline">Where Business Problems Get Personal.</p>
+        <p>Max Logic has a system for everything. Marsha Chaos has a question that ruins it. Together, they tackle the wonderfully messy reality of owning a business — with the occasional expert who makes things even more interesting.</p>
+        <p class="muted">Individual show archive and episode pages pending pilot audio &amp; RSS feed setup.</p>
+      </article>
+
+      <article class="card">
+        <div class="media">
+          <div>
+            <span>Show 02 · Life, Work &amp; Relationships</span>
+            <strong>Mr. Right &amp; Mrs. Maybe</strong>
+          </div>
+        </div>
+        <h2>Mr. Right &amp; Mrs. Maybe</h2>
+        <p class="tagline">He Has All the Answers. She Has All the Questions.</p>
+        <p>A couple with two opinions about absolutely everything: love, work, family, money, plans and the mysterious rules of living together. Sometimes he is right. Sometimes she is. Sometimes the dishwasher wins.</p>
+        <p class="muted">Individual show archive and episode pages pending pilot audio &amp; RSS feed setup.</p>
+      </article>
+    </section>
+
+    <section class="section">
+      <div class="bridge">
+        <div class="eyebrow">Inter-show bridge</div>
+        <h2>Same Problems. Different Sides of the Story.</h2>
+        <p>A business owner says nobody takes responsibility. An employee says nobody lets them. At home, the same argument may be happening over dinner. Different lives. Familiar patterns. Plenty to laugh about.</p>
+      </div>
+    </section>
+
+    <section class="section" id="archive">
+      <div class="eyebrow">Episode Archive</div>
+      <h2>Find Your Next Five-Minute Escape</h2>
+      <p class="note">40 initial episode topics (20 weeks) are planned in <code>docs/podcast-handoff/02_CREATIVE_AND_CONTENT/EPISODE_SLATE_40.csv</code>. Only published episodes will appear publicly once podcast hosting, RSS feeds, and pilot audio are connected.</p>
+    </section>
+
+    <section class="section">
+      <div class="eyebrow">Subscribe</div>
+      <h2>Never Miss the Next Disaster</h2>
+      <p>Get the latest episode in your inbox, or follow the shows wherever you listen to podcasts.</p>
+      <p class="note">Newsletter signup and podcast directory badges (Spotify, Apple Podcasts, Amazon Music, RSS) will be activated once the podcast host and email provider are connected.</p>
+    </section>
+
+    <section class="cta-panel">
+      <div class="eyebrow">Consultation</div>
+      <h2>Seriously Curious?</h2>
+      <p>Sometimes we laugh because the alternative is to cry.</p>
+      <p>But what if you could laugh about your problems because they're finally behind you?</p>
+      <p><strong>Talk to a real expert.</strong> Discover what's keeping you stuck, find a way forward, and turn today's worries into tomorrow's funny stories.</p>
+      <p>Not because you've learned to live with the problems — but because you've actually resolved them.</p>
+      <p><span class="button disabled" aria-disabled="true">Talk to a CORE9 Expert</span></p>
+      <p class="muted" style="color:#d6dce5;">A personal conversation, not another podcast episode.</p>
+      <p class="note">Booking URL is not yet configured. Connect the owner-supplied consultation booking destination before launch.</p>
+    </section>
+
+    <section class="section">
+      <h2>Explore the ideas behind the shows</h2>
+      <p>Go deeper through the existing interactive experiences and assessments.</p>
+      <a class="button" href="functions.html">Explore Nine Functions</a>
+      <a class="button alt" href="assessments/index.html">Explore Assessments</a>
+    </section>
+  </main>
+
+  <footer>
+    CORE9 RESOLVE™ · <a href="index.html">Home</a> · <a href="functions.html">Nine Functions</a> · <a href="assessments/index.html">Assessments</a> · <a href="watch-and-learn.html">Watch &amp; Learn</a> · <a href="calendar.html">Calendar</a>
+    <p>Staging build · Consultation booking, contact details, and legal policies will be linked after approval.</p>
+  </footer>
+</body>
+</html>

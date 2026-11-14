@@ -1,0 +1,165 @@
+﻿id,phase,workstream,task,owner,priority,dependency_or_input,acceptance_evidence,status
+DEV-001,0 Discovery,Inputs,Confirm CORE9 production domain and existing CMS stack,Developer,P1,Founder provides credentials/URLs through secure channel,"Screenshot, test log, URL or configuration proof",Not started
+DEV-002,0 Discovery,Inputs,Obtain approved CORE9 logos/colors/type system,Developer,P1,Founder provides credentials/URLs through secure channel,"Screenshot, test log, URL or configuration proof",Not started
+DEV-003,0 Discovery,Inputs,Obtain live consultation booking URL and test availability,Developer,P1,Founder provides credentials/URLs through secure channel,"Screenshot, test log, URL or configuration proof",Not started
+DEV-004,0 Discovery,Inputs,Obtain newsletter service and authorized access,Developer,P1,Founder provides credentials/URLs through secure channel,"Screenshot, test log, URL or configuration proof",Not started
+DEV-005,0 Discovery,Inputs,Obtain podcast host decision and owner-controlled accounts,Developer,P1,Founder provides credentials/URLs through secure channel,"Screenshot, test log, URL or configuration proof",Not started
+DEV-006,0 Discovery,Inputs,Confirm who approves pilots and routine releases,Developer,P1,Founder provides credentials/URLs through secure channel,"Screenshot, test log, URL or configuration proof",Not started
+DEV-007,0 Discovery,Inputs,Confirm Tuesday/Friday proposed publishing days and timezone,Developer,P1,Founder provides credentials/URLs through secure channel,"Screenshot, test log, URL or configuration proof",Not started
+DEV-008,0 Discovery,Inputs,Confirm privacy/terms/contact links,Developer,P1,Founder provides credentials/URLs through secure channel,"Screenshot, test log, URL or configuration proof",Not started
+DEV-009,0 Discovery,Inputs,Confirm public show naming and cover approval,Developer,P1,Founder provides credentials/URLs through secure channel,"Screenshot, test log, URL or configuration proof",Not started
+DEV-010,0 Discovery,Inputs,Confirm consent and email sender requirements,Developer,P1,Founder provides credentials/URLs through secure channel,"Screenshot, test log, URL or configuration proof",Not started
+DEV-011,1 Architecture,Planning,Create information architecture and site map,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-012,1 Architecture,Planning,Create 2-show CMS data schema,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-013,1 Architecture,Planning,Create episode metadata schema and validation,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-014,1 Architecture,Planning,Create editorial workflow states and permissions,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-015,1 Architecture,Planning,Define unique episode IDs and immutable slugs,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-016,1 Architecture,Planning,Define canonical URL and redirect strategy,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-017,1 Architecture,Planning,Choose embedded player integration,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-018,1 Architecture,Planning,Define audio-host versus site responsibilities,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-019,1 Architecture,Planning,Define email publish gating,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-020,1 Architecture,Planning,Define analytics event dictionary,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-021,1 Architecture,Planning,Document failure and rollback behavior,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-022,2 Visual design,UX/UI,Design desktop shows hub wireframe,Developer,P1,Approved CORE9 brand assets,"Screenshot, test log, URL or configuration proof",Not started
+DEV-023,2 Visual design,UX/UI,Design mobile shows hub wireframe,Developer,P1,Approved CORE9 brand assets,"Screenshot, test log, URL or configuration proof",Not started
+DEV-024,2 Visual design,UX/UI,Design Business Unusual archive,Developer,P1,Approved CORE9 brand assets,"Screenshot, test log, URL or configuration proof",Not started
+DEV-025,2 Visual design,UX/UI,Design Mr. Right & Mrs. Maybe archive,Developer,P1,Approved CORE9 brand assets,"Screenshot, test log, URL or configuration proof",Not started
+DEV-026,2 Visual design,UX/UI,Design episode detail template,Developer,P1,Approved CORE9 brand assets,"Screenshot, test log, URL or configuration proof",Not started
+DEV-027,2 Visual design,UX/UI,Design show cover art for both shows,Developer,P1,Approved CORE9 brand assets,"Screenshot, test log, URL or configuration proof",Not started
+DEV-028,2 Visual design,UX/UI,Design episode thumbnail template,Developer,P1,Approved CORE9 brand assets,"Screenshot, test log, URL or configuration proof",Not started
+DEV-029,2 Visual design,UX/UI,Design play controls and loading states,Developer,P1,Approved CORE9 brand assets,"Screenshot, test log, URL or configuration proof",Not started
+DEV-030,2 Visual design,UX/UI,Design related episode cards,Developer,P1,Approved CORE9 brand assets,"Screenshot, test log, URL or configuration proof",Not started
+DEV-031,2 Visual design,UX/UI,Design Seriously Curious CTA block,Developer,P1,Approved CORE9 brand assets,"Screenshot, test log, URL or configuration proof",Not started
+DEV-032,2 Visual design,UX/UI,Design email templates desktop and mobile,Developer,P1,Approved CORE9 brand assets,"Screenshot, test log, URL or configuration proof",Not started
+DEV-033,2 Visual design,UX/UI,Review contrast and keyboard focus,Developer,P1,Approved CORE9 brand assets,"Screenshot, test log, URL or configuration proof",Not started
+DEV-034,2 Visual design,UX/UI,Get pilot page visual approval,Developer,P1,Approved CORE9 brand assets,"Screenshot, test log, URL or configuration proof",Not started
+DEV-035,3 CMS,Content engineering,Implement shows collection,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-036,3 CMS,Content engineering,Implement episodes collection,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-037,3 CMS,Content engineering,Implement publish/schedule status controls,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-038,3 CMS,Content engineering,Implement show-specific archives,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-039,3 CMS,Content engineering,Implement latest episodes section,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-040,3 CMS,Content engineering,Implement topic tags and filtering,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-041,3 CMS,Content engineering,Implement archive search,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-042,3 CMS,Content engineering,Implement episode next/previous relationships,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-043,3 CMS,Content engineering,Implement cross-show paired-episode relation,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-044,3 CMS,Content engineering,Implement public/draft visibility rules,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-045,3 CMS,Content engineering,Implement transcript storage and accordion,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-046,3 CMS,Content engineering,Implement episode cover and alt-text fields,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-047,3 CMS,Content engineering,Implement source-reference private admin fields,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-048,3 CMS,Content engineering,Implement internal episode quality approval field,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-049,3 CMS,Content engineering,Implement preview links and editorial access,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-050,4 Frontend,Pages,Build /shows landing page,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-051,4 Frontend,Pages,Build Business Unusual archive page,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-052,4 Frontend,Pages,Build Mr. Right & Mrs. Maybe archive page,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-053,4 Frontend,Pages,Build dynamic episode detail route,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-054,4 Frontend,Pages,Place accessible player above fold,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-055,4 Frontend,Pages,Add duration and publish metadata,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-056,4 Frontend,Pages,Add related episodes block,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-057,4 Frontend,Pages,Add both show archive links on episode pages,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-058,4 Frontend,Pages,Add podcast follow links conditional on verified URLs,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-059,4 Frontend,Pages,Add newsletter signup with consent,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-060,4 Frontend,Pages,Add Seriously Curious CTA on all relevant pages,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-061,4 Frontend,Pages,Wire booking CTA to verified URL,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-062,4 Frontend,Pages,Add breadcrumbs and global navigation,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-063,4 Frontend,Pages,Add social sharing/copy link,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-064,4 Frontend,Pages,Add empty and error states,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-065,4 Frontend,Pages,Optimize responsive typography and performance,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-066,5 Audio,Hosting/RSS,Create first show on podcast host,Producer + Developer,P1,Podcast host and owner-controlled email,"Screenshot, test log, URL or configuration proof",Not started
+DEV-067,5 Audio,Hosting/RSS,Create second show on podcast host,Producer + Developer,P1,Podcast host and owner-controlled email,"Screenshot, test log, URL or configuration proof",Not started
+DEV-068,5 Audio,Hosting/RSS,Set dedicated public RSS contact email,Producer + Developer,P1,Podcast host and owner-controlled email,"Screenshot, test log, URL or configuration proof",Not started
+DEV-069,5 Audio,Hosting/RSS,Upload approved show covers,Producer + Developer,P1,Podcast host and owner-controlled email,"Screenshot, test log, URL or configuration proof",Not started
+DEV-070,5 Audio,Hosting/RSS,Enter show descriptions/categories,Producer + Developer,P1,Podcast host and owner-controlled email,"Screenshot, test log, URL or configuration proof",Not started
+DEV-071,5 Audio,Hosting/RSS,Publish trailer or first episode to each feed,Producer + Developer,P1,Podcast host and owner-controlled email,"Screenshot, test log, URL or configuration proof",Not started
+DEV-072,5 Audio,Hosting/RSS,Validate both RSS feeds,Producer + Developer,P1,Podcast host and owner-controlled email,"Screenshot, test log, URL or configuration proof",Not started
+DEV-073,5 Audio,Hosting/RSS,Verify audio enclosure accessibility and seeking,Producer + Developer,P1,Podcast host and owner-controlled email,"Screenshot, test log, URL or configuration proof",Not started
+DEV-074,5 Audio,Hosting/RSS,Confirm episode GUID stability,Producer + Developer,P1,Podcast host and owner-controlled email,"Screenshot, test log, URL or configuration proof",Not started
+DEV-075,5 Audio,Hosting/RSS,Submit Business Unusual to Spotify,Producer + Developer,P1,Podcast host and owner-controlled email,"Screenshot, test log, URL or configuration proof",Not started
+DEV-076,5 Audio,Hosting/RSS,Submit Mr. Right & Mrs. Maybe to Spotify,Producer + Developer,P1,Podcast host and owner-controlled email,"Screenshot, test log, URL or configuration proof",Not started
+DEV-077,5 Audio,Hosting/RSS,Submit both feeds to Apple Podcasts,Producer + Developer,P1,Podcast host and owner-controlled email,"Screenshot, test log, URL or configuration proof",Not started
+DEV-078,5 Audio,Hosting/RSS,Submit to Amazon Music and other selected directories,Producer + Developer,P1,Podcast host and owner-controlled email,"Screenshot, test log, URL or configuration proof",Not started
+DEV-079,5 Audio,Hosting/RSS,Verify live listings before exposing badges,Producer + Developer,P1,Podcast host and owner-controlled email,"Screenshot, test log, URL or configuration proof",Not started
+DEV-080,5 Audio,Hosting/RSS,Set episode website URL to CORE9 detail page when supported,Producer + Developer,P1,Podcast host and owner-controlled email,"Screenshot, test log, URL or configuration proof",Not started
+DEV-081,5 Audio,Hosting/RSS,Document feed URLs and ownership,Producer + Developer,P1,Podcast host and owner-controlled email,"Screenshot, test log, URL or configuration proof",Not started
+DEV-082,6 Email,Email integration,Create Business weekly email template,Developer + Producer,P1,Email service and consented list,"Screenshot, test log, URL or configuration proof",Not started
+DEV-083,6 Email,Email integration,Create Life weekly email template,Developer + Producer,P1,Email service and consented list,"Screenshot, test log, URL or configuration proof",Not started
+DEV-084,6 Email,Email integration,Create optional combined digest template,Developer + Producer,P1,Email service and consented list,"Screenshot, test log, URL or configuration proof",Not started
+DEV-085,6 Email,Email integration,Configure approved sender domain and authentication,Developer + Producer,P1,Email service and consented list,"Screenshot, test log, URL or configuration proof",Not started
+DEV-086,6 Email,Email integration,Map episode metadata into email fields,Developer + Producer,P1,Email service and consented list,"Screenshot, test log, URL or configuration proof",Not started
+DEV-087,6 Email,Email integration,Ensure one primary CTA links to CORE9 episode page,Developer + Producer,P1,Email service and consented list,"Screenshot, test log, URL or configuration proof",Not started
+DEV-088,6 Email,Email integration,Add footer and unsubscribe,Developer + Producer,P1,Email service and consented list,"Screenshot, test log, URL or configuration proof",Not started
+DEV-089,6 Email,Email integration,Implement post-publish readiness check,Developer + Producer,P1,Email service and consented list,"Screenshot, test log, URL or configuration proof",Not started
+DEV-090,6 Email,Email integration,Implement unique campaign idempotency,Developer + Producer,P1,Email service and consented list,"Screenshot, test log, URL or configuration proof",Not started
+DEV-091,6 Email,Email integration,Configure schedule and time zone,Developer + Producer,P1,Email service and consented list,"Screenshot, test log, URL or configuration proof",Not started
+DEV-092,6 Email,Email integration,Add seed-list send and mobile test,Developer + Producer,P1,Email service and consented list,"Screenshot, test log, URL or configuration proof",Not started
+DEV-093,6 Email,Email integration,Track email link UTMs,Developer + Producer,P1,Email service and consented list,"Screenshot, test log, URL or configuration proof",Not started
+DEV-094,6 Email,Email integration,Configure failure alerts for broken URLs,Developer + Producer,P1,Email service and consented list,"Screenshot, test log, URL or configuration proof",Not started
+DEV-095,7 Analytics,Measurement,Install/verify privacy-conscious analytics,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-096,7 Analytics,Measurement,Track shows hub visits,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-097,7 Analytics,Measurement,Track show archive visits,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-098,7 Analytics,Measurement,Track episode page visits,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-099,7 Analytics,Measurement,Track play starts,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-100,7 Analytics,Measurement,Track playback completions if supported,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-101,7 Analytics,Measurement,Track related-episode clicks,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-102,7 Analytics,Measurement,Track cross-show navigation,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-103,7 Analytics,Measurement,Track directory follow clicks,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-104,7 Analytics,Measurement,Track email-origin traffic,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-105,7 Analytics,Measurement,Track Seriously Curious CTA clicks,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-106,7 Analytics,Measurement,Track booking completion only if technically verified,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-107,7 Analytics,Measurement,Build monthly dashboard or export,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-108,7 Analytics,Measurement,Document consent and retention settings,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-109,8 Automation,Reliability,Create weekly release checklist in project tracker,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-110,8 Automation,Reliability,Create scheduled preflight validation,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-111,8 Automation,Reliability,Prevent send before page/audio live,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-112,8 Automation,Reliability,Alert producer when audio missing,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-113,8 Automation,Reliability,Alert producer when booking URL fails,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-114,8 Automation,Reliability,Alert producer when RSS episode missing,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-115,8 Automation,Reliability,Alert producer when newsletter send fails,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-116,8 Automation,Reliability,Generate topic replenishment alert below 10 per show,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-117,8 Automation,Reliability,Create production buffer alert below 4 weeks,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-118,8 Automation,Reliability,Create duplicate topic detection check,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-119,8 Automation,Reliability,Create published URL log,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-120,8 Automation,Reliability,Create incident and correction process,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-121,8 Automation,Reliability,Verify no fully automatic unreviewed public publishing,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-122,9 QA,Testing,Test iPhone Safari playback,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-123,9 QA,Testing,Test Android Chrome playback,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-124,9 QA,Testing,Test desktop Chrome/Firefox/Safari as available,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-125,9 QA,Testing,Test player keyboard and screen reader labels,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-126,9 QA,Testing,Test audio seeking and duration,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-127,9 QA,Testing,Test archive filters and search,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-128,9 QA,Testing,Test related and cross-show links,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-129,9 QA,Testing,Test transcript accuracy and formatting,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-130,9 QA,Testing,Test canonical/SEO and Open Graph cards,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-131,9 QA,Testing,Test XML RSS validation,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-132,9 QA,Testing,Test real directory listing links,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-133,9 QA,Testing,Test booking flow end to end,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-134,9 QA,Testing,Test newsletter unsubscribe,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-135,9 QA,Testing,Test email idempotency and retries,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-136,9 QA,Testing,Test draft content not publicly accessible,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-137,9 QA,Testing,Test failed audio prevents email,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-138,9 QA,Testing,Test page speed on mobile,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-139,9 QA,Testing,Test backup and rollback,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-140,10 Launch,Go live,Produce one approved pilot per show,Developer + Producer,P1,Pilot approval and source-accuracy QA,"Screenshot, test log, URL or configuration proof",Not started
+DEV-141,10 Launch,Go live,Load first 8 episodes into private production queue,Developer + Producer,P1,Pilot approval and source-accuracy QA,"Screenshot, test log, URL or configuration proof",Not started
+DEV-142,10 Launch,Go live,Schedule first Business episode,Developer + Producer,P1,Pilot approval and source-accuracy QA,"Screenshot, test log, URL or configuration proof",Not started
+DEV-143,10 Launch,Go live,Schedule first Life episode,Developer + Producer,P1,Pilot approval and source-accuracy QA,"Screenshot, test log, URL or configuration proof",Not started
+DEV-144,10 Launch,Go live,Verify website launch readiness,Developer + Producer,P1,Pilot approval and source-accuracy QA,"Screenshot, test log, URL or configuration proof",Not started
+DEV-145,10 Launch,Go live,Send seed-list rehearsal emails,Developer + Producer,P1,Pilot approval and source-accuracy QA,"Screenshot, test log, URL or configuration proof",Not started
+DEV-146,10 Launch,Go live,Obtain founder launch signoff,Developer + Producer,P1,Pilot approval and source-accuracy QA,"Screenshot, test log, URL or configuration proof",Not started
+DEV-147,10 Launch,Go live,Publish first Business episode,Developer + Producer,P1,Pilot approval and source-accuracy QA,"Screenshot, test log, URL or configuration proof",Not started
+DEV-148,10 Launch,Go live,Publish first Life episode,Developer + Producer,P1,Pilot approval and source-accuracy QA,"Screenshot, test log, URL or configuration proof",Not started
+DEV-149,10 Launch,Go live,Send two weekly emails after live checks,Developer + Producer,P1,Pilot approval and source-accuracy QA,"Screenshot, test log, URL or configuration proof",Not started
+DEV-150,10 Launch,Go live,Verify directory ingestion and fix failures,Developer + Producer,P1,Pilot approval and source-accuracy QA,"Screenshot, test log, URL or configuration proof",Not started
+DEV-151,10 Launch,Go live,Review first-week analytics,Developer + Producer,P1,Pilot approval and source-accuracy QA,"Screenshot, test log, URL or configuration proof",Not started
+DEV-152,11 Handoff,Documentation,Provide admin guide with screenshots,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-153,11 Handoff,Documentation,Provide producer publishing checklist,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-154,11 Handoff,Documentation,Provide account/ownership inventory,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-155,11 Handoff,Documentation,Provide technical architecture diagram,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-156,11 Handoff,Documentation,Provide CMS schema and integration documentation,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-157,11 Handoff,Documentation,Provide source repo and deployment instructions,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-158,11 Handoff,Documentation,Provide backups and recovery instructions,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-159,11 Handoff,Documentation,Provide privacy and accessibility test record,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-160,11 Handoff,Documentation,Provide all final public URLs,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-161,11 Handoff,Documentation,Provide acceptance test evidence,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-162,11 Handoff,Documentation,Conduct producer training,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-163,11 Handoff,Documentation,Transfer access via secure channel,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started
+DEV-164,11 Handoff,Documentation,Set monthly maintenance and monitoring owner,Developer,P1,,"Screenshot, test log, URL or configuration proof",Not started

@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CORE9 RESOLVE™ Business — Staging</title>
+  <meta name="robots" content="noindex,nofollow">
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: #f7f6f3;
+      color: #172338;
+      font-family: system-ui, -apple-system, Segoe UI, sans-serif;
+      line-height: 1.6;
+    }
+    a { color: inherit; }
+    header {
+      background: #15243a;
+      color: #fff;
+      padding: 18px max(22px, calc((100vw - 1120px) / 2));
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    header strong { letter-spacing: .06em; }
+    nav { display: flex; gap: 20px; flex-wrap: wrap; }
+    nav a { font-size: .95rem; text-decoration: none; }
+    nav a[aria-current="page"] { color: #b79a69; font-weight: 650; }
+    main section {
+      padding: clamp(42px, 7vw, 90px) max(22px, calc((100vw - 1120px) / 2));
+    }
+    .hero {
+      background: #17263d;
+      color: #fff;
+      min-height: 480px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      font-size: .78rem;
+      color: #b79a69;
+    }
+    h1 {
+      font-size: clamp(2.25rem, 5vw, 4.6rem);
+      line-height: 1.12;
+      max-width: 900px;
+      margin: 14px 0 22px;
+    }
+    h2 {
+      font-size: clamp(1.7rem, 3vw, 2.8rem);
+      line-height: 1.18;
+      margin: 8px 0 22px;
+      max-width: 800px;
+    }
+    p { max-width: 760px; font-size: 1.08rem; }
+    .button {
+      display: inline-block;
+      padding: 13px 20px;
+      border: 1px solid #b79a69;
+      background: #b79a69;
+      color: #15243a;
+      text-decoration: none;
+      font-weight: 650;
+      border-radius: 3px;
+      margin: 16px 12px 0 0;
+    }
+    .button.alt { background: transparent; color: inherit; }
+    .button.disabled { opacity: .65; cursor: not-allowed; }
+    .recognition { background: #f0eee9; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .tile {
+      border: 1px solid #d7d3ca;
+      padding: 25px;
+      background: white;
+      border-left: 3px solid #b79a69;
+    }
+    .pathway { background: #e7e8e8; }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    .step { border-top: 2px solid #b79a69; padding: 16px 0; }
+    .step b { display: block; color: #7a613d; font-size: .85rem; }
+    .invitation { background: #15243a; color: white; }
+    .explore { background: #fff; }
+    .function-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .function-grid a {
+      display: block;
+      border: 1px solid #d4d7da;
+      padding: 20px;
+      text-decoration: none;
+    }
+    .function-grid a:hover,
+    .function-grid a:focus-visible {
+      border-color: #8d6b39;
+      background: #f6f3ec;
+    }
+    .function-grid small { display: block; color: #806a4a; }
+    footer {
+      padding: 28px 22px;
+      text-align: center;
+      background: #101d2e;
+      color: #ddd;
+      font-size: .85rem;
+    }
+    footer a { color: #fff; margin: 0 9px; }
+    .note {
+      font-size: .9rem;
+      border-left: 3px solid #b79a69;
+      padding: 12px 16px;
+      background: #eee9df;
+      max-width: 850px;
+      color: #283442;
+    }
+    a:focus-visible { outline: 3px solid #d3a34c; outline-offset: 3px; }
+    @media (max-width: 700px) {
+      .grid, .steps, .function-grid { grid-template-columns: 1fr; }
+      header { align-items: flex-start; }
+      nav { gap: 12px; }
+      .hero { min-height: 390px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <strong>CORE9 RESOLVE™</strong>
+    <nav aria-label="Main navigation">
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="functions.html">Nine Functions</a>
+      <a href="assessments/index.html">Assessments</a>
+      <a href="shows.html">Shows</a>
+      <a href="watch-and-learn.html">Watch &amp; Learn</a>
+      <a href="calendar.html">Calendar</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="eyebrow">CORE9 RESOLVE™ Business</div>
+      <h1>Your Business Is Working Hard. But Is It Working Together?</h1>
+      <p>Talented people. Ambitious goals. Valuable resources. Yet something keeps getting in the way.</p>
+      <p><strong>The problem may not be the people or the strategy. It may be how everything works together.</strong></p>
+      <p>We reveal hidden disconnects, align the moving parts, and turn untapped potential into measurable results.</p>
+      <div><a class="button" href="#recognition">Discover What's Holding You Back</a></div>
+    </section>
+
+    <section class="recognition" id="recognition">
+      <div class="eyebrow">02 / Recognition</div>
+      <h2>Does Any of This Sound Familiar?</h2>
+      <div class="grid">
+        <div class="tile">Everyone is busy, but progress is slower than it should be.</div>
+        <div class="tile">Problems keep returning, even after you've solved them.</div>
+        <div class="tile">Your business has outgrown the way it operates.</div>
+        <div class="tile">You have the right people, but their efforts don't produce the right results.</div>
+      </div>
+    </section>
+
+    <section id="approach">
+      <div class="eyebrow">03 / The Difference</div>
+      <h2>You Don't Need Another Isolated Solution. You Need to See the Whole System.</h2>
+      <p>CORE9 RESOLVE™ identifies the relationships between leadership, people, processes, resources, and execution—revealing where the system supports growth and where it quietly undermines itself.</p>
+      <a href="#functions">Explore Our Approach →</a>
+    </section>
+
+    <section class="pathway">
+      <div class="eyebrow">04 / The Pathway</div>
+      <h2>From Hidden Problems to Visible Results</h2>
+      <div class="steps">
+        <div class="step"><b>01</b><strong>Discover</strong><div>Understand the system.</div></div>
+        <div class="step"><b>02</b><strong>Diagnose</strong><div>Reveal what isn't working and why.</div></div>
+        <div class="step"><b>03</b><strong>Align</strong><div>Connect functions and decisions.</div></div>
+        <div class="step"><b>04</b><strong>Execute</strong><div>Guide action toward results.</div></div>
+      </div>
+    </section>
+
+    <section class="explore" id="functions">
+      <div class="eyebrow">Staging integration · Existing approved experiences</div>
+      <h2>Explore the Nine Functions</h2>
+      <p class="note">Temporary navigation only. The original Circle of Nine artwork and its interaction contract must be verified before replacing this directory. Function HTML files are preserved unchanged.</p>
+      <div class="function-grid">
+        <a href="functions/FUNCTION_01_INTERACTIVE.html"><small>FUNCTION 01</small><strong>Strategy</strong></a>
+        <a href="functions/FUNCTION_02_INTERACTIVE_REVIEW.html"><small>FUNCTION 02</small><strong>Relationships</strong></a>
+        <a href="functions/FUNCTION_03_REVISED_INTERACTIVE_REVIEW.html"><small>FUNCTION 03</small><strong>Analysis &amp; Systems</strong></a>
+        <a href="functions/FUNCTION_04_INTERACTIVE_REVIEW.html"><small>FUNCTION 04</small><strong>Knowledge &amp; Priorities</strong></a>
+        <a href="functions/FUNCTION_05_INTERACTIVE_REVIEW.html"><small>FUNCTION 05</small><strong>Contribution &amp; Expansion</strong></a>
+        <a href="functions/FUNCTION_06_INTERACTIVE_APPROVED.html"><small>FUNCTION 06</small><strong>Psychology &amp; Creativity</strong></a>
+        <a href="functions/FUNCTION_07_INTERACTIVE_APPROVED.html"><small>FUNCTION 07</small><strong>Mission &amp; Realization</strong></a>
+        <a href="functions/FUNCTION_08_INTERACTIVE_APPROVED.html"><small>FUNCTION 08</small><strong>Materialization &amp; Results</strong></a>
+        <a href="functions/FUNCTION_09_INTERACTIVE_APPROVED_v2.html"><small>FUNCTION 09</small><strong>Completion &amp; Renewal</strong></a>
+      </div>
+      <p><a href="functions.html">Open the dedicated Nine Functions page →</a></p>
+    </section>
+
+    <section class="invitation" id="invitation">
+      <div class="eyebrow">05 / Invitation</div>
+      <h2>What Could Your Business Accomplish If Everything Worked Together?</h2>
+      <p>Start with a CORE9 Discovery conversation. We'll explore where you are, what you want to achieve, and what may be standing in the way.</p>
+      <p><strong>Book a Discovery Session</strong></p>
+      <p class="note">Booking destination is not yet configured. This is a non-interactive placeholder, not a booking button.</p>
+    </section>
+
+    <section class="explore" id="assessments">
+      <div class="eyebrow">Existing assessments · Internal staging</div>
+      <h2>Explore CORE9 Assessments</h2>
+      <p>These are existing assessment packages. Their approved questions and interpretation text have not been rewritten.</p>
+      <div class="function-grid">
+        <a href="assessments/test9.html"><small>INTRODUCTORY</small><strong>Test 9 — Explore</strong></a>
+        <a href="assessments/test27.html"><small>DEEPER REFLECTION</small><strong>Test 27 — Explore</strong></a>
+        <div class="tile">
+          <small>BUSINESS</small>
+          <strong>Test 45 — Approved package reference</strong>
+          <p><a href="assessments/test45.html">Open existing Test 45 implementation</a></p>
+        </div>
+      </div>
+      <p class="note">Tests 9, 27 and 45 are author-approved. Their developer assets are included without editing. Cross-package continuation and interpretation behavior require integration QA.</p>
+    </section>
+
+    <section id="team-note">
+      <h2>Our Team</h2>
+      <p class="note">Approved team biographies and authorship presentation are not integrated in this staging build. This section is a navigation placeholder only; no biographies have been invented.</p>
+    </section>
+  </main>
+
+  <footer>
+    CORE9 RESOLVE™ · <a href="functions.html">Nine Functions</a> · <a href="assessments/index.html">Assessments</a> · <a href="shows.html">Shows</a> · <a href="watch-and-learn.html">Watch &amp; Learn</a> · <a href="calendar.html">Calendar</a>
+    <p>Staging build · Consultation booking, contact details, and legal policies will be linked after approval.</p>
+  </footer>
+</body>
+</html>

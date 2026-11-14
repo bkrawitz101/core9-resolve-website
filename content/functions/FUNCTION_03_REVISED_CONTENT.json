@@ -1,0 +1,116 @@
+{
+  "status": "PROPOSED — AWAITING APPROVAL",
+  "function": 3,
+  "canonical": "Analysis & Systems",
+  "main": {
+    "title": "Everyone has a piece of the truth. Nobody sees the whole picture.",
+    "story": "Imagine you're considering an opportunity that could change your future. Someone tells you it could bring more income. Another person warns that it will demand more time. Someone else sees possibilities you hadn't considered. Each person has useful information, but the pieces don't seem to fit together. You begin collecting more facts. The more you discover, the harder the decision becomes. You think: ‘I have so much information. Why can't I see what the right decision is?’",
+    "question": "What would you do next?",
+    "options": [
+      "Choose based on the most convincing information.",
+      "Keep analyzing until you are completely certain.",
+      "Connect the information, examine consequences, and decide."
+    ],
+    "results": [
+      [
+        "Acting on part of the picture",
+        "You make your decision based on the most convincing information. At first, the opportunity looks promising. Later, you discover important connections and consequences you hadn't considered.",
+        "Which part of the situation did you overlook?"
+      ],
+      [
+        "When analysis becomes a trap",
+        "You continue gathering information, hoping for complete certainty. Every answer raises another question. Time passes, and the opportunity may change or disappear before you decide.",
+        "What do you actually need to know before you can move forward?"
+      ],
+      [
+        "Seeing the whole system",
+        "You return to your original goal and bring the information together. You identify how the important pieces influence one another, what is still missing, and which consequences matter. You discuss your understanding with the people involved, agree on a direction, and take the next practical step.",
+        "What becomes clearer when you see the connections rather than isolated facts?"
+      ]
+    ]
+  },
+  "scales": {
+    "personal": {
+      "title": "Your Life — Which direction is really yours?",
+      "story": "Imagine you're considering a major change in your life. Perhaps a new career, a move, or an opportunity to begin something you've always wanted. You research the possibilities, listen to advice, compare costs, and discover more and more information. But each answer raises another question. You're no longer sure which information matters to your future and which is simply distracting you.",
+      "question": "How would you approach your decision?",
+      "options": [
+        "Follow the advice that sounds most convincing.",
+        "Keep researching until every uncertainty disappears.",
+        "Return to your vision, connect the important facts, consider consequences, and choose a first step."
+      ],
+      "results": [
+        [
+          "A decision based on fragments",
+          "The advice may be useful, but it reflects someone else's experience. Without understanding how it fits your circumstances and goals, you may discover important consequences later.",
+          "Whose vision is guiding your decision?"
+        ],
+        [
+          "More knowledge, less clarity",
+          "You become increasingly informed, but your decision remains unfinished. Information keeps accumulating without a clear way to distinguish what matters.",
+          "What information would actually change your decision?"
+        ],
+        [
+          "Understanding creates direction",
+          "You identify the relationships between your goals, resources, responsibilities, and opportunities. You distinguish essential information from distractions, then make a decision you can begin acting on.",
+          "What is the first meaningful action your understanding supports?"
+        ]
+      ]
+    },
+    "family": {
+      "title": "Your Relationships — Why do you keep having the same disagreement?",
+      "story": "Imagine you and your partner are considering a change that affects your family. One of you is thinking about financial security. The other is concerned about time, children, or personal fulfillment. You keep discussing individual issues, but every conversation returns to the same disagreement. Each concern is valid, yet you haven't understood how they fit into one shared picture.",
+      "question": "What would you do?",
+      "options": [
+        "Focus on solving the issue that feels most urgent.",
+        "Keep discussing every concern without making a decision.",
+        "Bring your concerns together, clarify your shared goals, and agree on what needs to happen next."
+      ],
+      "results": [
+        [
+          "Solving one problem creates another",
+          "You may resolve the immediate concern while overlooking its effect on other family members or responsibilities. The disagreement returns in another form.",
+          "What connections are missing from the conversation?"
+        ],
+        [
+          "The conversation goes in circles",
+          "You discuss the same questions repeatedly. Without a shared understanding of how the issues connect, more discussion doesn't necessarily produce a decision.",
+          "Are you gathering perspectives or building a shared understanding?"
+        ],
+        [
+          "A shared picture becomes possible",
+          "You listen to each other's priorities, identify how the concerns influence one another, and agree on a common direction. With that understanding, you can decide who will do what and take the next step together.",
+          "What changes when both people can see the whole situation?"
+        ]
+      ]
+    },
+    "business": {
+      "title": "Your Business — Why doesn't the whole organization move together?",
+      "story": "Imagine your business is growing, but something isn't working. Sales reports strong demand. Operations says capacity is limited. Finance warns about rising costs. Each department has useful information and reasonable concerns, yet their recommendations contradict one another. You have plenty of reports, but no clear understanding of the system connecting them.",
+      "question": "What would you do?",
+      "options": [
+        "Act on the recommendation from the department with the most urgent problem.",
+        "Request more reports and postpone the decision.",
+        "Bring the departments together, map their dependencies, and align the system with the business strategy."
+      ],
+      "results": [
+        [
+          "Local improvements, wider consequences",
+          "You may improve one department's results while unintentionally creating difficulties elsewhere. The organization continues reacting to symptoms rather than understanding their connections.",
+          "Are you improving the business as a whole or only one part?"
+        ],
+        [
+          "Reports without resolution",
+          "More data may help, but without an agreed framework for interpreting it, different departments can continue reaching contradictory conclusions.",
+          "What relationships between the departments are still invisible?"
+        ],
+        [
+          "One organization, one coherent picture",
+          "You examine how sales, operations, finance, and people depend on one another. Together, you identify gaps, clarify responsibilities and instructions, and agree on a system aligned with the company's strategy. That shared understanding provides a foundation for priorities and coordinated action.",
+          "What becomes possible when everyone understands the same system?"
+        ]
+      ]
+    }
+  },
+  "principle": "Nine functions are interdependent. Function 3 makes disconnected elements understandable and establishes a shared framework; Function 8 delivers processes and material results."
+}

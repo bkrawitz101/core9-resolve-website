@@ -1,0 +1,80 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Website information architecture, UX and publish-ready draft copy</title><style>body{font-family:Inter,Arial,sans-serif;background:#f2f5f8;color:#192b43;margin:0;line-height:1.6}main{max-width:960px;margin:35px auto;background:white;padding:58px 70px;box-shadow:0 15px 50px #17294318;border-top:12px solid #c5a45b}h1{font-size:32px;color:#102b51;line-height:1.16}h2{font-size:23px;color:#173a62;margin-top:38px;border-bottom:1px solid #d9e1e9;padding-bottom:9px}h3{color:#254b70;margin-top:28px}a{color:#245c92}p,li{font-size:15px}code{background:#f1f3f5;padding:2px 4px;border-radius:3px}blockquote{border-left:4px solid #c5a45b;padding-left:20px;color:#3b526c}table{border-collapse:collapse;width:100%;font-size:13px}td,th{border:1px solid #d8e0e9;padding:8px;text-align:left;vertical-align:top}th{background:#102b51;color:white}.eyebrow{color:#b18b3c;font-weight:bold;letter-spacing:2px;font-size:12px;text-transform:uppercase}.footer{margin-top:55px;border-top:1px solid #d9e1e9;padding-top:14px;color:#61758c;font-size:12px}@media print{body{background:white}main{margin:0;padding:22px 35px;box-shadow:none}h2,h3{break-after:avoid}table{break-inside:auto}tr{break-inside:avoid}}@media(max-width:700px){main{padding:25px;margin:0}h1{font-size:26px}}</style></head><body><main><div class="eyebrow">CORE9 RESOLVE™ · PRODUCTION HANDOFF · 14 NOV 2026</div><h1>Website information architecture, UX and publish-ready draft copy</h1>
+<h2>Primary funnel</h2>
+<p><strong>Weekly email → episode detail page on CORE9 domain → play immediately → browse the two shows and related episodes → Seriously Curious? → actual consultation booking URL.</strong> Keep the listener on CORE9 for initial click; third-party apps are secondary options.</p>
+<h2>Suggested URL structure (confirm actual domain and site routing)</h2>
+<ul>
+<li><code>/shows/</code> — main podcast landing and cross-show hub</li>
+<li><code>/shows/business-unusual/</code> — Business Unusual show archive</li>
+<li><code>/shows/mr-right-mrs-maybe/</code> — life and relationships archive</li>
+<li><code>/shows/business-unusual/{slug}/</code> — business episode detail</li>
+<li><code>/shows/mr-right-mrs-maybe/{slug}/</code> — life episode detail</li>
+<li><code>/consultation/</code> — only if actual booking integration exists; otherwise use supplied external booking URL</li>
+</ul>
+<h2>Main shows page — exact draft copy</h2>
+<h3>Hero</h3>
+<p><strong>Headline:</strong> Life Is Complicated. At Least We Can Laugh About It.
+<strong>Subheading:</strong> Two fictional audio comedies about the ridiculous things we do at work, at home, and with the people who matter most. Quick conversations. Familiar disasters. Unexpected insights.
+<strong>Supporting line:</strong> Two new five-minute episodes every week — one about business, one about life and relationships.
+<strong>Primary link:</strong> Listen to the Latest Episode
+<strong>Secondary link:</strong> Explore Both Shows</p>
+<h3>Show tile 1</h3>
+<p><strong>Business Unusual</strong>
+<em>Where Business Problems Get Personal.</em>
+Max Logic has a system for everything. Marsha Chaos has a question that ruins it. Together, they tackle the wonderfully messy reality of owning a business — with the occasional expert who makes things even more interesting.
+<strong>Link:</strong> Explore Business Unusual</p>
+<h3>Show tile 2</h3>
+<p><strong>Mr. Right &amp; Mrs. Maybe</strong>
+<em>He Has All the Answers. She Has All the Questions.</em>
+A couple with two opinions about absolutely everything: love, work, family, money, plans and the mysterious rules of living together. Sometimes he is right. Sometimes she is. Sometimes the dishwasher wins.
+<strong>Link:</strong> Explore Mr. Right &amp; Mrs. Maybe</p>
+<h3>Discovery strip</h3>
+<p><strong>Headline:</strong> Same Problems. Different Sides of the Story.
+A business owner says nobody takes responsibility. An employee says nobody lets them. At home, the same argument may be happening over dinner. Different lives. Familiar patterns. Plenty to laugh about.
+<strong>Link:</strong> Hear Both Sides</p>
+<h3>Archive heading</h3>
+<p><strong>Headline:</strong> Find Your Next Five-Minute Escape
+<strong>Filters:</strong> All | Business | Life &amp; Relationships; newest first; optional topic chips; search; paginated results. Each card: title, show, duration, publish date, 1-line teaser, play/open link.</p>
+<h3>Subscribe and listening platforms</h3>
+<p><strong>Headline:</strong> Never Miss the Next Disaster
+Get the latest episode in your inbox, or follow the shows wherever you listen to podcasts.
+<strong>Button:</strong> Get the Weekly Episodes
+<strong>Secondary links:</strong> Spotify | Apple Podcasts | Amazon Music | RSS (show only verified live links). Separate follow links for each show.</p>
+<h3>Closing consultation invitation — proposed final draft</h3>
+<p><strong>Headline:</strong> Seriously Curious?
+Sometimes we laugh because the alternative is to cry.</p>
+<p>But what if you could laugh about your problems because they're finally behind you?</p>
+<p><strong>Talk to a real expert.</strong> Discover what's keeping you stuck, find a way forward, and turn today's worries into tomorrow's funny stories.</p>
+<p>Not because you've learned to live with the problems — but because you've actually resolved them.</p>
+<p><strong>Button:</strong> Talk to a CORE9 Expert
+<strong>Supporting microcopy:</strong> A personal conversation, not another podcast episode.</p>
+<p><strong>Important:</strong> This is the user-liked wording from the prior discussion, prepared for publication. The booking button MUST connect to a genuine consultation page or booking service. Do not promise specific outcomes as guarantees.</p>
+<h2>Individual episode page — precise vertical order</h2>
+<ol>
+<li>Global CORE9 header and <code>Shows</code> nav active.</li>
+<li>Breadcrumb: Shows / Show Name / Episode.</li>
+<li>Show eyebrow and episode title; episode number, release date, duration.</li>
+<li><strong>Accessible audio player ABOVE the fold</strong> (play/pause, seek, volume, speed if available, time, download optional). Never autoplay.</li>
+<li>1–2 sentence teaser and brief “What you'll recognize” section (non-lecturing).</li>
+<li><strong>Listen next:</strong> one related episode from same show and optionally a paired opposite-perspective episode from other show (only if actually published).</li>
+<li>Transcript accordion, readable and crawlable; preserve exact final spoken words.</li>
+<li>Share link and copy URL; subscribe links to each show; email signup with clear consent.</li>
+<li>Archive links: More Business Unusual | More Mr. Right &amp; Mrs. Maybe | Browse All Episodes.</li>
+<li><strong>Seriously Curious?</strong> CTA repeated at bottom, same copy and actual booking link.</li>
+<li>Footer: CORE9 identity, privacy, terms, contact, accessibility as available.</li>
+</ol>
+<h2>Show archive pages</h2>
+<p>Unique hero, latest featured episode, season list with search and filters, show description, follow on platforms, related show cross-link, and closing consultation CTA. No walls of text.</p>
+<h2>Email behavior</h2>
+<p>Every episode email has ONE main link to the <strong>episode page on CORE9</strong>, with show name, title, 2–3 sentences, and <code>Listen to This Episode</code> button. Never send MP3 attachments. The page must remain publicly accessible with a stable canonical URL. Optional separate “Browse both shows” link below.</p>
+<h2>Search, accessibility and performance</h2>
+<ul>
+<li>Semantic headings, keyboard operable player, visible focus, sufficient contrast, alt text for cover art, descriptive links.</li>
+<li>Transcripts for every episode; mobile-first player; lazy-load archives; no intrusive popups; no autoplay.</li>
+<li>Unique title/meta, canonical URL, Open Graph image, structured data (<code>PodcastSeries</code> and <code>PodcastEpisode</code> where valid), sitemap and RSS links.</li>
+<li>Store UTC publish timestamps and display localized dates; keep slugs immutable; 301 redirect if changed.</li>
+<li>Booking and newsletter links instrumented with privacy-conscious analytics.</li>
+<li>Do not expose private methodology files to the public website or RSS feed.</li>
+</ul>
+<h2>Visual direction</h2>
+<p>CORE9 brand-consistent navy, white and gold; elegant but playful. Two visually distinct show covers with consistent CORE9 family identity. Prefer strong typographic headlines, generous spacing, warm editorial illustrations or licensed character art. No stock-photo clichés, no excessive animations. Audio-first, no video UI.</p>
+<div class="footer">Implementation reference • Draft public copy requires final publishing review • Original methodology archived separately</div></main></body></html>

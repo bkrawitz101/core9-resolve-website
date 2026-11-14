@@ -1,0 +1,119 @@
+{
+  "status": "PROPOSED — AWAITING APPROVAL",
+  "function": 4,
+  "canonical": "Knowledge, Goals & Priorities",
+  "headline": "When Everything Seems Important, What Do You Choose?",
+  "intro": "You have the potential to recognize what matters, discover new possibilities, and choose where to direct your attention and energy. As this potential develops, you learn to distinguish useful information from distractions, recognize opportunities that support your goals, and adjust your priorities when circumstances change.",
+  "main": {
+    "title": "So many opportunities. Which one is yours?",
+    "story": "Imagine you've been thinking about making a meaningful change. You want to improve your life, develop new skills, and create more opportunities for your future. Then everything seems to arrive at once: a promising project, an interesting course, an opportunity to earn additional income. Your existing responsibilities still need attention. You think: ‘I want to grow, but I can't do everything. How do I know what deserves my attention now?’",
+    "question": "What would you do next?",
+    "options": [
+      "Try to take advantage of every opportunity.",
+      "Stay with what you already know and avoid change.",
+      "Evaluate the possibilities and choose what matters most now."
+    ],
+    "results": [
+      [
+        "Everything becomes a priority",
+        "You try several opportunities at once. Your attention becomes divided, and progress on what matters most slows.",
+        "Are you moving toward your goal—or responding to every opportunity?"
+      ],
+      [
+        "Safety in what you already know",
+        "You protect existing commitments, but may overlook an opportunity because it requires learning or change.",
+        "Are you protecting what matters—or avoiding the unfamiliar?"
+      ],
+      [
+        "Knowledge becomes a meaningful choice",
+        "You examine the opportunities in relation to your vision, resources, and circumstances. You choose what deserves attention now, what can wait, and what does not fit. Then you take a first step.",
+        "What becomes possible when you know not only what to choose, but why?"
+      ]
+    ]
+  },
+  "scales": {
+    "personal": {
+      "title": "Your Life — What deserves your energy?",
+      "story": "Imagine you want to improve your health, learn a new skill, spend more time with friends, and develop a creative interest. Each goal is meaningful. But your calendar is already full, and you feel disappointed that you're not progressing.",
+      "question": "What would you choose?",
+      "options": [
+        "Make an ambitious plan to pursue every goal.",
+        "Keep your existing routine because change feels difficult.",
+        "Decide what matters most at this stage and create room for it."
+      ],
+      "results": [
+        [
+          "Too many beginnings",
+          "Your enthusiasm creates momentum, but competing commitments leave little energy for sustained progress.",
+          "What would you choose if you could focus on only one change now?"
+        ],
+        [
+          "Waiting for the perfect time",
+          "Life remains familiar, but the things you want to develop keep being postponed.",
+          "What is one manageable change you could welcome?"
+        ],
+        [
+          "A priority creates space",
+          "You choose a meaningful focus, make practical adjustments, and develop it consistently.",
+          "What new knowledge would help you take the first step?"
+        ]
+      ]
+    },
+    "family": {
+      "title": "Your Relationships — Whose priorities matter?",
+      "story": "Imagine you and your partner want different things this year. One wants to save money. The other wants to travel, learn, and enjoy new experiences. You both have good reasons, but your plans compete for the same time and resources.",
+      "question": "What would you choose?",
+      "options": [
+        "Try to accommodate every wish without discussing trade-offs.",
+        "Keep doing what you have always done.",
+        "Understand each other’s priorities and agree on what matters now."
+      ],
+      "results": [
+        [
+          "Good intentions, conflicting commitments",
+          "You promise more than your shared resources can support, creating disappointment.",
+          "What trade-offs have you not yet discussed?"
+        ],
+        [
+          "The same conversation returns",
+          "You avoid difficult choices, but the difference in priorities remains unresolved.",
+          "What new perspective could help you reconsider?"
+        ],
+        [
+          "A shared choice",
+          "You clarify what matters to each person, learn from different perspectives, and establish priorities you can support together.",
+          "What could you agree to pursue first?"
+        ]
+      ]
+    },
+    "business": {
+      "title": "Your Business — Which opportunity supports your strategy?",
+      "story": "Imagine your company has several attractive opportunities: a new market, a promising product, a technology upgrade, and a potential partnership. Every department has a convincing argument. Your resources, however, are limited.",
+      "question": "What would you choose?",
+      "options": [
+        "Launch all the initiatives to avoid missing opportunities.",
+        "Reject the proposals and continue with the existing approach.",
+        "Evaluate opportunities against strategy, the system, and available capabilities."
+      ],
+      "results": [
+        [
+          "Growth without focus",
+          "Teams compete for resources. Important initiatives lose momentum because the organization cannot support everything simultaneously.",
+          "Which priorities actually serve the shared vision?"
+        ],
+        [
+          "Stability without adaptation",
+          "Existing operations continue, but useful knowledge and emerging opportunities may be overlooked.",
+          "What information might justify reconsidering?"
+        ],
+        [
+          "Priorities that guide development",
+          "You identify opportunities that fit the direction, what needs to be learned, and where resources have greatest value. Teams gain a shared basis for decisions.",
+          "Which opportunity should the organization pursue first?"
+        ]
+      ]
+    }
+  },
+  "reflection": "Do your priorities reflect the future you want to create—or simply the demands and opportunities that appear around you?",
+  "connection": "Function 1 establishes vision; Function 2 enables cooperation; Function 3 creates coherent understanding; Function 4 identifies priorities that guide action."
+}
