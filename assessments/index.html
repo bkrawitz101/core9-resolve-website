@@ -44,7 +44,25 @@
     .card:hover,
     .card:focus-visible { border-color: #b89a6b; background: #fcfaf5; }
     small { color: #777; }
-    strong.title { font-size: 22px; color: #15243a; }
+    .card-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+    .card-meta small { color: #806a4a; font-weight: 650; letter-spacing: .04em; }
+    .count-pill {
+      font-size: .78rem;
+      font-weight: 650;
+      color: #15243a;
+      background: #f3eee3;
+      border: 1px solid #dfd3bd;
+      border-radius: 999px;
+      padding: 3px 10px;
+      white-space: nowrap;
+    }
+    strong.title { display: block; font-size: 22px; color: #15243a; margin-bottom: 4px; }
     footer {
       background: #101d2e;
       color: #ddd;
@@ -74,18 +92,18 @@
     </div>
 
     <a class="card" href="test9.html">
-      <small>QUICK REFLECTION · PERSONAL</small><br>
-      <strong class="title">What Fuels Your Drive</strong><br>
+      <span class="card-meta"><small>PERSONAL</small><span class="count-pill">9 questions</span></span>
+      <strong class="title">What Fuels Your Drive</strong>
       Notice what sparks your momentum right now—and where a hidden pattern may be getting in the way.
     </a>
     <a class="card" href="test27.html">
-      <small>LIFE REFLECTION · RELATIONSHIPS</small><br>
-      <strong class="title">Patterns Across Your Life</strong><br>
+      <span class="card-meta"><small>LIFE &amp; RELATIONSHIPS</small><span class="count-pill">27 questions</span></span>
+      <strong class="title">Patterns Across Your Life</strong>
       Trace how your energy, daily actions, and real outcomes connect across the areas of life you care about.
     </a>
     <a class="card" href="test45.html">
-      <small>SYSTEMS REFLECTION · BUSINESS</small><br>
-      <strong class="title">Inside the Nine Functions</strong><br>
+      <span class="card-meta"><small>BUSINESS</small><span class="count-pill">45 questions</span></span>
+      <strong class="title">Inside the Nine Functions</strong>
       Look beneath day-to-day execution to see how your company's nine core functions connect as one system.
     </a>
   </main>

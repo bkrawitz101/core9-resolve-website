@@ -145,7 +145,24 @@
       border-radius: 6px;
       box-shadow: 0 16px 36px rgba(21, 36, 58, 0.11);
     }
-    .test-card small { display: block; color: #806a4a; font-weight: 650; letter-spacing: .04em; }
+    .card-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 4px;
+    }
+    .card-meta small { display: block; color: #806a4a; font-weight: 650; letter-spacing: .04em; }
+    .count-pill {
+      font-size: .78rem;
+      font-weight: 650;
+      color: #15243a;
+      background: #f3eee3;
+      border: 1px solid #dfd3bd;
+      border-radius: 999px;
+      padding: 3px 10px;
+      white-space: nowrap;
+    }
     .test-card strong { display: block; font-size: 1.2rem; margin: 6px 0 8px; color: #15243a; }
     .test-card .desc { display: block; font-size: .96rem; color: #44505e; margin-bottom: 18px; }
     .test-card .button {
@@ -214,19 +231,28 @@
       </h2>
       <div class="function-grid">
         <article class="test-card">
-          <small>QUICK REFLECTION · PERSONAL</small>
+          <div class="card-meta">
+            <small>PERSONAL</small>
+            <span class="count-pill">9 questions</span>
+          </div>
           <strong>What Fuels Your Drive</strong>
           <span class="desc">Notice what sparks your momentum right now—and where a hidden pattern may be getting in the way.</span>
           <a class="button" href="assessments/test9.html">See What Shows Up →</a>
         </article>
         <article class="test-card">
-          <small>LIFE REFLECTION · RELATIONSHIPS</small>
+          <div class="card-meta">
+            <small>LIFE &amp; RELATIONSHIPS</small>
+            <span class="count-pill">27 questions</span>
+          </div>
           <strong>Patterns Across Your Life</strong>
           <span class="desc">Trace how your energy, daily actions, and real outcomes connect across the areas of life you care about.</span>
           <a class="button" href="assessments/test27.html">Explore Your Life Map →</a>
         </article>
         <article class="test-card">
-          <small>SYSTEMS REFLECTION · BUSINESS</small>
+          <div class="card-meta">
+            <small>BUSINESS</small>
+            <span class="count-pill">45 questions</span>
+          </div>
           <strong>Inside the Nine Functions</strong>
           <span class="desc">Look beneath day-to-day execution to see how your company's nine core functions connect as one system.</span>
           <a class="button" href="assessments/test45.html">See the Full Picture →</a>
