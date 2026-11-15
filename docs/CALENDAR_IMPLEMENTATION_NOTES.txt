@@ -1,0 +1,8 @@
+CORE9 Calendar update 2026-11-07
+- Personal Cycle Year calculator uses approved digit-sum formula, with no signup or birth year.
+- Source reference 2026 Syucai PDF is NOT a saleable product and is NOT embedded in this website.
+- Future primary product is CORE9 interactive calendar app, not the old PDF.
+- Companion booklet is a newly authored CORE9 PDF, separate or a gift/bundle.
+- Calendar YouTube playlist URL, app links, prices and new booklet files still needed.
+- Existing tests and nine functions preserved byte-for-byte.
+

@@ -13,8 +13,8 @@
 - [ ] **Circle of Nine Visual**: Locate/integrate approved Circle of Nine graphic and interaction contract to replace the temporary grid in `index.html` / `functions.html`.
 - [ ] **Watch & Learn (`watch-and-learn.html`)**: Supply Vasili & Svetlana YouTube playlist embed URL.
 - [ ] **Calendar (`calendar.html`)**:
-  - Supply Calendar introduction YouTube video URL.
-  - Connect completed English Calendar PDFs (1–9), pricing, checkout URLs, and family-bundle rules.
+  - Supply Calendar YouTube playlist URL.
+  - Connect interactive Calendar app links, pricing, family options, and newly authored Illustrated Companion Booklet PDF (see `docs/CALENDAR_IMPLEMENTATION_NOTES.txt`).
 - [ ] **Audio Shows (`shows.html` + `docs/podcast-handoff/`)**:
   - Select podcast host, generate separate RSS feeds for *Business Unusual* and *Mr. Right & Mrs. Maybe*, and produce pilot episodes.
   - Build individual show archive and episode detail pages (`/shows/business-unusual/`, `/shows/mr-right-mrs-maybe/`) with accessible audio player and transcripts.
