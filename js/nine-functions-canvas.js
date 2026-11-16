@@ -51,6 +51,12 @@ export function initNineFunctionsJourney(rootEl, functionsData) {
   const prevBtn = rootEl.querySelector('#btn-prev-fn');
   const nextBtn = rootEl.querySelector('#btn-next-fn');
 
+  const functionImages = functionsData.map((item) => {
+    const img = new Image();
+    img.src = `./assets/functions/fn-${item.num}.png`;
+    return img;
+  });
+
   const state = {
     mode: 'circle',
     selectedIndex: 0,
@@ -141,7 +147,7 @@ export function initNineFunctionsJourney(rootEl, functionsData) {
         x,
         y,
         angle,
-        radius: isNarrow ? 16 : 27,
+        radius: isNarrow ? 20 : 30,
         hash: getHash(`fn-${fn.num}`),
         data: fn,
       };
@@ -189,7 +195,7 @@ export function initNineFunctionsJourney(rootEl, functionsData) {
       index: state.selectedIndex,
       x: cx,
       y: cy,
-      radius: isMobileSheet ? 28 : 38,
+      radius: isMobileSheet ? 32 : 42,
       hash: getHash(`detail-${fn.num}`),
       isCenter: true,
       subLabel: `FUNCTION ${fn.num}`,
@@ -434,23 +440,39 @@ export function initNineFunctionsJourney(rootEl, functionsData) {
     ctx.fillStyle = glowGrad;
     ctx.fill();
 
-    // Glowing orb nucleus
-    const coreR = r * (isHighlighted ? 0.42 : 0.34);
-    ctx.beginPath();
-    ctx.arc(x, y, coreR, 0, Math.PI * 2);
-    ctx.fillStyle = isHighlighted ? CORE9_COLORS.goldBright : CORE9_COLORS.goldCore;
-    ctx.shadowColor = CORE9_COLORS.goldBright;
-    ctx.shadowBlur = isHighlighted ? 18 : 8;
-    ctx.fill();
-    ctx.shadowBlur = 0;
+    // Glowing emblem medallion (scales & moves in lockstep with haloR and fractal scaleFactor)
+    const iconImg = typeof node.index === 'number' ? functionImages[node.index] : null;
+    if (iconImg && iconImg.complete && iconImg.naturalWidth > 0) {
+      const medR = haloR * (node.isCenter ? 0.84 : 0.78);
 
-    if (node.data && isCompact) {
-      ctx.font = '700 8.5px system-ui, -apple-system, sans-serif';
-      ctx.fillStyle = '#15243a';
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
-      ctx.fillText(String(node.index + 1), x, y + 0.5);
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(x, y, medR, 0, Math.PI * 2);
+      ctx.shadowColor = CORE9_COLORS.goldBright;
+      ctx.shadowBlur = isHighlighted ? 20 : 10;
+      ctx.fillStyle = 'rgba(247, 240, 224, 0.95)';
+      ctx.fill();
+      ctx.shadowBlur = 0;
+      ctx.clip();
+      ctx.drawImage(iconImg, x - medR, y - medR, medR * 2, medR * 2);
+      ctx.restore();
+
+      ctx.beginPath();
+      ctx.arc(x, y, medR, 0, Math.PI * 2);
+      ctx.strokeStyle = isHighlighted ? '#f0d8a8' : 'rgba(215, 188, 140, 0.82)';
+      ctx.lineWidth = isHighlighted ? 2.0 : 1.3;
+      ctx.stroke();
     } else {
+      // Fallback glowing orb while image loads
+      const coreR = r * (isHighlighted ? 0.42 : 0.34);
+      ctx.beginPath();
+      ctx.arc(x, y, coreR, 0, Math.PI * 2);
+      ctx.fillStyle = isHighlighted ? CORE9_COLORS.goldBright : CORE9_COLORS.goldCore;
+      ctx.shadowColor = CORE9_COLORS.goldBright;
+      ctx.shadowBlur = isHighlighted ? 18 : 8;
+      ctx.fill();
+      ctx.shadowBlur = 0;
+
       ctx.beginPath();
       ctx.arc(x, y, coreR * 0.36, 0, Math.PI * 2);
       ctx.fillStyle = '#ffffff';
@@ -472,7 +494,7 @@ export function initNineFunctionsJourney(rootEl, functionsData) {
         ctx.textAlign = 'center';
         ctx.font = `700 ${isCompact ? 9.5 : 11}px system-ui, -apple-system, sans-serif`;
         ctx.fillStyle = CORE9_COLORS.goldCore;
-        ctx.fillText(isCompact ? '01' : numLabel, x, y - haloR - (isCompact ? 22 : 28));
+        ctx.fillText(isCompact ? '01' : `FUNCTION ${numLabel}`, x, y - haloR - (isCompact ? 22 : 28));
 
         ctx.font = `600 ${isCompact ? 12 : 14}px Georgia, "Times New Roman", serif`;
         ctx.fillStyle = '#ffffff';
@@ -484,13 +506,17 @@ export function initNineFunctionsJourney(rootEl, functionsData) {
         ctx.textAlign = onRight ? 'left' : 'right';
 
         const lines = splitMobileLabel(nameLabel);
+        ctx.font = '700 8.5px system-ui, -apple-system, sans-serif';
+        ctx.fillStyle = CORE9_COLORS.goldCore;
+        ctx.fillText(numLabel, lx, lines.length === 1 ? y - 10 : y - 14);
+
         ctx.font = '600 10.5px Georgia, "Times New Roman", serif';
         ctx.fillStyle = isHovered ? '#ffffff' : CORE9_COLORS.pearl;
         if (lines.length === 1) {
-          ctx.fillText(lines[0], lx, y);
+          ctx.fillText(lines[0], lx, y + 3);
         } else {
-          ctx.fillText(lines[0], lx, y - 6);
-          ctx.fillText(lines[1], lx, y + 7);
+          ctx.fillText(lines[0], lx, y - 2);
+          ctx.fillText(lines[1], lx, y + 10);
         }
       } else {
         const onRight = cosA >= 0;
