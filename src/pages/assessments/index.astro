@@ -43,12 +43,12 @@ import page from '../../data/pages/assessments-hub.json';
 
   <main>
     <div class="intro">
-      <small data-editable="text" data-prop="@file[src/data/pages/assessments-hub.json].eyebrow">{page.eyebrow}</small>
-      <h1 data-editable="text" data-prop="@file[src/data/pages/assessments-hub.json].heading">{page.heading}</h1>
-      <p data-editable="text" data-prop="@file[src/data/pages/assessments-hub.json].intro">{page.intro}</p>
+      <small data-editable="text" data-prop="eyebrow">{page.eyebrow}</small>
+      <h1 data-editable="text" data-prop="heading">{page.heading}</h1>
+      <p data-editable="text" data-prop="intro">{page.intro}</p>
     </div>
 
-    <div data-editable="array" data-prop="@file[src/data/pages/assessments-hub.json].cards">
+    <div data-editable="array" data-prop="cards">
       {page.cards.map((card) => (
         <a class="card" href={card.href} data-editable="array-item">
           <span class="card-meta">

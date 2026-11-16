@@ -61,18 +61,18 @@ import page from '../data/pages/book-session.json';
 
   <main>
     <div class="panel">
-      <div class="eyebrow" data-editable="text" data-prop="@file[src/data/pages/book-session.json].eyebrow">{page.eyebrow}</div>
-      <h1 data-editable="text" data-prop="@file[src/data/pages/book-session.json].heading">{page.heading}</h1>
-      <p data-editable="text" data-prop="@file[src/data/pages/book-session.json].body">{page.body}</p>
+      <div class="eyebrow" data-editable="text" data-prop="eyebrow">{page.eyebrow}</div>
+      <h1 data-editable="text" data-prop="heading">{page.heading}</h1>
+      <p data-editable="text" data-prop="body">{page.body}</p>
       <div id="live-booking" style="display:none">
-        <a class="button" id="live-booking-link" href="#" data-editable="text" data-prop="@file[src/data/pages/book-session.json].live_button_label">{page.live_button_label}</a>
+        <a class="button" id="live-booking-link" href="#" data-editable="text" data-prop="live_button_label">{page.live_button_label}</a>
       </div>
       <div id="pending-booking" class="note">
-        <strong data-editable="text" data-prop="@file[src/data/pages/book-session.json].pending_heading">{page.pending_heading}</strong>{' '}
-        <span data-editable="text" data-prop="@file[src/data/pages/book-session.json].pending_message">{page.pending_message}</span>
+        <strong data-editable="text" data-prop="pending_heading">{page.pending_heading}</strong>{' '}
+        <span data-editable="text" data-prop="pending_message">{page.pending_message}</span>
       </div>
       <div style="margin-top: 24px;">
-        <a class="button alt" href="/index.html" data-editable="text" data-prop="@file[src/data/pages/book-session.json].back_button_label">{page.back_button_label}</a>
+        <a class="button alt" href="/index.html" data-editable="text" data-prop="back_button_label">{page.back_button_label}</a>
       </div>
     </div>
   </main>

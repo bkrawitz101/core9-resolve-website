@@ -61,15 +61,15 @@ import page from '../data/pages/functions.json';
   </style>
 
   <main>
-    <p class="eyebrow" data-editable="text" data-prop="@file[src/data/pages/functions.json].eyebrow">{page.eyebrow}</p>
-    <h1 data-editable="text" data-prop="@file[src/data/pages/functions.json].heading">{page.heading}</h1>
-    <p data-editable="text" data-prop="@file[src/data/pages/functions.json].intro">{page.intro}</p>
+    <p class="eyebrow" data-editable="text" data-prop="eyebrow">{page.eyebrow}</p>
+    <h1 data-editable="text" data-prop="heading">{page.heading}</h1>
+    <p data-editable="text" data-prop="intro">{page.intro}</p>
     <aside>
-      <strong data-editable="text" data-prop="@file[src/data/pages/functions.json].notice_prefix">{page.notice_prefix}</strong>
-      <span data-editable="text" data-prop="@file[src/data/pages/functions.json].notice_body">{page.notice_body}</span>
+      <strong data-editable="text" data-prop="notice_prefix">{page.notice_prefix}</strong>
+      <span data-editable="text" data-prop="notice_body">{page.notice_body}</span>
     </aside>
 
-    <div class="grid" data-editable="array" data-prop="@file[src/data/pages/functions.json].tiles" data-direction="row">
+    <div class="grid" data-editable="array" data-prop="tiles" data-direction="row">
       {page.tiles.map((tile) => (
         <a class="tile" href={tile.href} data-editable="array-item">
           <span class="num" data-editable="text" data-prop="num">{tile.num}</span>
@@ -79,7 +79,7 @@ import page from '../data/pages/functions.json';
       ))}
     </div>
 
-    <p data-editable="text" data-prop="@file[src/data/pages/functions.json].closing">{page.closing}</p>
+    <p data-editable="text" data-prop="closing">{page.closing}</p>
   </main>
 </BaseLayout>
 

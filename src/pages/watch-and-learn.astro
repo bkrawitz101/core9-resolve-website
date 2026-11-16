@@ -47,24 +47,24 @@ import page from '../data/pages/watch-and-learn.json';
 
   <main>
     <section class="hero">
-      <div class="eyebrow" data-editable="text" data-prop="@file[src/data/pages/watch-and-learn.json].eyebrow">{page.eyebrow}</div>
-      <h1 data-editable="text" data-prop="@file[src/data/pages/watch-and-learn.json].heading">{page.heading}</h1>
-      <p><strong data-editable="text" data-prop="@file[src/data/pages/watch-and-learn.json].hosts_label">{page.hosts_label}</strong></p>
-      <p data-editable="text" data-prop="@file[src/data/pages/watch-and-learn.json].intro">{page.intro}</p>
+      <div class="eyebrow" data-editable="text" data-prop="eyebrow">{page.eyebrow}</div>
+      <h1 data-editable="text" data-prop="heading">{page.heading}</h1>
+      <p><strong data-editable="text" data-prop="hosts_label">{page.hosts_label}</strong></p>
+      <p data-editable="text" data-prop="intro">{page.intro}</p>
     </section>
 
     <section class="section">
-      <h2 data-editable="text" data-prop="@file[src/data/pages/watch-and-learn.json].section_heading">{page.section_heading}</h2>
+      <h2 data-editable="text" data-prop="section_heading">{page.section_heading}</h2>
       {page.youtube_playlist_url ? (
         <p><a class="button" href={page.youtube_playlist_url} target="_blank" rel="noopener noreferrer">Open Watch &amp; Learn Playlist →</a></p>
       ) : (
-        <div class="media" role="img" aria-label="YouTube playlist placeholder" data-editable="text" data-prop="@file[src/data/pages/watch-and-learn.json].video_placeholder">{page.video_placeholder}</div>
+        <div class="media" role="img" aria-label="YouTube playlist placeholder" data-editable="text" data-prop="video_placeholder">{page.video_placeholder}</div>
       )}
-      <p class="note" data-editable="text" data-prop="@file[src/data/pages/watch-and-learn.json].video_note">{page.video_note}</p>
+      <p class="note" data-editable="text" data-prop="video_note">{page.video_note}</p>
     </section>
 
     <section class="section">
-      <h2 data-editable="text" data-prop="@file[src/data/pages/watch-and-learn.json].continue_heading">{page.continue_heading}</h2>
+      <h2 data-editable="text" data-prop="continue_heading">{page.continue_heading}</h2>
       <a class="button" href="/shows.html">Meet the Fictional Shows</a>
       <a class="button alt" href="/assessments/index.html">Explore Assessments</a>
     </section>

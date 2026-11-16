@@ -77,7 +77,7 @@ const navItems: NavLink[] = navMode === 'phase2' ? site.phase2_nav : site.primar
 </head>
 <body style={`background: ${bodyBackground};`}>
   <header class="site-header" style={`padding: 18px max(22px, calc((100vw - ${headerMaxWidth}px) / 2));`}>
-    <strong data-editable="text" data-prop="@file[src/data/site.json].brand_name">{site.brand_name}</strong>
+    <strong>{site.brand_name}</strong>
     <nav aria-label="Main navigation">
       {navItems.map((item) => (
         <a href={item.href} aria-current={item.href === currentHref ? 'page' : undefined}>

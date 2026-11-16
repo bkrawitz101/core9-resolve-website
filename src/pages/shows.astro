@@ -80,17 +80,17 @@ const bookingUrl = (site.booking_url || '').trim();
 
   <main>
     <section class="hero">
-      <div class="eyebrow" data-editable="text" data-prop="@file[src/data/pages/shows.json].hero_eyebrow">{page.hero_eyebrow}</div>
-      <h1 data-editable="text" data-prop="@file[src/data/pages/shows.json].hero_heading">{page.hero_heading}</h1>
-      <p data-editable="text" data-prop="@file[src/data/pages/shows.json].hero_intro">{page.hero_intro}</p>
-      <p class="muted" data-editable="text" data-prop="@file[src/data/pages/shows.json].hero_cadence">{page.hero_cadence}</p>
+      <div class="eyebrow" data-editable="text" data-prop="hero_eyebrow">{page.hero_eyebrow}</div>
+      <h1 data-editable="text" data-prop="hero_heading">{page.hero_heading}</h1>
+      <p data-editable="text" data-prop="hero_intro">{page.hero_intro}</p>
+      <p class="muted" data-editable="text" data-prop="hero_cadence">{page.hero_cadence}</p>
       <div>
         <a class="button" href="#archive">Listen to the Latest Episode</a>
         <a class="button alt" href="#both-shows">Explore Both Shows</a>
       </div>
     </section>
 
-    <section class="section grid" id="both-shows" data-editable="array" data-prop="@file[src/data/pages/shows.json].shows" data-direction="row">
+    <section class="section grid" id="both-shows" data-editable="array" data-prop="shows" data-direction="row">
       {page.shows.map((show) => (
         <article class="card" data-editable="array-item">
           <div class="media">
@@ -109,35 +109,35 @@ const bookingUrl = (site.booking_url || '').trim();
 
     <section class="section">
       <div class="bridge">
-        <div class="eyebrow" data-editable="text" data-prop="@file[src/data/pages/shows.json].bridge_eyebrow">{page.bridge_eyebrow}</div>
-        <h2 data-editable="text" data-prop="@file[src/data/pages/shows.json].bridge_heading">{page.bridge_heading}</h2>
-        <p data-editable="text" data-prop="@file[src/data/pages/shows.json].bridge_body">{page.bridge_body}</p>
+        <div class="eyebrow" data-editable="text" data-prop="bridge_eyebrow">{page.bridge_eyebrow}</div>
+        <h2 data-editable="text" data-prop="bridge_heading">{page.bridge_heading}</h2>
+        <p data-editable="text" data-prop="bridge_body">{page.bridge_body}</p>
       </div>
     </section>
 
     <section class="section" id="archive">
-      <div class="eyebrow" data-editable="text" data-prop="@file[src/data/pages/shows.json].archive_eyebrow">{page.archive_eyebrow}</div>
-      <h2 data-editable="text" data-prop="@file[src/data/pages/shows.json].archive_heading">{page.archive_heading}</h2>
-      <p class="note" data-editable="text" data-prop="@file[src/data/pages/shows.json].archive_note">{page.archive_note}</p>
+      <div class="eyebrow" data-editable="text" data-prop="archive_eyebrow">{page.archive_eyebrow}</div>
+      <h2 data-editable="text" data-prop="archive_heading">{page.archive_heading}</h2>
+      <p class="note" data-editable="text" data-prop="archive_note">{page.archive_note}</p>
     </section>
 
     <section class="section">
-      <div class="eyebrow" data-editable="text" data-prop="@file[src/data/pages/shows.json].subscribe_eyebrow">{page.subscribe_eyebrow}</div>
-      <h2 data-editable="text" data-prop="@file[src/data/pages/shows.json].subscribe_heading">{page.subscribe_heading}</h2>
-      <p data-editable="text" data-prop="@file[src/data/pages/shows.json].subscribe_body">{page.subscribe_body}</p>
-      <p class="note" data-editable="text" data-prop="@file[src/data/pages/shows.json].subscribe_note">{page.subscribe_note}</p>
+      <div class="eyebrow" data-editable="text" data-prop="subscribe_eyebrow">{page.subscribe_eyebrow}</div>
+      <h2 data-editable="text" data-prop="subscribe_heading">{page.subscribe_heading}</h2>
+      <p data-editable="text" data-prop="subscribe_body">{page.subscribe_body}</p>
+      <p class="note" data-editable="text" data-prop="subscribe_note">{page.subscribe_note}</p>
     </section>
 
     <section class="cta-panel">
-      <div class="eyebrow" data-editable="text" data-prop="@file[src/data/pages/shows.json].cta_eyebrow">{page.cta_eyebrow}</div>
-      <h2 style="color:#fff;" data-editable="text" data-prop="@file[src/data/pages/shows.json].cta_heading">{page.cta_heading}</h2>
-      <p data-editable="text" data-prop="@file[src/data/pages/shows.json].cta_p1">{page.cta_p1}</p>
-      <p data-editable="text" data-prop="@file[src/data/pages/shows.json].cta_p2">{page.cta_p2}</p>
+      <div class="eyebrow" data-editable="text" data-prop="cta_eyebrow">{page.cta_eyebrow}</div>
+      <h2 style="color:#fff;" data-editable="text" data-prop="cta_heading">{page.cta_heading}</h2>
+      <p data-editable="text" data-prop="cta_p1">{page.cta_p1}</p>
+      <p data-editable="text" data-prop="cta_p2">{page.cta_p2}</p>
       <p>
-        <strong data-editable="text" data-prop="@file[src/data/pages/shows.json].cta_p3_strong">{page.cta_p3_strong}</strong>
-        <span data-editable="text" data-prop="@file[src/data/pages/shows.json].cta_p3_rest">{page.cta_p3_rest}</span>
+        <strong data-editable="text" data-prop="cta_p3_strong">{page.cta_p3_strong}</strong>
+        <span data-editable="text" data-prop="cta_p3_rest">{page.cta_p3_rest}</span>
       </p>
-      <p data-editable="text" data-prop="@file[src/data/pages/shows.json].cta_p4">{page.cta_p4}</p>
+      <p data-editable="text" data-prop="cta_p4">{page.cta_p4}</p>
       <p>
         <a
           class="button"
@@ -145,17 +145,17 @@ const bookingUrl = (site.booking_url || '').trim();
           target={bookingUrl ? '_blank' : undefined}
           rel={bookingUrl ? 'noopener noreferrer' : undefined}
           data-editable="text"
-          data-prop="@file[src/data/pages/shows.json].cta_button_label"
+          data-prop="cta_button_label"
         >
           {page.cta_button_label}
         </a>
       </p>
-      <p class="muted" style="color:#d6dce5;" data-editable="text" data-prop="@file[src/data/pages/shows.json].cta_sub">{page.cta_sub}</p>
+      <p class="muted" style="color:#d6dce5;" data-editable="text" data-prop="cta_sub">{page.cta_sub}</p>
     </section>
 
     <section class="section">
-      <h2 data-editable="text" data-prop="@file[src/data/pages/shows.json].explore_heading">{page.explore_heading}</h2>
-      <p data-editable="text" data-prop="@file[src/data/pages/shows.json].explore_intro">{page.explore_intro}</p>
+      <h2 data-editable="text" data-prop="explore_heading">{page.explore_heading}</h2>
+      <p data-editable="text" data-prop="explore_intro">{page.explore_intro}</p>
       <a class="button" href="/functions.html">Explore Nine Functions</a>
       <a class="button alt" href="/assessments/index.html">Explore Assessments</a>
     </section>
