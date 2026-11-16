@@ -118,12 +118,12 @@ export function initNineFunctionsJourney(rootEl, functionsData) {
     const { width, height } = state;
     const isNarrow = width < 680;
     const cx = width / 2;
-    const cy = height / 2 + 6;
+    const cy = height / 2;
 
     // True 1:1 circle on both desktop and mobile (never elongated into an oval)
     const r = isNarrow
-      ? Math.max(76, Math.min(width * 0.31, height * 0.31, 130))
-      : Math.min(width * 0.34, height * 0.36, 220);
+      ? Math.max(82, Math.min(width * 0.34, height * 0.34, 140))
+      : Math.min(width * 0.36, height * 0.38, 225);
 
     const nodes = functionsData.map((fn, idx) => {
       const angle = -Math.PI / 2 + (idx / functionsData.length) * Math.PI * 2;
@@ -469,20 +469,7 @@ export function initNineFunctionsJourney(rootEl, functionsData) {
 
     if (!showLabels) return;
 
-    if (node.data) {
-      const cosA = Math.cos(node.angle);
-      const sinA = Math.sin(node.angle);
-      const labelDist = haloR + (isCompact ? 12 : 16);
-      const lx = x + cosA * labelDist;
-      const ly = y + sinA * labelDist;
-      const numText = String(parseInt(node.data.num, 10) || node.index + 1);
-
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
-      ctx.font = `700 ${isCompact ? 12 : 14}px system-ui, -apple-system, sans-serif`;
-      ctx.fillStyle = isHovered ? '#ffffff' : CORE9_COLORS.goldBright;
-      ctx.fillText(numText, lx, ly);
-    } else if (node.subLabel) {
+    if (node.subLabel) {
       ctx.textBaseline = 'middle';
       ctx.textAlign = 'center';
       ctx.font = `700 ${isCompact ? 9 : 10}px system-ui, -apple-system, sans-serif`;
