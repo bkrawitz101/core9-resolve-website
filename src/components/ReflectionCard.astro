@@ -1,0 +1,19 @@
+---
+interface Props {
+  category: string;
+  count_label: string;
+  title: string;
+  description: string;
+  button_label: string;
+  href: string;
+}
+
+const { category, count_label, title, description, button_label, href } = Astro.props;
+---
+<div class="card-meta">
+  <small data-editable="text" data-prop="category">{category}</small>
+  <span class="count-pill" data-editable="text" data-prop="count_label">{count_label}</span>
+</div>
+<strong data-editable="text" data-prop="title">{title}</strong>
+<span class="desc" data-editable="text" data-prop="description">{description}</span>
+<a class="button" href={href} data-editable="text" data-prop="button_label">{button_label}</a>

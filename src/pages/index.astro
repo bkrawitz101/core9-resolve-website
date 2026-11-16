@@ -1,35 +1,10 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CORE9 RESOLVE™</title>
-  <meta name="robots" content="noindex,nofollow">
-  <style>
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      background: #f7f6f3;
-      color: #172338;
-      font-family: system-ui, -apple-system, Segoe UI, sans-serif;
-      line-height: 1.6;
-    }
-    a { color: inherit; }
-    header {
-      background: #15243a;
-      color: #fff;
-      padding: 18px max(22px, calc((100vw - 960px) / 2));
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-    header strong { letter-spacing: .06em; }
-    nav { display: flex; gap: 20px; flex-wrap: wrap; }
-    nav a { font-size: .95rem; text-decoration: none; }
-    nav a[aria-current="page"] { color: #b79a69; font-weight: 650; }
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ReflectionCard from '../components/ReflectionCard.astro';
+import home from '../data/pages/home.json';
+---
+<BaseLayout title={home.page_title} currentHref="/index.html" navMode="primary">
+  <style is:global slot="head">
     main section {
       padding: clamp(44px, 6vw, 72px) max(22px, calc((100vw - 960px) / 2));
       text-align: center;
@@ -109,7 +84,7 @@
     }
     .split-heading span { display: block; }
     .split-heading .accent { color: #8d6b39; }
-    p { max-width: 660px; font-size: 1.08rem; margin: 0 auto 14px; }
+    main p { max-width: 660px; font-size: 1.08rem; margin: 0 auto 14px; }
     .button {
       display: inline-block;
       padding: 13px 22px;
@@ -182,84 +157,50 @@
       text-decoration: underline;
       text-underline-offset: 3px;
     }
-    footer {
-      padding: 28px 22px;
-      text-align: center;
-      background: #101d2e;
-      color: #ddd;
-      font-size: .85rem;
-    }
-    footer a { color: #fff; margin: 0 9px; }
-    a:focus-visible { outline: 3px solid #d3a34c; outline-offset: 3px; }
     @media (max-width: 700px) {
       .function-grid { grid-template-columns: 1fr; }
-      header { align-items: flex-start; }
-      nav { gap: 12px; }
     }
   </style>
-</head>
-<body>
-  <header>
-    <strong>CORE9 RESOLVE™</strong>
-    <nav aria-label="Main navigation">
-      <a href="index.html" aria-current="page">Home</a>
-      <a href="book-session.html">Book a Session</a>
-    </nav>
-  </header>
 
   <main>
     <section class="hero" id="home">
       <div class="hero-pillars">
-        <span>Talented people.</span>
-        <span>Ambitious goals.</span>
-        <span>Valuable resources.</span>
+        <span data-editable="text" data-prop="@file[src/data/pages/home.json].hero_line_1">{home.hero_line_1}</span>
+        <span data-editable="text" data-prop="@file[src/data/pages/home.json].hero_line_2">{home.hero_line_2}</span>
+        <span data-editable="text" data-prop="@file[src/data/pages/home.json].hero_line_3">{home.hero_line_3}</span>
       </div>
-      <p class="hero-turn">Yet something keeps <em>getting in the way.</em></p>
+      <p class="hero-turn">
+        <span data-editable="text" data-prop="@file[src/data/pages/home.json].hero_turn_prefix">{home.hero_turn_prefix}</span><em data-editable="text" data-prop="@file[src/data/pages/home.json].hero_turn_accent">{home.hero_turn_accent}</em>
+      </p>
       <div class="hero-divider" aria-hidden="true"></div>
-      <p class="hero-sub">We <strong>reveal hidden disconnects</strong>, <strong>align the moving parts</strong>, and turn untapped potential into <span class="outcome">measurable results</span>.</p>
+      <p class="hero-sub">
+        <span data-editable="text" data-prop="@file[src/data/pages/home.json].hero_sub_lead">{home.hero_sub_lead}</span><strong data-editable="text" data-prop="@file[src/data/pages/home.json].hero_sub_b1">{home.hero_sub_b1}</strong><span data-editable="text" data-prop="@file[src/data/pages/home.json].hero_sub_mid">{home.hero_sub_mid}</span><strong data-editable="text" data-prop="@file[src/data/pages/home.json].hero_sub_b2">{home.hero_sub_b2}</strong><span data-editable="text" data-prop="@file[src/data/pages/home.json].hero_sub_after">{home.hero_sub_after}</span><span class="outcome" data-editable="text" data-prop="@file[src/data/pages/home.json].hero_sub_outcome">{home.hero_sub_outcome}</span><span data-editable="text" data-prop="@file[src/data/pages/home.json].hero_sub_end">{home.hero_sub_end}</span>
+      </p>
     </section>
 
     <section class="explore" id="assessments">
-      <div class="eyebrow">Not Sequential · Choose Your Starting Point</div>
+      <div class="eyebrow" data-editable="text" data-prop="@file[src/data/pages/home.json].section_eyebrow">{home.section_eyebrow}</div>
       <h2 class="split-heading">
-        <span>Three Reflections.</span>
-        <span class="accent">Three Perspectives.</span>
+        <span data-editable="text" data-prop="@file[src/data/pages/home.json].section_heading_top">{home.section_heading_top}</span>
+        <span class="accent" data-editable="text" data-prop="@file[src/data/pages/home.json].section_heading_accent">{home.section_heading_accent}</span>
       </h2>
-      <div class="function-grid">
-        <article class="test-card">
-          <div class="card-meta">
-            <small>PERSONAL</small>
-            <span class="count-pill">9 questions</span>
-          </div>
-          <strong>What Fuels Your Drive</strong>
-          <span class="desc">Notice what sparks your momentum right now—and where a hidden pattern may be getting in the way.</span>
-          <a class="button" href="assessments/test9.html">See What Shows Up →</a>
-        </article>
-        <article class="test-card">
-          <div class="card-meta">
-            <small>LIFE &amp; RELATIONSHIPS</small>
-            <span class="count-pill">27 questions</span>
-          </div>
-          <strong>Patterns Across Your Life</strong>
-          <span class="desc">Trace how your energy, daily actions, and real outcomes connect across the areas of life you care about.</span>
-          <a class="button" href="assessments/test27.html">Explore Your Life Map →</a>
-        </article>
-        <article class="test-card">
-          <div class="card-meta">
-            <small>BUSINESS</small>
-            <span class="count-pill">45 questions</span>
-          </div>
-          <strong>Inside the Nine Functions</strong>
-          <span class="desc">Look beneath day-to-day execution to see how your company's nine core functions connect as one system.</span>
-          <a class="button" href="assessments/test45.html">See the Full Picture →</a>
-        </article>
+      <div
+        class="function-grid"
+        data-editable="array"
+        data-prop="@file[src/data/pages/home.json].cards"
+        data-component="reflection-card"
+        data-direction="row"
+      >
+        {home.cards.map((card) => (
+          <article class="test-card" data-editable="array-item" data-component="reflection-card">
+            <ReflectionCard {...card} />
+          </article>
+        ))}
       </div>
-      <p class="footnote">Three standalone reflections — start wherever your curiosity leads, or <a href="book-session.html">Book a Session</a> directly.</p>
+      <p class="footnote">
+        <span data-editable="text" data-prop="@file[src/data/pages/home.json].footnote_prefix">{home.footnote_prefix}</span><a href="/book-session.html" data-editable="text" data-prop="@file[src/data/pages/home.json].footnote_link_label">{home.footnote_link_label}</a><span data-editable="text" data-prop="@file[src/data/pages/home.json].footnote_suffix">{home.footnote_suffix}</span>
+      </p>
     </section>
   </main>
+</BaseLayout>
 
-  <footer>
-    CORE9 RESOLVE™ · <a href="index.html">Home</a> · <a href="book-session.html">Book a Session</a>
-  </footer>
-</body>
-</html>

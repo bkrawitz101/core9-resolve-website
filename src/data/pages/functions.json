@@ -1,0 +1,21 @@
+{
+  "page_title": "Nine Functions | CORE9 RESOLVE™",
+  "eyebrow": "Integration prototype · Not for publication",
+  "heading": "Explore the Nine Functions",
+  "intro": "This is a navigation shell linking the original saved interactive Function 1–9 HTML files. The source experiences are copied byte-for-byte, without changes to their wording or interactions.",
+  "notice_prefix": "Review notice: ",
+  "notice_body": "The original Circle of Nine artwork is not yet integrated. The tiles below are a temporary staging navigation, not a replacement design. Some original pages may contain draft labels or disabled next-function links; these are preserved intentionally.",
+  "closing": "Assessments, consultation booking, and the business landing page will be connected after their current approved implementations and destination URLs are verified.",
+  "tiles": [
+    { "num": "01", "name": "Strategy", "href": "/functions/FUNCTION_01_INTERACTIVE.html" },
+    { "num": "02", "name": "Relationships", "href": "/functions/FUNCTION_02_INTERACTIVE_REVIEW.html" },
+    { "num": "03", "name": "Analysis & Systems", "href": "/functions/FUNCTION_03_REVISED_INTERACTIVE_REVIEW.html" },
+    { "num": "04", "name": "Knowledge & Priorities", "href": "/functions/FUNCTION_04_INTERACTIVE_REVIEW.html" },
+    { "num": "05", "name": "Contribution & Expansion", "href": "/functions/FUNCTION_05_INTERACTIVE_REVIEW.html" },
+    { "num": "06", "name": "Psychology & Creativity", "href": "/functions/FUNCTION_06_INTERACTIVE_APPROVED.html" },
+    { "num": "07", "name": "Mission & Action", "href": "/functions/FUNCTION_07_INTERACTIVE_APPROVED.html" },
+    { "num": "08", "name": "Material Results", "href": "/functions/FUNCTION_08_INTERACTIVE_APPROVED.html" },
+    { "num": "09", "name": "Completion & Renewal", "href": "/functions/FUNCTION_09_INTERACTIVE_APPROVED_v2.html" }
+  ]
+}
+

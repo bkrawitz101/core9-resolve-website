@@ -1,0 +1,11 @@
+{
+  "page_title": "Book a Session | CORE9 RESOLVE™",
+  "eyebrow": "CORE9 Consultation",
+  "heading": "Get to Know More. Book a Session.",
+  "body": "Start with a personal CORE9 Discovery conversation. We'll walk through your assessment insights, look at where things connect or stall, and explore practical next steps.",
+  "live_button_label": "Schedule Your Session →",
+  "pending_heading": "Scheduling link pending:",
+  "pending_message": "Add Svetlana's live booking URL in CloudCannon under Site Settings (or assessments/booking-config.js) and it will appear here automatically.",
+  "back_button_label": "Back to Home"
+}
+

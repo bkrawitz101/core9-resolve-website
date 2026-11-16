@@ -1,0 +1,30 @@
+{
+  "page_title": "Assessments | CORE9 RESOLVE™",
+  "eyebrow": "CORE9 RESOLVE™ · NOT SEQUENTIAL",
+  "heading": "Choose Your Reflection",
+  "intro": "Three standalone reflections. Start wherever your curiosity leads—each ends with your personal insights and an option to book a session.",
+  "cards": [
+    {
+      "category": "PERSONAL",
+      "count_label": "9 questions",
+      "title": "What Fuels Your Drive",
+      "description": "Notice what sparks your momentum right now—and where a hidden pattern may be getting in the way.",
+      "href": "/assessments/test9.html"
+    },
+    {
+      "category": "LIFE & RELATIONSHIPS",
+      "count_label": "27 questions",
+      "title": "Patterns Across Your Life",
+      "description": "Trace how your energy, daily actions, and real outcomes connect across the areas of life you care about.",
+      "href": "/assessments/test27.html"
+    },
+    {
+      "category": "BUSINESS",
+      "count_label": "45 questions",
+      "title": "Inside the Nine Functions",
+      "description": "Look beneath day-to-day execution to see how your company's nine core functions connect as one system.",
+      "href": "/assessments/test45.html"
+    }
+  ]
+}
+

@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import page from '../../data/pages/assessments-hub.json';
+---
+<BaseLayout title={page.page_title} currentHref="/assessments/index.html" navMode="primary" bodyBackground="#f7f4ed" headerMaxWidth={850}>
+  <style slot="head">
+    main { max-width: 850px; margin: 48px auto 72px; padding: 0 20px; font-size: 17px; color: #292720; }
+    .intro { text-align: center; margin-bottom: 32px; }
+    h1 { font-size: clamp(2rem, 4.5vw, 2.75rem); margin: 10px 0 12px; line-height: 1.15; }
+    .card {
+      display: block;
+      color: #423728;
+      text-decoration: none;
+      background: white;
+      border: 1px solid #e5ded0;
+      border-left: 3px solid #b89a6b;
+      border-radius: 12px;
+      padding: 24px;
+      margin: 17px 0;
+    }
+    .card:hover,
+    .card:focus-visible { border-color: #b89a6b; background: #fcfaf5; }
+    .card-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+    .card-meta small { color: #806a4a; font-weight: 650; letter-spacing: .04em; }
+    .count-pill {
+      font-size: .78rem;
+      font-weight: 650;
+      color: #15243a;
+      background: #f3eee3;
+      border: 1px solid #dfd3bd;
+      border-radius: 999px;
+      padding: 3px 10px;
+      white-space: nowrap;
+    }
+    strong.title { display: block; font-size: 22px; color: #15243a; margin-bottom: 4px; }
+  </style>
+
+  <main>
+    <div class="intro">
+      <small data-editable="text" data-prop="@file[src/data/pages/assessments-hub.json].eyebrow">{page.eyebrow}</small>
+      <h1 data-editable="text" data-prop="@file[src/data/pages/assessments-hub.json].heading">{page.heading}</h1>
+      <p data-editable="text" data-prop="@file[src/data/pages/assessments-hub.json].intro">{page.intro}</p>
+    </div>
+
+    <div data-editable="array" data-prop="@file[src/data/pages/assessments-hub.json].cards">
+      {page.cards.map((card) => (
+        <a class="card" href={card.href} data-editable="array-item">
+          <span class="card-meta">
+            <small data-editable="text" data-prop="category">{card.category}</small>
+            <span class="count-pill" data-editable="text" data-prop="count_label">{card.count_label}</span>
+          </span>
+          <strong class="title" data-editable="text" data-prop="title">{card.title}</strong>
+          <span data-editable="text" data-prop="description">{card.description}</span>
+        </a>
+      ))}
+    </div>
+  </main>
+</BaseLayout>

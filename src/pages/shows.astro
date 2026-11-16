@@ -1,0 +1,164 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import page from '../data/pages/shows.json';
+import site from '../data/site.json';
+
+const bookingUrl = (site.booking_url || '').trim();
+---
+<BaseLayout
+  title={page.page_title}
+  currentHref="/shows.html"
+  navMode="phase2"
+  headerMaxWidth={1080}
+  footerExtra="Staging build · Pending pilot episodes, RSS feeds, hosting provider, email signup, consultation booking URL, contact details, and legal policies."
+>
+  <style slot="head">
+    main { max-width: 1080px; margin: auto; padding: 30px 22px 85px; font-size: 16px; line-height: 1.65; }
+    .hero { padding: 55px 0 40px; border-bottom: 1px solid #ddd; }
+    h1 { font-size: clamp(2.2rem, 5vw, 3.7rem); line-height: 1.14; margin: 10px 0; max-width: 820px; }
+    h2 { font-size: 1.8rem; line-height: 1.2; margin-top: 0; }
+    h3 { font-size: 1.25rem; margin-top: 0; }
+    main p { max-width: 740px; }
+    .eyebrow { color: #977342; text-transform: uppercase; letter-spacing: .15em; font-size: .8rem; font-weight: 700; }
+    .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+    .card {
+      padding: 26px;
+      background: white;
+      border: 1px solid #d8d5ce;
+      border-left: 3px solid #b79a69;
+      display: flex;
+      flex-direction: column;
+    }
+    .card p { margin-top: 0; }
+    .section { padding-top: 48px; }
+    .button {
+      display: inline-block;
+      background: #b79a69;
+      color: #15243a;
+      text-decoration: none;
+      font-weight: 650;
+      border: 0;
+      border-radius: 3px;
+      padding: 12px 19px;
+      margin: 8px 8px 8px 0;
+      cursor: pointer;
+    }
+    .button.alt { background: #15243a; color: white; }
+    .media {
+      aspect-ratio: 16 / 9;
+      background: #17263d;
+      color: #f7f6f3;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 24px;
+      border: 1px solid #d4d7da;
+      margin-bottom: 18px;
+    }
+    .media span { color: #b79a69; text-transform: uppercase; letter-spacing: .12em; font-size: .78rem; display: block; margin-bottom: 6px; }
+    .tagline { font-style: italic; color: #7a613d; font-weight: 600; }
+    .muted { color: #536070; font-size: .92rem; }
+    .note { padding: 15px 18px; background: #eee9df; border-left: 3px solid #b79a69; max-width: 820px; }
+    .bridge {
+      background: #f0eee9;
+      padding: 28px;
+      border-left: 3px solid #b79a69;
+    }
+    .cta-panel {
+      background: #15243a;
+      color: #fff;
+      padding: 36px;
+      border-radius: 4px;
+      margin-top: 48px;
+    }
+    .cta-panel .note { color: #283442; }
+    @media (max-width: 700px) {
+      .grid { grid-template-columns: 1fr; }
+      .hero { padding: 32px 0; }
+    }
+  </style>
+
+  <main>
+    <section class="hero">
+      <div class="eyebrow" data-editable="text" data-prop="@file[src/data/pages/shows.json].hero_eyebrow">{page.hero_eyebrow}</div>
+      <h1 data-editable="text" data-prop="@file[src/data/pages/shows.json].hero_heading">{page.hero_heading}</h1>
+      <p data-editable="text" data-prop="@file[src/data/pages/shows.json].hero_intro">{page.hero_intro}</p>
+      <p class="muted" data-editable="text" data-prop="@file[src/data/pages/shows.json].hero_cadence">{page.hero_cadence}</p>
+      <div>
+        <a class="button" href="#archive">Listen to the Latest Episode</a>
+        <a class="button alt" href="#both-shows">Explore Both Shows</a>
+      </div>
+    </section>
+
+    <section class="section grid" id="both-shows" data-editable="array" data-prop="@file[src/data/pages/shows.json].shows" data-direction="row">
+      {page.shows.map((show) => (
+        <article class="card" data-editable="array-item">
+          <div class="media">
+            <div>
+              <span data-editable="text" data-prop="badge">{show.badge}</span>
+              <strong>{show.title}</strong>
+            </div>
+          </div>
+          <h2 data-editable="text" data-prop="title">{show.title}</h2>
+          <p class="tagline" data-editable="text" data-prop="tagline">{show.tagline}</p>
+          <p data-editable="text" data-prop="description">{show.description}</p>
+          <p class="muted" data-editable="text" data-prop="status_note">{show.status_note}</p>
+        </article>
+      ))}
+    </section>
+
+    <section class="section">
+      <div class="bridge">
+        <div class="eyebrow" data-editable="text" data-prop="@file[src/data/pages/shows.json].bridge_eyebrow">{page.bridge_eyebrow}</div>
+        <h2 data-editable="text" data-prop="@file[src/data/pages/shows.json].bridge_heading">{page.bridge_heading}</h2>
+        <p data-editable="text" data-prop="@file[src/data/pages/shows.json].bridge_body">{page.bridge_body}</p>
+      </div>
+    </section>
+
+    <section class="section" id="archive">
+      <div class="eyebrow" data-editable="text" data-prop="@file[src/data/pages/shows.json].archive_eyebrow">{page.archive_eyebrow}</div>
+      <h2 data-editable="text" data-prop="@file[src/data/pages/shows.json].archive_heading">{page.archive_heading}</h2>
+      <p class="note" data-editable="text" data-prop="@file[src/data/pages/shows.json].archive_note">{page.archive_note}</p>
+    </section>
+
+    <section class="section">
+      <div class="eyebrow" data-editable="text" data-prop="@file[src/data/pages/shows.json].subscribe_eyebrow">{page.subscribe_eyebrow}</div>
+      <h2 data-editable="text" data-prop="@file[src/data/pages/shows.json].subscribe_heading">{page.subscribe_heading}</h2>
+      <p data-editable="text" data-prop="@file[src/data/pages/shows.json].subscribe_body">{page.subscribe_body}</p>
+      <p class="note" data-editable="text" data-prop="@file[src/data/pages/shows.json].subscribe_note">{page.subscribe_note}</p>
+    </section>
+
+    <section class="cta-panel">
+      <div class="eyebrow" data-editable="text" data-prop="@file[src/data/pages/shows.json].cta_eyebrow">{page.cta_eyebrow}</div>
+      <h2 style="color:#fff;" data-editable="text" data-prop="@file[src/data/pages/shows.json].cta_heading">{page.cta_heading}</h2>
+      <p data-editable="text" data-prop="@file[src/data/pages/shows.json].cta_p1">{page.cta_p1}</p>
+      <p data-editable="text" data-prop="@file[src/data/pages/shows.json].cta_p2">{page.cta_p2}</p>
+      <p>
+        <strong data-editable="text" data-prop="@file[src/data/pages/shows.json].cta_p3_strong">{page.cta_p3_strong}</strong>
+        <span data-editable="text" data-prop="@file[src/data/pages/shows.json].cta_p3_rest">{page.cta_p3_rest}</span>
+      </p>
+      <p data-editable="text" data-prop="@file[src/data/pages/shows.json].cta_p4">{page.cta_p4}</p>
+      <p>
+        <a
+          class="button"
+          href={bookingUrl || '/book-session.html'}
+          target={bookingUrl ? '_blank' : undefined}
+          rel={bookingUrl ? 'noopener noreferrer' : undefined}
+          data-editable="text"
+          data-prop="@file[src/data/pages/shows.json].cta_button_label"
+        >
+          {page.cta_button_label}
+        </a>
+      </p>
+      <p class="muted" style="color:#d6dce5;" data-editable="text" data-prop="@file[src/data/pages/shows.json].cta_sub">{page.cta_sub}</p>
+    </section>
+
+    <section class="section">
+      <h2 data-editable="text" data-prop="@file[src/data/pages/shows.json].explore_heading">{page.explore_heading}</h2>
+      <p data-editable="text" data-prop="@file[src/data/pages/shows.json].explore_intro">{page.explore_intro}</p>
+      <a class="button" href="/functions.html">Explore Nine Functions</a>
+      <a class="button alt" href="/assessments/index.html">Explore Assessments</a>
+    </section>
+  </main>
+</BaseLayout>
+

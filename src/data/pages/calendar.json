@@ -1,0 +1,37 @@
+{
+  "page_title": "Personal Calendar | CORE9 RESOLVE™",
+  "hero_eyebrow": "Your time. Your rhythm.",
+  "hero_heading": "Personal Calendar",
+  "hero_intro": "Watch the calendar video series, find your Personal Cycle Year, and explore the calendar designed for you.",
+  "video_heading": "Discover the Calendar",
+  "youtube_playlist_url": "",
+  "video_placeholder": "Your Calendar YouTube playlist will appear here. Playlist link pending.",
+  "calculator_heading": "Find Your Personal Cycle Year",
+  "calculator_card_title": "Calculate yours — no signup required",
+  "calculator_button_label": "Find My Calendar",
+  "explore_heading": "Explore Your Calendar",
+  "explore_intro": "Find your number above to identify the calendar for your selected year. The interactive calendar app is in development; purchases are not yet enabled.",
+  "cards": [
+    {
+      "title": "Interactive Personal Calendar",
+      "description": "A dedicated calendar app, designed for convenient everyday use on your phone or computer.",
+      "status_note": "In development. Availability and pricing to be announced."
+    },
+    {
+      "title": "Family Calendars",
+      "description": "Find the right personal cycle for each family member.",
+      "status_note": "Family purchase options to be confirmed when the app is ready."
+    },
+    {
+      "title": "Illustrated Companion Booklet",
+      "description": "A separate, downloadable PDF with explanations and reflections.",
+      "status_note": "New CORE9 edition in development; the earlier PDF is reference material only."
+    },
+    {
+      "title": "Calendar + Booklet",
+      "description": "Enjoy the booklet separately, or receive it with a calendar purchase.",
+      "status_note": "Final bundle or gift terms will be announced later."
+    }
+  ]
+}
+

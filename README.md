@@ -1,37 +1,40 @@
 # CORE9 RESOLVE™ Website
 
-Clean, consolidated website repository assembled from `CORE9 extra pages video and calendar` (core staging site) and updated with the November 14, 2026 Audio Shows developer handoff.
+Astro + CloudCannon website built from the approved CORE9 RESOLVE™ staging pages and November 2026 updates, preserving all interactive Function and Reflection modules untouched in `public/`.
 
 ## Repository Structure
 
 ```text
 .
-├── index.html                  # Business landing page (staging)
-├── functions.html              # Nine Functions directory shell
-├── shows.html                  # CORE9 Audio Shows hub (Business Unusual & Mr. Right & Mrs. Maybe)
-├── watch-and-learn.html        # Watch & Learn (Vasili & Svetlana YouTube playlist page)
-├── calendar.html               # Personal Calendar & Cycle Year calculator
-├── functions/                  # Preserved interactive Function 1–9 HTML pages (untouched source copies)
-├── assessments/                # Assessments hub + Tests 9, 27, 45 (v8) & RU reference engines
-├── assets/                     # Calendar companion EPUB proof & future media/visual assets
-├── content/functions/          # Structured JSON/MD snapshots for Functions 1, 3–9 + approval register
-└── docs/
-    ├── LAUNCH_CHECKLIST.md     # Remaining approvals, missing URLs, and QA gates before public launch
-    └── podcast-handoff/        # Full Nov 14 Audio Shows creative, UX, ops, and dev specs
+├── astro.config.mjs            # Static build config (`format: 'file'`) + CloudCannon Editable Regions
+├── cloudcannon.config.yml      # CloudCannon CMS sidebar collections, visual editor & input rules
+├── src/
+│   ├── layouts/BaseLayout.astro        # Shared header, nav, footer, noindex toggle & CC registration
+│   ├── components/ReflectionCard.astro # Visual-editable card component
+│   ├── data/
+│   │   ├── site.json                   # Brand name, global nav, allow_search_indexing, booking_url
+│   │   └── pages/*.json                # Editable page copy (home, book-session, calendar, shows, etc.)
+│   ├── content/episodes/               # Audio show episodes collection (Phase 2)
+│   └── pages/                          # Astro pages + dynamic /assessments/booking-config.js
+├── public/
+│   ├── functions/                      # Preserved interactive Function 1–9 HTML files
+│   ├── assessments/                    # Preserved interactive Reflections (9, 27, 45) & RU originals
+│   ├── assets/                         # Static media/booklet proof files
+│   └── uploads/                        # CloudCannon image/file upload folder
+├── content/functions/                  # Reference JSON/MD snapshots & approval register (private)
+└── docs/                               # Checklists & Audio Shows handoff specs (private, not in dist/)
 ```
 
-## Local Preview
-
-Run a local static server from the repository root:
+## Local Development & Preview
 
 ```bash
-python3 -m http.server 8080
+npm install
+npm run dev      # Start Astro dev server
+npm run build    # Build static site to dist/
+npm run preview  # Preview built dist/ output locally
 ```
 
-Then open `http://localhost:8080/` in a browser.
+## CloudCannon & Cloudflare Pages Setup
 
-## Important Notes
-
-- Approved Function (`functions/`) and Assessment (`assessments/test*.html`) HTML files are preserved byte-for-byte from the verified source packages.
-- Staging pages still include `<meta name="robots" content="noindex,nofollow">` until all open items in `docs/LAUNCH_CHECKLIST.md` (booking URL, YouTube embeds, Team bios, Function 2/5 approvals, and browser QA) are completed.
-
+1. **Cloudflare Pages**: Connect this GitHub repository in **Workers & Pages → Create → Pages → Connect to Git**. Use framework preset **Astro** (`npm run build`, output directory `dist`, environment variable `NODE_VERSION=20`).
+2. **CloudCannon**: Connect the same GitHub repository (or a `staging` branch for preview drafts). CloudCannon automatically reads `cloudcannon.config.yml` and lets Svetlana click-to-edit copy, manage the booking URL (`Site Settings & Booking Link`), and add podcast episodes without touching GitHub.

@@ -1,0 +1,18 @@
+{
+  "brand_name": "CORE9 RESOLVE™",
+  "booking_url": "",
+  "allow_search_indexing": false,
+  "primary_nav": [
+    { "label": "Home", "href": "/index.html" },
+    { "label": "Book a Session", "href": "/book-session.html" }
+  ],
+  "phase2_nav": [
+    { "label": "Home", "href": "/index.html" },
+    { "label": "Nine Functions", "href": "/functions.html" },
+    { "label": "Assessments", "href": "/assessments/index.html" },
+    { "label": "Shows", "href": "/shows.html" },
+    { "label": "Watch & Learn", "href": "/watch-and-learn.html" },
+    { "label": "Calendar", "href": "/calendar.html" }
+  ]
+}
+

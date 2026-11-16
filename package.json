@@ -1,0 +1,30 @@
+{
+  "name": "core9-resolve-website",
+  "version": "1.0.0",
+  "description": "Clean, consolidated website repository assembled from `CORE9 extra pages video and calendar` (core staging site) and updated with the November 14, 2026 Audio Shows developer handoff.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bkrawitz101/core9-resolve-website.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/bkrawitz101/core9-resolve-website/issues"
+  },
+  "homepage": "https://github.com/bkrawitz101/core9-resolve-website#readme",
+  "dependencies": {
+    "@cloudcannon/editable-regions": "^0.0.22",
+    "astro": "^7.4.12"
+  }
+}

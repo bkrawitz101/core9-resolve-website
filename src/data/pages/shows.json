@@ -1,0 +1,45 @@
+{
+  "page_title": "Audio Shows | CORE9 RESOLVE™",
+  "hero_eyebrow": "CORE9 Audio Shows",
+  "hero_heading": "Life Is Complicated. At Least We Can Laugh About It.",
+  "hero_intro": "Two fictional audio comedies about the ridiculous things we do at work, at home, and with the people who matter most. Quick conversations. Familiar disasters. Unexpected insights.",
+  "hero_cadence": "Two new five-minute episodes every week — one about business, one about life and relationships.",
+  "shows": [
+    {
+      "badge": "Show 01 · Business Owners & Leaders",
+      "title": "Business Unusual",
+      "tagline": "Where Business Problems Get Personal.",
+      "description": "Max Logic has a system for everything. Marsha Chaos has a question that ruins it. Together, they tackle the wonderfully messy reality of owning a business — with the occasional expert who makes things even more interesting.",
+      "status_note": "Individual show archive and episode pages pending pilot audio & RSS feed setup."
+    },
+    {
+      "badge": "Show 02 · Life, Work & Relationships",
+      "title": "Mr. Right & Mrs. Maybe",
+      "tagline": "He Has All the Answers. She Has All the Questions.",
+      "description": "A couple with two opinions about absolutely everything: love, work, family, money, plans and the mysterious rules of living together. Sometimes he is right. Sometimes she is. Sometimes the dishwasher wins.",
+      "status_note": "Individual show archive and episode pages pending pilot audio & RSS feed setup."
+    }
+  ],
+  "bridge_eyebrow": "Inter-show bridge",
+  "bridge_heading": "Same Problems. Different Sides of the Story.",
+  "bridge_body": "A business owner says nobody takes responsibility. An employee says nobody lets them. At home, the same argument may be happening over dinner. Different lives. Familiar patterns. Plenty to laugh about.",
+  "archive_eyebrow": "Episode Archive",
+  "archive_heading": "Find Your Next Five-Minute Escape",
+  "archive_note": "40 initial episode topics (20 weeks) are planned in docs/podcast-handoff/02_CREATIVE_AND_CONTENT/EPISODE_SLATE_40.csv. Only published episodes will appear publicly once podcast hosting, RSS feeds, and pilot audio are connected.",
+  "subscribe_eyebrow": "Subscribe",
+  "subscribe_heading": "Never Miss the Next Disaster",
+  "subscribe_body": "Get the latest episode in your inbox, or follow the shows wherever you listen to podcasts.",
+  "subscribe_note": "Newsletter signup and podcast directory badges (Spotify, Apple Podcasts, Amazon Music, RSS) will be activated once the podcast host and email provider are connected.",
+  "cta_eyebrow": "Consultation",
+  "cta_heading": "Seriously Curious?",
+  "cta_p1": "Sometimes we laugh because the alternative is to cry.",
+  "cta_p2": "But what if you could laugh about your problems because they're finally behind you?",
+  "cta_p3_strong": "Talk to a real expert.",
+  "cta_p3_rest": " Discover what's keeping you stuck, find a way forward, and turn today's worries into tomorrow's funny stories.",
+  "cta_p4": "Not because you've learned to live with the problems — but because you've actually resolved them.",
+  "cta_button_label": "Talk to a CORE9 Expert",
+  "cta_sub": "A personal conversation, not another podcast episode.",
+  "explore_heading": "Explore the ideas behind the shows",
+  "explore_intro": "Go deeper through the existing interactive experiences and assessments."
+}
+

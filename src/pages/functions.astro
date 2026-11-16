@@ -1,0 +1,85 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import page from '../data/pages/functions.json';
+---
+<BaseLayout
+  title={page.page_title}
+  currentHref="/functions.html"
+  navMode="phase2"
+  bodyBackground="#f7f5f0"
+  headerMaxWidth={1100}
+  footerExtra="Staging build · No assessment data collected by this shell."
+>
+  <style slot="head">
+    main { max-width: 1100px; margin: auto; padding: 56px 24px 80px; color: #1d2934; line-height: 1.55; }
+    h1 { font-size: clamp(2.2rem, 5vw, 4rem); line-height: 1.12; max-width: 780px; margin: 0 0 24px; }
+    main p { max-width: 730px; }
+    .eyebrow {
+      color: #876a3f;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      font-size: .8rem;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin: 44px 0;
+    }
+    .tile {
+      background: #fff;
+      border: 1px solid #d9d8d3;
+      min-height: 190px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      text-decoration: none;
+      color: inherit;
+      border-radius: 4px;
+    }
+    .tile:hover,
+    .tile:focus-visible {
+      border-color: #977647;
+      box-shadow: 0 7px 20px #101f3118;
+      outline-offset: 3px;
+    }
+    .num { color: #94734d; font-weight: 700; }
+    .name { font-size: 1.2rem; font-weight: 650; }
+    .open { margin-top: auto; font-size: .9rem; }
+    aside {
+      background: #eee8dc;
+      border-left: 4px solid #a78350;
+      padding: 14px 20px;
+      max-width: 770px;
+    }
+    @media (max-width: 760px) {
+      main { padding: 40px 18px; }
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+
+  <main>
+    <p class="eyebrow" data-editable="text" data-prop="@file[src/data/pages/functions.json].eyebrow">{page.eyebrow}</p>
+    <h1 data-editable="text" data-prop="@file[src/data/pages/functions.json].heading">{page.heading}</h1>
+    <p data-editable="text" data-prop="@file[src/data/pages/functions.json].intro">{page.intro}</p>
+    <aside>
+      <strong data-editable="text" data-prop="@file[src/data/pages/functions.json].notice_prefix">{page.notice_prefix}</strong>
+      <span data-editable="text" data-prop="@file[src/data/pages/functions.json].notice_body">{page.notice_body}</span>
+    </aside>
+
+    <div class="grid" data-editable="array" data-prop="@file[src/data/pages/functions.json].tiles" data-direction="row">
+      {page.tiles.map((tile) => (
+        <a class="tile" href={tile.href} data-editable="array-item">
+          <span class="num" data-editable="text" data-prop="num">{tile.num}</span>
+          <span class="name" data-editable="text" data-prop="name">{tile.name}</span>
+          <span class="open">Explore →</span>
+        </a>
+      ))}
+    </div>
+
+    <p data-editable="text" data-prop="@file[src/data/pages/functions.json].closing">{page.closing}</p>
+  </main>
+</BaseLayout>
+

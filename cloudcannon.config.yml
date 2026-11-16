@@ -1,0 +1,203 @@
+_schema:
+  url: https://cloudcannon.com/documentation/articles/defining-your-configuration-file/
+
+paths:
+  uploads: public/uploads
+  static: public
+
+collection_groups:
+  - heading: Active Website Pages
+    collections:
+      - home_page
+      - book_session_page
+      - site_settings
+  - heading: Additional & Phase 2 Pages
+    collections:
+      - assessments_hub_page
+      - calendar_page
+      - shows_page
+      - watch_page
+      - functions_page
+  - heading: Audio Shows (Phase 2)
+    collections:
+      - episodes
+
+collections_config:
+  home_page:
+    name: Home Page
+    icon: home
+    path: src/data/pages
+    glob:
+      - home.json
+    url: /index.html
+    disable_add: true
+    disable_add_folder: true
+    disable_file_actions: true
+    _enabled_editors:
+      - visual
+      - data
+
+  book_session_page:
+    name: Book a Session Page
+    icon: event_available
+    path: src/data/pages
+    glob:
+      - book-session.json
+    url: /book-session.html
+    disable_add: true
+    disable_add_folder: true
+    disable_file_actions: true
+    _enabled_editors:
+      - visual
+      - data
+
+  site_settings:
+    name: Site Settings & Booking Link
+    icon: settings
+    path: src/data
+    glob:
+      - site.json
+    url: /index.html
+    disable_add: true
+    disable_add_folder: true
+    disable_file_actions: true
+    _enabled_editors:
+      - data
+
+  assessments_hub_page:
+    name: Reflections Directory
+    icon: quiz
+    path: src/data/pages
+    glob:
+      - assessments-hub.json
+    url: /assessments/index.html
+    disable_add: true
+    disable_add_folder: true
+    disable_file_actions: true
+    _enabled_editors:
+      - visual
+      - data
+
+  calendar_page:
+    name: Calendar Page
+    icon: calendar_month
+    path: src/data/pages
+    glob:
+      - calendar.json
+    url: /calendar.html
+    disable_add: true
+    disable_add_folder: true
+    disable_file_actions: true
+    _enabled_editors:
+      - visual
+      - data
+
+  shows_page:
+    name: Audio Shows Page
+    icon: headphones
+    path: src/data/pages
+    glob:
+      - shows.json
+    url: /shows.html
+    disable_add: true
+    disable_add_folder: true
+    disable_file_actions: true
+    _enabled_editors:
+      - visual
+      - data
+
+  watch_page:
+    name: Watch & Learn Page
+    icon: smart_display
+    path: src/data/pages
+    glob:
+      - watch-and-learn.json
+    url: /watch-and-learn.html
+    disable_add: true
+    disable_add_folder: true
+    disable_file_actions: true
+    _enabled_editors:
+      - visual
+      - data
+
+  functions_page:
+    name: Nine Functions Page
+    icon: hub
+    path: src/data/pages
+    glob:
+      - functions.json
+    url: /functions.html
+    disable_add: true
+    disable_add_folder: true
+    disable_file_actions: true
+    _enabled_editors:
+      - visual
+      - data
+
+  episodes:
+    name: Show Episodes
+    icon: podcasts
+    path: src/content/episodes
+    glob:
+      - "*.md"
+    create:
+      path: "[relative_base_path]/[slug].md"
+    _enabled_editors:
+      - content
+      - data
+
+_inputs:
+  booking_url:
+    type: url
+    label: Live Booking URL (Calendly / Acuity / Consultation Link)
+    comment: When filled in, this automatically activates the Book a Session page and all three reflections.
+  allow_search_indexing:
+    type: switch
+    label: Allow Google & Search Indexing
+    comment: Keep OFF while sharing only with curated visitors; turn ON when launching publicly.
+  youtube_playlist_url:
+    type: url
+    label: YouTube Playlist URL
+  hero_line_1:
+    type: text
+    label: Hero Pillar Line 1
+  hero_line_2:
+    type: text
+    label: Hero Pillar Line 2
+  hero_line_3:
+    type: text
+    label: Hero Pillar Line 3
+  hero_turn_accent:
+    type: text
+    label: Italic Gold Hero Hook
+  description:
+    type: textarea
+    label: Description
+  intro:
+    type: textarea
+    label: Intro Paragraph
+  body:
+    type: textarea
+    label: Body Copy
+  status_note:
+    type: textarea
+    label: Status Note
+  episode_number:
+    type: number
+    label: Episode #
+  show:
+    type: select
+    label: Audio Show
+    options:
+      values:
+        - Business Unusual
+        - Mr. Right & Mrs. Maybe
+  publish_date:
+    type: date
+    label: Release Date
+  audio_url:
+    type: url
+    label: Episode Audio URL
+  draft:
+    type: switch
+    label: Keep as Draft

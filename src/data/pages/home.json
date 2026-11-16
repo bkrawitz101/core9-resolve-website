@@ -1,0 +1,48 @@
+{
+  "page_title": "CORE9 RESOLVE™",
+  "hero_line_1": "Talented people.",
+  "hero_line_2": "Ambitious goals.",
+  "hero_line_3": "Valuable resources.",
+  "hero_turn_prefix": "Yet something keeps ",
+  "hero_turn_accent": "getting in the way.",
+  "hero_sub_lead": "We ",
+  "hero_sub_b1": "reveal hidden disconnects",
+  "hero_sub_mid": ", ",
+  "hero_sub_b2": "align the moving parts",
+  "hero_sub_after": ", and turn untapped potential into ",
+  "hero_sub_outcome": "measurable results",
+  "hero_sub_end": ".",
+  "section_eyebrow": "Not Sequential · Choose Your Starting Point",
+  "section_heading_top": "Three Reflections.",
+  "section_heading_accent": "Three Perspectives.",
+  "cards": [
+    {
+      "category": "PERSONAL",
+      "count_label": "9 questions",
+      "title": "What Fuels Your Drive",
+      "description": "Notice what sparks your momentum right now—and where a hidden pattern may be getting in the way.",
+      "button_label": "See What Shows Up →",
+      "href": "/assessments/test9.html"
+    },
+    {
+      "category": "LIFE & RELATIONSHIPS",
+      "count_label": "27 questions",
+      "title": "Patterns Across Your Life",
+      "description": "Trace how your energy, daily actions, and real outcomes connect across the areas of life you care about.",
+      "button_label": "Explore Your Life Map →",
+      "href": "/assessments/test27.html"
+    },
+    {
+      "category": "BUSINESS",
+      "count_label": "45 questions",
+      "title": "Inside the Nine Functions",
+      "description": "Look beneath day-to-day execution to see how your company's nine core functions connect as one system.",
+      "button_label": "See the Full Picture →",
+      "href": "/assessments/test45.html"
+    }
+  ],
+  "footnote_prefix": "Three standalone reflections — start wherever your curiosity leads, or ",
+  "footnote_link_label": "Book a Session",
+  "footnote_suffix": " directly."
+}
+
