@@ -1,39 +1,36 @@
 # CORE9 RESOLVE™ Website
 
-Astro website built from the approved CORE9 RESOLVE™ staging pages and November 2026 updates, preserving all interactive Function 1–9 and Reflection modules cleanly in `public/`.
+Plain static website hosted directly from the `main` branch on GitHub Pages (with `.nojekyll` enabled, zero build tools required).
 
 ## Repository Structure
 
 ```text
 .
-├── .github/workflows/deploy.yml # Builds and deploys Astro to GitHub Pages on push
-├── astro.config.mjs             # Static build config (`format: 'file'`) + GitHub Pages base support
-├── src/
-│   ├── layouts/BaseLayout.astro         # Shared header, nav, footer, and noindex toggle
-│   ├── components/                      # ReflectionCard & interactive CircleOfNineStage
-│   ├── scripts/nine-functions-canvas.js # Fixed Circle of Nine + fractal zoom canvas
-│   ├── utils/url.ts                     # Base-path URL helper
-│   ├── data/
-│   │   ├── site.json                    # Brand name, global nav, allow_search_indexing, booking_url
-│   │   └── pages/*.json                 # Structured copy for each page
-│   └── pages/                           # Astro pages + /assessments/booking-config.js
-├── public/
-│   ├── functions/                       # Preserved interactive Function 1–9 HTML files
-│   ├── assessments/                     # Preserved interactive Reflections (9, 27, 45) & RU originals
-│   └── assets/                          # Static media/booklet proof files
-├── content/functions/                   # Reference JSON/MD snapshots & approval register (private)
-└── docs/                                # Checklists & Audio Shows specs (private, not in dist/)
+├── .nojekyll                   # Disables Jekyll processing for GitHub Pages branch deploys
+├── index.html                  # Home page (hero, 3 reflections, interactive Circle of Nine)
+├── book-session.html           # Consultation booking / pending scheduling notice
+├── functions.html              # Dedicated Circle of Nine page + Function 1–9 index
+├── calendar.html               # Personal Cycle Year calculator & calendar overview
+├── shows.html                  # Audio Shows overview
+├── watch-and-learn.html        # Watch & Learn video playlist page
+├── js/nine-functions-canvas.js # Fixed Circle of Nine + fractal zoom canvas script
+├── assessments/                # Reflections hub (`index.html`), booking config & interactive tests (9, 27, 45)
+├── functions/                  # Interactive Function 1–9 HTML experiences
+├── assets/                     # Static proof / media files
+├── content/functions/          # Reference content snapshots & approval register
+└── docs/                       # Launch checklist & notes
 ```
 
-## Local Development & Preview
+## Local Preview
 
 ```bash
-npm install
-npm run dev      # Start Astro dev server
-npm run build    # Build static site to dist/
-npm run preview  # Preview built dist/ output locally
+python3 -m http.server 4321
 ```
 
-## GitHub Pages Deployment
+Then open `http://localhost:4321/`.
 
-Pushing to `main` runs `.github/workflows/deploy.yml` with `ASTRO_BASE=/core9-resolve-website` and publishes `dist/` to GitHub Pages when **Settings → Pages → Build and deployment → Source** is set to **GitHub Actions**.
+## GitHub Pages Publishing
+
+In GitHub **Settings → Pages → Build and deployment**:
+- **Source:** Deploy from a branch
+- **Branch:** `main` / `/ (root)`
