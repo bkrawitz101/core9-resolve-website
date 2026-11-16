@@ -7,18 +7,6 @@ function getHash(str) {
   return hash;
 }
 
-function splitMobileLabel(name) {
-  if (!name) return [''];
-  if (name.includes('&')) {
-    const idx = name.indexOf('&');
-    return [name.slice(0, idx + 1).trim(), name.slice(idx + 1).trim()].filter(Boolean);
-  }
-  const words = name.trim().split(/\s+/);
-  if (words.length <= 1 || name.length <= 12) return [name];
-  const mid = Math.ceil(words.length / 2);
-  return [words.slice(0, mid).join(' '), words.slice(mid).join(' ')];
-}
-
 const CORE9_COLORS = {
   bgTop: '#132238',
   bgBottom: '#17263d',
@@ -130,12 +118,12 @@ export function initNineFunctionsJourney(rootEl, functionsData) {
     const { width, height } = state;
     const isNarrow = width < 680;
     const cx = width / 2;
-    const cy = height / 2 + (isNarrow ? 10 : 8);
+    const cy = height / 2 + 6;
 
     // True 1:1 circle on both desktop and mobile (never elongated into an oval)
     const r = isNarrow
-      ? Math.max(66, Math.min(width * 0.23, height * 0.30, 118))
-      : Math.min(width * 0.29, height * 0.34, 215);
+      ? Math.max(76, Math.min(width * 0.31, height * 0.31, 130))
+      : Math.min(width * 0.34, height * 0.36, 220);
 
     const nodes = functionsData.map((fn, idx) => {
       const angle = -Math.PI / 2 + (idx / functionsData.length) * Math.PI * 2;
@@ -484,54 +472,16 @@ export function initNineFunctionsJourney(rootEl, functionsData) {
     if (node.data) {
       const cosA = Math.cos(node.angle);
       const sinA = Math.sin(node.angle);
-      const isTop = Math.abs(cosA) < 0.08 && sinA < 0;
-      const numLabel = node.data.num;
-      const nameLabel = node.data.name;
+      const labelDist = haloR + (isCompact ? 12 : 16);
+      const lx = x + cosA * labelDist;
+      const ly = y + sinA * labelDist;
+      const numText = String(parseInt(node.data.num, 10) || node.index + 1);
 
+      ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
-
-      if (isTop) {
-        ctx.textAlign = 'center';
-        ctx.font = `700 ${isCompact ? 9.5 : 11}px system-ui, -apple-system, sans-serif`;
-        ctx.fillStyle = CORE9_COLORS.goldCore;
-        ctx.fillText(isCompact ? '01' : `FUNCTION ${numLabel}`, x, y - haloR - (isCompact ? 22 : 28));
-
-        ctx.font = `600 ${isCompact ? 12 : 14}px Georgia, "Times New Roman", serif`;
-        ctx.fillStyle = '#ffffff';
-        ctx.fillText(nameLabel, x, y - haloR - (isCompact ? 9 : 12));
-      } else if (isCompact) {
-        const onRight = cosA >= 0;
-        const pad = haloR + 7;
-        const lx = onRight ? x + pad : x - pad;
-        ctx.textAlign = onRight ? 'left' : 'right';
-
-        const lines = splitMobileLabel(nameLabel);
-        ctx.font = '700 8.5px system-ui, -apple-system, sans-serif';
-        ctx.fillStyle = CORE9_COLORS.goldCore;
-        ctx.fillText(numLabel, lx, lines.length === 1 ? y - 10 : y - 14);
-
-        ctx.font = '600 10.5px Georgia, "Times New Roman", serif';
-        ctx.fillStyle = isHovered ? '#ffffff' : CORE9_COLORS.pearl;
-        if (lines.length === 1) {
-          ctx.fillText(lines[0], lx, y + 3);
-        } else {
-          ctx.fillText(lines[0], lx, y - 2);
-          ctx.fillText(lines[1], lx, y + 10);
-        }
-      } else {
-        const onRight = cosA >= 0;
-        const pad = haloR + 15;
-        const lx = onRight ? x + pad : x - pad;
-        ctx.textAlign = onRight ? 'left' : 'right';
-
-        ctx.font = '700 10.5px system-ui, -apple-system, sans-serif';
-        ctx.fillStyle = isHovered ? CORE9_COLORS.goldBright : CORE9_COLORS.goldCore;
-        ctx.fillText(`FUNCTION ${numLabel}`, lx, y - 7);
-
-        ctx.font = '600 14px Georgia, "Times New Roman", serif';
-        ctx.fillStyle = isHovered ? '#ffffff' : CORE9_COLORS.pearl;
-        ctx.fillText(nameLabel, lx, y + 9);
-      }
+      ctx.font = `700 ${isCompact ? 12 : 14}px system-ui, -apple-system, sans-serif`;
+      ctx.fillStyle = isHovered ? '#ffffff' : CORE9_COLORS.goldBright;
+      ctx.fillText(numText, lx, ly);
     } else if (node.subLabel) {
       ctx.textBaseline = 'middle';
       ctx.textAlign = 'center';
