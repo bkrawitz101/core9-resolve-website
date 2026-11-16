@@ -50,7 +50,6 @@ export function initNineFunctionsJourney(rootEl, functionsData) {
   const backCircleBtn = rootEl.querySelector('#btn-back-circle');
   const prevBtn = rootEl.querySelector('#btn-prev-fn');
   const nextBtn = rootEl.querySelector('#btn-next-fn');
-  const stepPills = Array.from(rootEl.querySelectorAll('[data-fn-index]'));
 
   const state = {
     mode: 'circle',
@@ -68,17 +67,25 @@ export function initNineFunctionsJourney(rootEl, functionsData) {
 
   const sporeProgresses = {};
 
+  function syncBodyScrollLock() {
+    const lock = state.mode === 'detail' && window.innerWidth <= 900;
+    document.documentElement.classList.toggle('c9-modal-open', lock);
+  }
+
   function resize() {
-    const rect = stageEl.getBoundingClientRect();
-    const width = Math.max(300, Math.floor(rect.width || 960));
-    const height = Math.max(220, Math.floor(rect.height || 600));
+    const rect = canvas.getBoundingClientRect();
+    const width = Math.max(200, Math.floor(rect.width || stageEl.clientWidth || 340));
+    const height = Math.max(200, Math.floor(rect.height || stageEl.clientHeight || 340));
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
 
-    state.width = width;
-    state.height = height;
-    canvas.width = width * dpr;
-    canvas.height = height * dpr;
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    if (state.width !== width || state.height !== height || canvas.width !== width * dpr || canvas.height !== height * dpr) {
+      state.width = width;
+      state.height = height;
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    syncBodyScrollLock();
   }
 
   function updateDetailCard(index) {
@@ -96,13 +103,9 @@ export function initNineFunctionsJourney(rootEl, functionsData) {
       storyLinkEl.setAttribute('href', fn.href || '#');
       storyLinkEl.textContent = `Open Function ${fn.num} Interactive Story →`;
     }
-
-    stepPills.forEach((pill) => {
-      const idx = Number(pill.getAttribute('data-fn-index'));
-      const isCurrent = state.mode === 'detail' && idx === index;
-      pill.setAttribute('aria-pressed', String(isCurrent));
-      pill.classList.toggle('is-active', isCurrent);
-    });
+    if (detailOverlay) {
+      detailOverlay.scrollTop = 0;
+    }
   }
 
   function syncOverlayVisibility() {
@@ -112,7 +115,8 @@ export function initNineFunctionsJourney(rootEl, functionsData) {
       detailOverlay.hidden = state.mode !== 'detail';
       detailOverlay.classList.toggle('is-visible', isDetail);
     }
-    // Re-measure canvas height after mobile `.is-detail-mode` CSS changes height
+    syncBodyScrollLock();
+    resize();
     requestAnimationFrame(resize);
   }
 
@@ -120,27 +124,24 @@ export function initNineFunctionsJourney(rootEl, functionsData) {
     const { width, height } = state;
     const isNarrow = width < 680;
     const cx = width / 2;
-    const cy = height / 2 + (isNarrow ? 12 : 8);
+    const cy = height / 2 + (isNarrow ? 10 : 8);
 
-    // On narrow phones, give vertical room and keep horizontal radius compact enough for clean 2-line radial labels
-    const rx = isNarrow
-      ? Math.max(68, Math.min(width * 0.23, 108))
+    // True 1:1 circle on both desktop and mobile (never elongated into an oval)
+    const r = isNarrow
+      ? Math.max(66, Math.min(width * 0.23, height * 0.30, 118))
       : Math.min(width * 0.29, height * 0.34, 215);
-    const ry = isNarrow
-      ? Math.max(118, Math.min(height * 0.34, 162))
-      : rx;
 
     const nodes = functionsData.map((fn, idx) => {
       const angle = -Math.PI / 2 + (idx / functionsData.length) * Math.PI * 2;
-      const x = cx + Math.cos(angle) * rx;
-      const y = cy + Math.sin(angle) * ry;
+      const x = cx + Math.cos(angle) * r;
+      const y = cy + Math.sin(angle) * r;
       return {
         key: `circle-${fn.num}`,
         index: idx,
         x,
         y,
         angle,
-        radius: isNarrow ? 17 : 27,
+        radius: isNarrow ? 16 : 27,
         hash: getHash(`fn-${fn.num}`),
         data: fn,
       };
@@ -153,7 +154,7 @@ export function initNineFunctionsJourney(rootEl, functionsData) {
         source: src,
         target: tgt,
         primary: true,
-        bias: isNarrow ? 10 : 14,
+        bias: isNarrow ? 9 : 14,
         hash: getHash(`c-edge-${idx}`),
       };
     });
@@ -170,15 +171,17 @@ export function initNineFunctionsJourney(rootEl, functionsData) {
       });
     }
 
-    return { cx, cy, rx, ry, isNarrow, nodes, edges };
+    return { cx, cy, r, isNarrow, nodes, edges };
   }
 
   function getDetailLayout() {
     const { width, height } = state;
-    const isStacked = width < 900;
-    const cx = isStacked ? width * 0.5 : width * 0.24;
-    const cy = isStacked ? height * 0.46 : height * 0.5;
-    const orbit = isStacked ? Math.min(width * 0.26, height * 0.33, 84) : Math.min(width * 0.16, height * 0.28, 138);
+    const isMobileSheet = window.innerWidth <= 900 || width < 680;
+    const cx = isMobileSheet ? width * 0.5 : width * 0.24;
+    const cy = isMobileSheet ? height * 0.47 : height * 0.5;
+    const orbit = isMobileSheet
+      ? Math.min(width, height) * 0.27
+      : Math.min(width * 0.16, height * 0.28, 138);
 
     const fn = functionsData[state.selectedIndex] || functionsData[0];
     const centerNode = {
@@ -186,16 +189,16 @@ export function initNineFunctionsJourney(rootEl, functionsData) {
       index: state.selectedIndex,
       x: cx,
       y: cy,
-      radius: isStacked ? 26 : 38,
+      radius: isMobileSheet ? 28 : 38,
       hash: getHash(`detail-${fn.num}`),
       isCenter: true,
       subLabel: `FUNCTION ${fn.num}`,
-      title: isStacked ? fn.name : fn.name,
+      title: fn.name,
     };
 
     const subSpecs = [
       { key: 'question', angle: -Math.PI * 0.72, subLabel: 'QUESTION', title: 'What It Asks' },
-      { key: 'scales', angle: Math.PI * 0.72, subLabel: '3 SCALES', title: isStacked ? 'All Scales' : 'Personal · Family · Business' },
+      { key: 'scales', angle: Math.PI * 0.72, subLabel: '3 SCALES', title: isMobileSheet ? 'All Scales' : 'Personal · Family · Business' },
       { key: 'flow', angle: 0, subLabel: 'NEXT STEP', title: 'Feeds Cycle' },
     ];
 
@@ -204,7 +207,7 @@ export function initNineFunctionsJourney(rootEl, functionsData) {
       x: cx + Math.cos(spec.angle) * orbit,
       y: cy + Math.sin(spec.angle) * orbit,
       angle: spec.angle,
-      radius: isStacked ? 14 : 20,
+      radius: isMobileSheet ? 15 : 20,
       hash: getHash(spec.key),
       isCenter: false,
       subLabel: spec.subLabel,
@@ -232,7 +235,7 @@ export function initNineFunctionsJourney(rootEl, functionsData) {
       });
     }
 
-    return { cx, cy, isStacked, nodes, edges };
+    return { cx, cy, isMobileSheet, nodes, edges };
   }
 
   function startFractalTransition(targetMode, targetIndex) {
@@ -248,9 +251,10 @@ export function initNineFunctionsJourney(rootEl, functionsData) {
         : { x: state.width / 2, y: state.height / 2 };
 
     if (state.mode === 'detail' && targetMode === 'detail') {
+      const isMobileSheet = window.innerWidth <= 900 || state.width < 680;
       state.warpAnchor = {
-        x: state.width < 900 ? state.width * 0.5 : state.width * 0.24,
-        y: state.width < 900 ? state.height * 0.46 : state.height * 0.5,
+        x: isMobileSheet ? state.width * 0.5 : state.width * 0.24,
+        y: isMobileSheet ? state.height * 0.47 : state.height * 0.5,
       };
     }
 
@@ -414,7 +418,6 @@ export function initNineFunctionsJourney(rootEl, functionsData) {
     ctx.shadowBlur = 0;
 
     if (node.data && isCompact) {
-      // Crisp number right inside the orb on mobile
       ctx.font = '700 8.5px system-ui, -apple-system, sans-serif';
       ctx.fillStyle = '#15243a';
       ctx.textAlign = 'center';
@@ -442,13 +445,12 @@ export function initNineFunctionsJourney(rootEl, functionsData) {
         ctx.textAlign = 'center';
         ctx.font = `700 ${isCompact ? 9.5 : 11}px system-ui, -apple-system, sans-serif`;
         ctx.fillStyle = CORE9_COLORS.goldCore;
-        ctx.fillText(isCompact ? `01` : numLabel, x, y - haloR - (isCompact ? 22 : 28));
+        ctx.fillText(isCompact ? '01' : numLabel, x, y - haloR - (isCompact ? 22 : 28));
 
         ctx.font = `600 ${isCompact ? 12 : 14}px Georgia, "Times New Roman", serif`;
         ctx.fillStyle = '#ffffff';
         ctx.fillText(nameLabel, x, y - haloR - (isCompact ? 9 : 12));
       } else if (isCompact) {
-        // Mobile radial short-wrapped labels cleanly spaced without side-edge clipping
         const onRight = cosA >= 0;
         const pad = haloR + 7;
         const lx = onRight ? x + pad : x - pad;
@@ -480,12 +482,12 @@ export function initNineFunctionsJourney(rootEl, functionsData) {
     } else if (node.subLabel) {
       ctx.textBaseline = 'middle';
       ctx.textAlign = 'center';
-      ctx.font = `700 ${isCompact ? 8.5 : 10}px system-ui, -apple-system, sans-serif`;
+      ctx.font = `700 ${isCompact ? 9 : 10}px system-ui, -apple-system, sans-serif`;
       ctx.fillStyle = CORE9_COLORS.goldCore;
-      ctx.fillText(node.subLabel, x, y + haloR + (isCompact ? 10 : 14));
-      ctx.font = `600 ${isCompact ? 11 : 13}px Georgia, "Times New Roman", serif`;
+      ctx.fillText(node.subLabel, x, y + haloR + (isCompact ? 11 : 14));
+      ctx.font = `600 ${isCompact ? 11.5 : 13}px Georgia, "Times New Roman", serif`;
       ctx.fillStyle = '#ffffff';
-      ctx.fillText(node.title, x, y + haloR + (isCompact ? 23 : 30));
+      ctx.fillText(node.title, x, y + haloR + (isCompact ? 25 : 30));
     }
   }
 
@@ -552,19 +554,17 @@ export function initNineFunctionsJourney(rootEl, functionsData) {
     ctx.globalAlpha = sceneAlpha;
 
     if (state.mode === 'circle') {
-      const { cx, cy, rx, ry, isNarrow, nodes, edges } = getCircleLayout();
+      const { cx, cy, r, isNarrow, nodes, edges } = getCircleLayout();
       const pivotX = state.isWarping ? state.warpAnchor.x : cx;
       const pivotY = state.isWarping ? state.warpAnchor.y : cy;
 
       ctx.strokeStyle = 'rgba(215, 188, 140, 0.14)';
       ctx.lineWidth = 1;
       ctx.beginPath();
-      ctx.ellipse(
+      ctx.arc(
         pivotX + (cx - pivotX) * scaleFactor,
         pivotY + (cy - pivotY) * scaleFactor,
-        rx * scaleFactor,
-        ry * scaleFactor,
-        0,
+        r * scaleFactor,
         0,
         Math.PI * 2
       );
@@ -573,17 +573,17 @@ export function initNineFunctionsJourney(rootEl, functionsData) {
       if (!state.isWarping) {
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
-        ctx.font = `700 ${isNarrow ? 9 : 10.5}px system-ui, -apple-system, sans-serif`;
+        ctx.font = `700 ${isNarrow ? 8.5 : 10.5}px system-ui, -apple-system, sans-serif`;
         ctx.fillStyle = 'rgba(215, 188, 140, 0.78)';
         ctx.fillText('CORE9 RESOLVE™', cx, cy - (isNarrow ? 12 : 13));
 
-        ctx.font = `italic 600 ${isNarrow ? 13.5 : 19}px Georgia, "Times New Roman", serif`;
+        ctx.font = `italic 600 ${isNarrow ? 13 : 19}px Georgia, "Times New Roman", serif`;
         ctx.fillStyle = '#ffffff';
         ctx.fillText('Circle of Nine', cx, cy + (isNarrow ? 4 : 8));
 
         ctx.font = `${isNarrow ? 9.5 : 12}px system-ui, -apple-system, sans-serif`;
         ctx.fillStyle = 'rgba(207, 215, 227, 0.72)';
-        ctx.fillText(isNarrow ? 'Tap any point' : 'Select a point to fractal in', cx, cy + (isNarrow ? 21 : 30));
+        ctx.fillText(isNarrow ? 'Tap any point' : 'Select a point to fractal in', cx, cy + (isNarrow ? 20 : 30));
       }
 
       drawTendrilsAndSpores(edges, time, scaleFactor, pivotX, pivotY);
@@ -594,13 +594,13 @@ export function initNineFunctionsJourney(rootEl, functionsData) {
         drawNode(node, time, nx, ny, scaleFactor, !state.isWarping, isNarrow);
       });
     } else {
-      const { cx, cy, isStacked, nodes, edges } = getDetailLayout();
+      const { cx, cy, isMobileSheet, nodes, edges } = getDetailLayout();
       drawTendrilsAndSpores(edges, time, scaleFactor, cx, cy);
 
       nodes.forEach((node) => {
         const nx = cx + (node.x - cx) * scaleFactor;
         const ny = cy + (node.y - cy) * scaleFactor;
-        drawNode(node, time, nx, ny, scaleFactor, !state.isWarping, isStacked);
+        drawNode(node, time, nx, ny, scaleFactor, !state.isWarping, isMobileSheet);
       });
     }
 
@@ -668,14 +668,11 @@ export function initNineFunctionsJourney(rootEl, functionsData) {
     startFractalTransition('detail', state.selectedIndex + 1);
   });
 
-  stepPills.forEach((pill) => {
-    pill.addEventListener('click', () => {
-      const idx = Number(pill.getAttribute('data-fn-index'));
-      if (!Number.isNaN(idx)) {
-        startFractalTransition('detail', idx);
-      }
-    });
-  });
+  let resizeObserver = null;
+  if (typeof ResizeObserver !== 'undefined') {
+    resizeObserver = new ResizeObserver(() => resize());
+    resizeObserver.observe(canvas);
+  }
 
   window.addEventListener('resize', resize);
   resize();
@@ -685,6 +682,8 @@ export function initNineFunctionsJourney(rootEl, functionsData) {
 
   return () => {
     window.removeEventListener('resize', resize);
+    resizeObserver?.disconnect();
+    document.documentElement.classList.remove('c9-modal-open');
     cancelAnimationFrame(frameId);
   };
 }
