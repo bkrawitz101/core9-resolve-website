@@ -188,11 +188,10 @@ import home from '../data/pages/home.json';
         class="function-grid"
         data-editable="array"
         data-prop="cards"
-        data-component="reflection-card"
         data-direction="row"
       >
         {home.cards.map((card) => (
-          <article class="test-card" data-editable="array-item" data-component="reflection-card">
+          <article class="test-card" data-editable="array-item">
             <ReflectionCard {...card} />
           </article>
         ))}

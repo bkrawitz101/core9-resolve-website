@@ -99,14 +99,6 @@ const navItems: NavLink[] = navMode === 'phase2' ? site.phase2_nav : site.primar
     ))}
     {footerExtra && <p>{footerExtra}</p>}
   </footer>
-
-  <script>
-    if (window.inEditorMode) {
-      import('../scripts/register-components.js').catch((err) => {
-        console.warn('CloudCannon component registration failed:', err);
-      });
-    }
-  </script>
 </body>
 </html>
 
