@@ -188,12 +188,18 @@ _inputs:
   summary:
     type: textarea
     label: Function Summary
+  explanation:
+    type: textarea
+    label: Deeper Explanation (shown when fractaled in)
+  scales_note:
+    type: textarea
+    label: Three Scales Note (Personal · Family · Business)
   flow_label:
     type: text
-    label: Flow Connection Pill Label
+    label: Cycle Connection Label
   role_tag:
     type: text
-    label: Orbital Tag (e.g. FUNCTION 01 · VISION)
+    label: Function Subtitle Tag (e.g. 01 · VISION & DIRECTION)
   episode_number:
     type: number
     label: Episode #

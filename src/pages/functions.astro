@@ -6,350 +6,351 @@ import page from '../data/pages/functions.json';
   title={page.page_title}
   currentHref="/functions.html"
   navMode="phase2"
-  bodyBackground="#020403"
-  headerMaxWidth={1280}
-  footerExtra="Interactive system map · Explore any function story in depth."
+  bodyBackground="#f7f6f3"
+  headerMaxWidth={1120}
+  footerExtra="CORE9 RESOLVE™ · Interactive Circle of Nine."
 >
   <style slot="head">
-    .journey-shell {
-      position: relative;
-      background: #020403;
-      color: #f4f4f5;
-      border-bottom: 1px solid rgba(52, 211, 153, 0.14);
+    main {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: clamp(32px, 5vw, 52px) 22px 76px;
+      color: #172338;
     }
-    .canvas-stage {
+    .page-intro {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 28px;
+    }
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      font-size: .78rem;
+      color: #8d6b39;
+      font-weight: 650;
+      margin: 0 0 8px;
+    }
+    h1 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.9rem, 4vw, 2.85rem);
+      line-height: 1.15;
+      margin: 0 0 12px;
+      color: #15243a;
+    }
+    .page-intro p.lead {
+      font-size: 1.06rem;
+      color: #44505e;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* Fixed Circle of Nine Stage (CORE9 midnight navy + champagne gold) */
+    .circle-stage {
       position: relative;
-      width: 100%;
-      height: clamp(540px, 76vh, 760px);
+      background: #15243a;
+      border: 1px solid rgba(183, 154, 105, 0.35);
+      border-top: 3px solid #b79a69;
+      border-radius: 8px;
+      height: clamp(500px, 68vh, 630px);
       overflow: hidden;
-      background: #020403;
+      box-shadow: 0 20px 44px rgba(21, 36, 58, 0.14);
     }
     #flow-canvas {
       display: block;
       width: 100%;
       height: 100%;
-      touch-action: none;
     }
-    .hud-header {
+
+    /* Fractaled-in Explanation Overlay (aligned cleanly on right half on desktop) */
+    .fractal-detail-panel {
       position: absolute;
-      top: 20px;
-      left: 20px;
-      z-index: 10;
-      max-width: 420px;
-      padding: 16px 18px;
-      border-radius: 16px;
-      background: rgba(9, 9, 11, 0.78);
-      border: 1px solid rgba(52, 211, 153, 0.22);
-      backdrop-filter: blur(12px);
-      pointer-events: auto;
+      top: 24px;
+      right: 24px;
+      bottom: 24px;
+      width: min(510px, 52%);
+      background: #ffffff;
+      border: 1px solid #e4dfd5;
+      border-top: 4px solid #b79a69;
+      border-radius: 6px;
+      padding: clamp(22px, 3vw, 32px);
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+      box-shadow: 0 18px 40px rgba(10, 20, 34, 0.32);
+      opacity: 0;
+      transform: scale(0.96);
+      transition: opacity 240ms ease, transform 240ms ease;
     }
-    .hud-eyebrow {
-      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-      color: #34d399;
-      margin: 0 0 6px;
+    .fractal-detail-panel[hidden] {
+      display: none;
     }
-    .hud-header h1 {
-      font-size: clamp(1.25rem, 2.3vw, 1.75rem);
-      line-height: 1.18;
-      margin: 0 0 8px;
-      color: #ffffff;
+    .fractal-detail-panel.is-visible {
+      opacity: 1;
+      transform: scale(1);
     }
-    .hud-header p {
-      margin: 0;
-      font-size: .88rem;
-      line-height: 1.5;
-      color: #a1a1aa;
+    .detail-top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
     }
-    .inspector-card {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      z-index: 10;
-      width: min(370px, calc(100vw - 40px));
-      padding: 18px 20px;
-      border-radius: 18px;
-      background: rgba(9, 9, 11, 0.84);
-      border: 1px solid rgba(52, 211, 153, 0.26);
-      box-shadow: 0 0 40px rgba(16, 185, 129, 0.12);
-      backdrop-filter: blur(14px);
-    }
-    .inspector-tag {
-      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-      font-size: 11px;
+    .detail-tag {
+      font-size: .75rem;
       font-weight: 700;
       letter-spacing: .14em;
       text-transform: uppercase;
-      color: #6ee7b7;
-      margin-bottom: 4px;
+      color: #8d6b39;
     }
-    .inspector-card h2 {
-      font-size: 1.25rem;
-      margin: 0 0 8px;
-      color: #ffffff;
-      line-height: 1.25;
+    .btn-back {
+      background: transparent;
+      border: 1px solid #d7d3ca;
+      color: #15243a;
+      border-radius: 3px;
+      padding: 6px 12px;
+      font-size: .82rem;
+      font-weight: 650;
+      cursor: pointer;
     }
-    .inspector-question {
-      font-size: .95rem;
-      font-weight: 600;
-      color: #e4e4e7;
+    .btn-back:hover {
+      border-color: #b79a69;
+      background: #f3eee3;
+    }
+    .fractal-detail-panel h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.45rem, 2.5vw, 1.9rem);
+      line-height: 1.2;
+      color: #15243a;
       margin: 0 0 8px;
+    }
+    .detail-question {
+      font-family: Georgia, "Times New Roman", serif;
+      font-style: italic;
+      font-size: 1.08rem;
+      color: #806a4a;
+      margin: 0 0 14px;
       line-height: 1.4;
     }
-    .inspector-summary {
-      font-size: .86rem;
-      color: #a1a1aa;
+    .detail-copy {
+      font-size: .97rem;
+      color: #172338;
+      line-height: 1.62;
       margin: 0 0 12px;
+    }
+    .detail-copy.muted {
+      color: #44505e;
+    }
+    .detail-scales {
+      background: #f7f6f3;
+      border-left: 3px solid #b79a69;
+      padding: 10px 14px;
+      font-size: .88rem;
+      color: #283442;
+      margin: 4px 0 14px;
       line-height: 1.5;
     }
-    .inspector-flow {
-      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-      font-size: 11px;
-      color: #67e8f9;
-      background: rgba(34, 211, 238, 0.08);
-      border: 1px solid rgba(34, 211, 238, 0.22);
-      border-radius: 8px;
-      padding: 6px 10px;
-      margin-bottom: 14px;
+    .detail-flow-badge {
+      display: inline-block;
+      align-self: flex-start;
+      background: #f3eee3;
+      border: 1px solid #dfd3bd;
+      border-radius: 999px;
+      padding: 4px 12px;
+      font-size: .8rem;
+      font-weight: 650;
+      color: #15243a;
+      margin-bottom: 18px;
     }
-    .inspector-actions {
+    .detail-actions {
+      margin-top: auto;
+      padding-top: 14px;
+      border-top: 1px solid #ebe6dc;
       display: flex;
       gap: 8px;
       flex-wrap: wrap;
       align-items: center;
     }
-    .btn-ghost {
-      background: rgba(24, 24, 27, 0.9);
-      color: #d4d4d8;
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      border-radius: 10px;
-      padding: 8px 11px;
-      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-      font-size: 12px;
-      font-weight: 600;
+    .btn-step {
+      background: #f7f6f3;
+      border: 1px solid #d7d3ca;
+      color: #15243a;
+      border-radius: 3px;
+      padding: 10px 13px;
+      font-size: .86rem;
+      font-weight: 650;
       cursor: pointer;
     }
-    .btn-ghost:hover {
-      border-color: rgba(52, 211, 153, 0.45);
-      color: #6ee7b7;
+    .btn-step:hover {
+      border-color: #b79a69;
+      background: #f3eee3;
     }
-    .btn-primary-glow {
+    .button {
       flex: 1 1 auto;
       text-align: center;
+      display: inline-block;
+      padding: 11px 18px;
+      border: 1px solid #b79a69;
+      background: #b79a69;
+      color: #15243a;
       text-decoration: none;
-      background: #10b981;
-      color: #020403;
-      border-radius: 10px;
-      padding: 9px 14px;
-      font-size: 13px;
-      font-weight: 700;
-      box-shadow: 0 0 18px rgba(16, 185, 129, 0.35);
+      font-weight: 650;
+      font-size: .92rem;
+      border-radius: 3px;
     }
-    .btn-primary-glow:hover {
-      background: #34d399;
+    .button:hover,
+    .button:focus-visible {
+      background: #a58856;
+      border-color: #a58856;
     }
-    .cam-controls {
-      position: absolute;
-      bottom: 66px;
-      left: 20px;
-      z-index: 10;
+
+    /* Quick Step Strip below stage */
+    .step-strip {
       display: flex;
-      gap: 6px;
       flex-wrap: wrap;
-      padding: 6px;
-      border-radius: 12px;
-      background: rgba(9, 9, 11, 0.82);
-      border: 1px solid rgba(52, 211, 153, 0.22);
-      backdrop-filter: blur(10px);
-    }
-    .cam-btn {
-      background: transparent;
-      color: #6ee7b7;
-      border: 1px solid transparent;
-      border-radius: 8px;
-      padding: 6px 10px;
-      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-      font-size: 12px;
-      font-weight: 600;
-      cursor: pointer;
-    }
-    .cam-btn:hover {
-      background: rgba(16, 185, 129, 0.14);
-    }
-    .cam-btn.is-active {
-      background: rgba(16, 185, 129, 0.2);
-      border-color: rgba(52, 211, 153, 0.4);
-      color: #a7f3d0;
-    }
-    .orbit-hint {
-      position: absolute;
-      bottom: 68px;
-      right: 20px;
-      z-index: 10;
-      padding: 6px 11px;
-      border-radius: 10px;
-      background: rgba(9, 9, 11, 0.8);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-      font-size: 11px;
-      color: #a1a1aa;
-      pointer-events: none;
-    }
-    .journey-strip {
-      position: relative;
-      z-index: 10;
-      display: flex;
-      gap: 8px;
-      overflow-x: auto;
-      padding: 12px 20px;
-      background: rgba(9, 9, 11, 0.96);
-      border-top: 1px solid rgba(52, 211, 153, 0.16);
       justify-content: center;
-      flex-wrap: wrap;
+      gap: 8px;
+      margin: 18px 0 38px;
     }
-    .journey-pill {
+    .step-pill {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 6px 11px;
+      padding: 7px 12px;
       border-radius: 999px;
-      background: rgba(24, 24, 27, 0.85);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      color: #d4d4d8;
-      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-      font-size: 11.5px;
+      background: #ffffff;
+      border: 1px solid #dfd3bd;
+      color: #15243a;
+      font-size: .84rem;
+      font-weight: 600;
       cursor: pointer;
-      white-space: nowrap;
     }
-    .journey-pill span {
-      color: #34d399;
+    .step-pill span {
+      color: #8d6b39;
       font-weight: 700;
     }
-    .journey-pill:hover {
-      border-color: rgba(52, 211, 153, 0.45);
+    .step-pill:hover {
+      border-color: #b79a69;
+      background: #f3eee3;
+    }
+    .step-pill.is-active {
+      background: #15243a;
+      border-color: #15243a;
       color: #ffffff;
     }
-    .journey-pill.is-active {
-      background: rgba(16, 185, 129, 0.2);
-      border-color: #34d399;
-      color: #ffffff;
-      box-shadow: 0 0 14px rgba(16, 185, 129, 0.25);
+    .step-pill.is-active span {
+      color: #d7bc8c;
     }
 
-    /* Editorial Reference Index below canvas (also preserves CloudCannon editable array) */
-    .reference-band {
-      background: #090d12;
-      color: #e4e4e7;
-      padding: 48px 24px 72px;
-    }
-    .reference-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+    /* Editable Reference Grid (CORE9 card aesthetic) */
     .notice-bar {
-      background: rgba(16, 185, 129, 0.08);
-      border-left: 3px solid #34d399;
-      padding: 12px 16px;
-      border-radius: 0 8px 8px 0;
-      font-size: .92rem;
-      color: #cbd5e1;
-      margin-bottom: 28px;
+      background: #eee9df;
+      border-left: 3px solid #b79a69;
+      padding: 12px 18px;
+      font-size: .94rem;
+      color: #283442;
+      max-width: 780px;
+      margin: 0 auto 28px;
     }
     .grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 16px;
-      margin-bottom: 28px;
+      margin-bottom: 32px;
     }
     .tile {
-      background: rgba(18, 23, 30, 0.9);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-top: 2px solid rgba(52, 211, 153, 0.55);
-      padding: 20px;
       display: flex;
       flex-direction: column;
-      gap: 8px;
-      border-radius: 10px;
+      border: 1px solid #e4dfd5;
+      border-top: 3px solid #b79a69;
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 6px;
+      box-shadow: 0 12px 28px rgba(21, 36, 58, 0.06);
       text-decoration: none;
       color: inherit;
     }
-    .tile:hover {
-      border-color: rgba(52, 211, 153, 0.5);
-      box-shadow: 0 10px 28px rgba(16, 185, 129, 0.12);
+    .tile:hover,
+    .tile:focus-visible {
+      border-color: #b79a69;
+      box-shadow: 0 14px 32px rgba(21, 36, 58, 0.12);
     }
-    .tile-top {
+    .tile-meta {
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 8px;
-      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-      font-size: 11px;
+      margin-bottom: 6px;
     }
     .num {
-      color: #34d399;
+      font-size: .78rem;
       font-weight: 700;
+      color: #8d6b39;
+      letter-spacing: .08em;
     }
-    .flow-badge {
-      color: #67e8f9;
-      background: rgba(34, 211, 238, 0.1);
-      padding: 2px 8px;
+    .flow-pill {
+      font-size: .72rem;
+      font-weight: 650;
+      color: #15243a;
+      background: #f3eee3;
+      border: 1px solid #dfd3bd;
       border-radius: 999px;
+      padding: 2px 9px;
     }
     .name {
-      font-size: 1.15rem;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.18rem;
       font-weight: 700;
-      color: #ffffff;
+      color: #15243a;
+      margin-bottom: 6px;
     }
     .tile-q {
-      font-size: .92rem;
-      color: #cbd5e1;
-      font-weight: 600;
+      font-style: italic;
+      font-size: .9rem;
+      color: #806a4a;
+      margin-bottom: 8px;
     }
     .tile-sum {
-      font-size: .85rem;
-      color: #94a3b8;
-      line-height: 1.5;
+      font-size: .9rem;
+      color: #44505e;
+      line-height: 1.55;
+      margin-bottom: 14px;
     }
     .open {
       margin-top: auto;
-      padding-top: 8px;
-      font-size: .86rem;
-      color: #6ee7b7;
+      font-size: .88rem;
       font-weight: 650;
+      color: #15243a;
+      text-decoration: underline;
+      text-underline-offset: 3px;
     }
-    .closing-note {
-      color: #94a3b8;
-      font-size: .95rem;
-      max-width: 740px;
+    .closing {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto;
+      color: #44505e;
+      font-size: .98rem;
     }
-    @media (max-width: 960px) {
-      .canvas-stage {
+
+    @media (max-width: 900px) {
+      .circle-stage {
+        height: auto;
+        min-height: 460px;
+        display: flex;
+        flex-direction: column;
+      }
+      .circle-stage #flow-canvas {
         height: 460px;
+        flex: 0 0 auto;
       }
-      .hud-header {
-        position: static;
-        max-width: none;
-        border-radius: 0;
-        border-left: 0;
-        border-right: 0;
-        border-top: 0;
+      .circle-stage.is-detail-mode #flow-canvas {
+        height: 256px;
       }
-      .inspector-card {
+      .fractal-detail-panel {
         position: static;
         width: auto;
-        border-radius: 0;
-        border-left: 0;
-        border-right: 0;
-      }
-      .cam-controls {
-        bottom: 14px;
-        left: 14px;
-      }
-      .orbit-hint {
-        display: none;
+        margin: 0 14px 14px;
+        border-radius: 6px;
       }
       .grid {
         grid-template-columns: 1fr;
@@ -358,83 +359,72 @@ import page from '../data/pages/functions.json';
   </style>
 
   <main id="nine-functions-root">
-    <section class="journey-shell" aria-label="Interactive Nine Functions Orbital Flow">
-      <div class="hud-header">
-        <p class="hud-eyebrow" data-editable="text" data-prop="eyebrow">{page.eyebrow}</p>
-        <h1 data-editable="text" data-prop="heading">{page.heading}</h1>
-        <p data-editable="text" data-prop="intro">{page.intro}</p>
-      </div>
+    <div class="page-intro">
+      <p class="eyebrow" data-editable="text" data-prop="eyebrow">{page.eyebrow}</p>
+      <h1 data-editable="text" data-prop="heading">{page.heading}</h1>
+      <p class="lead" data-editable="text" data-prop="intro">{page.intro}</p>
+    </div>
 
-      <div class="canvas-stage">
-        <canvas id="flow-canvas" aria-label="3D bioluminescent orbital map of the Nine Functions"></canvas>
+    <section id="circle-stage" class="circle-stage" aria-label="Interactive Circle of Nine">
+      <canvas id="flow-canvas" aria-label="Circle of Nine — select a function to fractal in"></canvas>
 
-        <div class="cam-controls" role="toolbar" aria-label="Canvas camera controls">
-          <button type="button" id="btn-zoom-in" class="cam-btn" title="Zoom In">+</button>
-          <button type="button" id="btn-zoom-out" class="cam-btn" title="Zoom Out">−</button>
-          <button type="button" id="btn-reset-cam" class="cam-btn" title="Reset Camera">Reset</button>
-          <button type="button" id="btn-toggle-rotate" class="cam-btn is-active" aria-pressed="true" title="Toggle Auto-Rotate">Auto-Orbit</button>
-          <button type="button" id="btn-toggle-mode" class="cam-btn" title="Switch 2D / 3D">2D View</button>
+      <aside id="fractal-detail-panel" class="fractal-detail-panel" hidden aria-live="polite">
+        <div class="detail-top-bar">
+          <span id="detail-tag" class="detail-tag">{page.tiles[0].role_tag}</span>
+          <button type="button" id="btn-back-circle" class="btn-back">← Back to Circle of Nine</button>
         </div>
 
-        <div class="orbit-hint">Drag to orbit 3D · Scroll to zoom · Click any node</div>
-      </div>
+        <h2 id="detail-title">{page.tiles[0].num}. {page.tiles[0].name}</h2>
+        <p id="detail-question" class="detail-question">{page.tiles[0].question}</p>
+        <p id="detail-summary" class="detail-copy">{page.tiles[0].summary}</p>
+        <p id="detail-explanation" class="detail-copy muted">{page.tiles[0].explanation}</p>
+        <div id="detail-scales" class="detail-scales">{page.tiles[0].scales_note}</div>
+        <div id="detail-flow" class="detail-flow-badge">{page.tiles[0].flow_label}</div>
 
-      <aside class="inspector-card" aria-live="polite">
-        <div id="inspector-tag" class="inspector-tag">{page.tiles[0].role_tag}</div>
-        <h2 id="inspector-title">{page.tiles[0].num}. {page.tiles[0].name}</h2>
-        <p id="inspector-question" class="inspector-question">{page.tiles[0].question}</p>
-        <p id="inspector-summary" class="inspector-summary">{page.tiles[0].summary}</p>
-        <div id="inspector-flow" class="inspector-flow">
-          Flows to {page.tiles[1].num}. {page.tiles[1].name} ({page.tiles[0].flow_label})
-        </div>
-        <div class="inspector-actions">
-          <button type="button" id="btn-prev-fn" class="btn-ghost">← Prev</button>
-          <button type="button" id="btn-next-fn" class="btn-ghost">Next →</button>
-          <a id="inspector-story-link" class="btn-primary-glow" href={page.tiles[0].href} target="_blank" rel="noopener noreferrer">
-            Open Function {page.tiles[0].num} Story →
+        <div class="detail-actions">
+          <button type="button" id="btn-prev-fn" class="btn-step">← Prev</button>
+          <button type="button" id="btn-next-fn" class="btn-step">Next →</button>
+          <a id="detail-story-link" class="button" href={page.tiles[0].href} target="_blank" rel="noopener noreferrer">
+            Open Function {page.tiles[0].num} Interactive Story →
           </a>
         </div>
       </aside>
-
-      <nav class="journey-strip" aria-label="Jump to function step">
-        {page.tiles.map((tile, idx) => (
-          <button
-            type="button"
-            class={`journey-pill${idx === 0 ? ' is-active' : ''}`}
-            data-fn-index={idx}
-            aria-pressed={idx === 0 ? 'true' : 'false'}
-          >
-            <span>{tile.num}</span> {tile.name}
-          </button>
-        ))}
-      </nav>
     </section>
 
-    <section class="reference-band">
-      <div class="reference-inner">
-        <div class="notice-bar">
-          <strong data-editable="text" data-prop="notice_prefix">{page.notice_prefix}</strong>
-          <span data-editable="text" data-prop="notice_body">{page.notice_body}</span>
-        </div>
+    <nav class="step-strip" aria-label="Select a function on the circle">
+      {page.tiles.map((tile, idx) => (
+        <button
+          type="button"
+          class="step-pill"
+          data-fn-index={idx}
+          aria-pressed="false"
+        >
+          <span>{tile.num}</span> {tile.name}
+        </button>
+      ))}
+    </nav>
 
-        <div class="grid" data-editable="array" data-prop="tiles" data-direction="row">
-          {page.tiles.map((tile) => (
-            <a class="tile" href={tile.href} target="_blank" rel="noopener noreferrer" data-editable="array-item">
-              <div class="tile-top">
-                <span class="num" data-editable="text" data-prop="num">{tile.num}</span>
-                <span class="flow-badge" data-editable="text" data-prop="flow_label">{tile.flow_label}</span>
-              </div>
-              <span class="name" data-editable="text" data-prop="name">{tile.name}</span>
-              <span class="tile-q" data-editable="text" data-prop="question">{tile.question}</span>
-              <span class="tile-sum" data-editable="text" data-prop="summary">{tile.summary}</span>
-              <span class="open">Open Interactive Story →</span>
-            </a>
-          ))}
-        </div>
+    <aside class="notice-bar">
+      <strong data-editable="text" data-prop="notice_prefix">{page.notice_prefix}</strong>
+      <span data-editable="text" data-prop="notice_body">{page.notice_body}</span>
+    </aside>
 
-        <p class="closing-note" data-editable="text" data-prop="closing">{page.closing}</p>
-      </div>
-    </section>
+    <div class="grid" data-editable="array" data-prop="tiles" data-direction="row">
+      {page.tiles.map((tile) => (
+        <a class="tile" href={tile.href} target="_blank" rel="noopener noreferrer" data-editable="array-item">
+          <div class="tile-meta">
+            <span class="num">FUNCTION <span data-editable="text" data-prop="num">{tile.num}</span></span>
+            <span class="flow-pill" data-editable="text" data-prop="flow_label">{tile.flow_label}</span>
+          </div>
+          <span class="name" data-editable="text" data-prop="name">{tile.name}</span>
+          <span class="tile-q" data-editable="text" data-prop="question">{tile.question}</span>
+          <span class="tile-sum" data-editable="text" data-prop="summary">{tile.summary}</span>
+          <span class="open">Open Interactive Story →</span>
+        </a>
+      ))}
+    </div>
+
+    <p class="closing" data-editable="text" data-prop="closing">{page.closing}</p>
   </main>
 
   <script id="nine-functions-data" type="application/json" set:html={JSON.stringify(page.tiles)} />
