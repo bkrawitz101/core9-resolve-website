@@ -7,6 +7,18 @@ function getHash(str) {
   return hash;
 }
 
+function splitMobileLabel(name) {
+  if (!name) return [''];
+  if (name.includes('&')) {
+    const idx = name.indexOf('&');
+    return [name.slice(0, idx + 1).trim(), name.slice(idx + 1).trim()].filter(Boolean);
+  }
+  const words = name.trim().split(/\s+/);
+  if (words.length <= 1 || name.length <= 12) return [name];
+  const mid = Math.ceil(words.length / 2);
+  return [words.slice(0, mid).join(' '), words.slice(mid).join(' ')];
+}
+
 const CORE9_COLORS = {
   bgTop: '#132238',
   bgBottom: '#17263d',
@@ -14,7 +26,6 @@ const CORE9_COLORS = {
   goldBright: '#e4cb9c',
   goldMuted: '#b79a69',
   pearl: '#f3efe7',
-  slateGlow: 'rgba(142, 166, 199, 0.22)',
 };
 
 const SPOKE_COLORS = ['#e4cb9c', '#f3efe7', '#b79a69'];
@@ -28,7 +39,6 @@ export function initNineFunctionsJourney(rootEl, functionsData) {
   const ctx = canvas.getContext('2d');
   if (!ctx) return;
 
-  // Detail card elements
   const tagEl = rootEl.querySelector('#detail-tag');
   const titleEl = rootEl.querySelector('#detail-title');
   const questionEl = rootEl.querySelector('#detail-question');
@@ -43,11 +53,11 @@ export function initNineFunctionsJourney(rootEl, functionsData) {
   const stepPills = Array.from(rootEl.querySelectorAll('[data-fn-index]'));
 
   const state = {
-    mode: 'circle', // 'circle' | 'detail'
+    mode: 'circle',
     selectedIndex: 0,
     hoveredNodeKey: null,
     isWarping: false,
-    warpDirection: 'down', // 'down' | 'up'
+    warpDirection: 'down',
     warpProgress: 0,
     warpAnchor: { x: 0, y: 0 },
     pendingMode: null,
@@ -60,8 +70,8 @@ export function initNineFunctionsJourney(rootEl, functionsData) {
 
   function resize() {
     const rect = stageEl.getBoundingClientRect();
-    const width = Math.max(320, Math.floor(rect.width || 960));
-    const height = Math.max(420, Math.floor(rect.height || 600));
+    const width = Math.max(300, Math.floor(rect.width || 960));
+    const height = Math.max(220, Math.floor(rect.height || 600));
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
 
     state.width = width;
@@ -102,28 +112,35 @@ export function initNineFunctionsJourney(rootEl, functionsData) {
       detailOverlay.hidden = state.mode !== 'detail';
       detailOverlay.classList.toggle('is-visible', isDetail);
     }
+    // Re-measure canvas height after mobile `.is-detail-mode` CSS changes height
+    requestAnimationFrame(resize);
   }
 
   function getCircleLayout() {
     const { width, height } = state;
-    const isNarrow = width < 640;
+    const isNarrow = width < 680;
     const cx = width / 2;
-    const cy = height / 2 + (isNarrow ? 6 : 8);
-    const radius = isNarrow
-      ? Math.min(width * 0.27, height * 0.31)
+    const cy = height / 2 + (isNarrow ? 12 : 8);
+
+    // On narrow phones, give vertical room and keep horizontal radius compact enough for clean 2-line radial labels
+    const rx = isNarrow
+      ? Math.max(68, Math.min(width * 0.23, 108))
       : Math.min(width * 0.29, height * 0.34, 215);
+    const ry = isNarrow
+      ? Math.max(118, Math.min(height * 0.34, 162))
+      : rx;
 
     const nodes = functionsData.map((fn, idx) => {
       const angle = -Math.PI / 2 + (idx / functionsData.length) * Math.PI * 2;
-      const x = cx + Math.cos(angle) * radius;
-      const y = cy + Math.sin(angle) * radius;
+      const x = cx + Math.cos(angle) * rx;
+      const y = cy + Math.sin(angle) * ry;
       return {
         key: `circle-${fn.num}`,
         index: idx,
         x,
         y,
         angle,
-        radius: isNarrow ? 21 : 27,
+        radius: isNarrow ? 17 : 27,
         hash: getHash(`fn-${fn.num}`),
         data: fn,
       };
@@ -136,12 +153,11 @@ export function initNineFunctionsJourney(rootEl, functionsData) {
         source: src,
         target: tgt,
         primary: true,
-        bias: 14,
+        bias: isNarrow ? 10 : 14,
         hash: getHash(`c-edge-${idx}`),
       };
     });
 
-    // Subtle inner harmonic resonance chords (1->4, 4->7, 7->1 and 2->6->9->2 visual web)
     for (let i = 0; i < nodes.length; i += 1) {
       const chordTarget = nodes[(i + 3) % nodes.length];
       edges.push({
@@ -154,15 +170,15 @@ export function initNineFunctionsJourney(rootEl, functionsData) {
       });
     }
 
-    return { cx, cy, ringRadius: radius, isNarrow, nodes, edges };
+    return { cx, cy, rx, ry, isNarrow, nodes, edges };
   }
 
   function getDetailLayout() {
     const { width, height } = state;
     const isStacked = width < 900;
     const cx = isStacked ? width * 0.5 : width * 0.24;
-    const cy = isStacked ? 128 : height * 0.5;
-    const orbit = isStacked ? Math.min(width * 0.28, 86) : Math.min(width * 0.16, height * 0.28, 138);
+    const cy = isStacked ? height * 0.46 : height * 0.5;
+    const orbit = isStacked ? Math.min(width * 0.26, height * 0.33, 84) : Math.min(width * 0.16, height * 0.28, 138);
 
     const fn = functionsData[state.selectedIndex] || functionsData[0];
     const centerNode = {
@@ -170,17 +186,17 @@ export function initNineFunctionsJourney(rootEl, functionsData) {
       index: state.selectedIndex,
       x: cx,
       y: cy,
-      radius: isStacked ? 30 : 38,
+      radius: isStacked ? 26 : 38,
       hash: getHash(`detail-${fn.num}`),
       isCenter: true,
       subLabel: `FUNCTION ${fn.num}`,
-      title: fn.name,
+      title: isStacked ? fn.name : fn.name,
     };
 
     const subSpecs = [
-      { key: 'question', angle: -Math.PI * 0.72, subLabel: 'CORE QUESTION', title: 'What It Asks' },
-      { key: 'scales', angle: Math.PI * 0.72, subLabel: 'THREE SCALES', title: 'Personal · Family · Business' },
-      { key: 'flow', angle: 0, subLabel: 'NEXT STEP', title: 'Feeds the Cycle' },
+      { key: 'question', angle: -Math.PI * 0.72, subLabel: 'QUESTION', title: 'What It Asks' },
+      { key: 'scales', angle: Math.PI * 0.72, subLabel: '3 SCALES', title: isStacked ? 'All Scales' : 'Personal · Family · Business' },
+      { key: 'flow', angle: 0, subLabel: 'NEXT STEP', title: 'Feeds Cycle' },
     ];
 
     const subNodes = subSpecs.map((spec) => ({
@@ -188,7 +204,7 @@ export function initNineFunctionsJourney(rootEl, functionsData) {
       x: cx + Math.cos(spec.angle) * orbit,
       y: cy + Math.sin(spec.angle) * orbit,
       angle: spec.angle,
-      radius: isStacked ? 16 : 20,
+      radius: isStacked ? 14 : 20,
       hash: getHash(spec.key),
       isCenter: false,
       subLabel: spec.subLabel,
@@ -205,14 +221,13 @@ export function initNineFunctionsJourney(rootEl, functionsData) {
       hash: getHash(`d-edge-${i}`),
     }));
 
-    // Outer gentle loop between sub-nodes
     for (let i = 0; i < subNodes.length; i += 1) {
       edges.push({
         id: `d-ring-${i}`,
         source: subNodes[i],
         target: subNodes[(i + 1) % subNodes.length],
         primary: false,
-        bias: 18,
+        bias: 16,
         hash: getHash(`d-ring-${i}`),
       });
     }
@@ -232,11 +247,10 @@ export function initNineFunctionsJourney(rootEl, functionsData) {
         ? { x: anchorNode.x, y: anchorNode.y }
         : { x: state.width / 2, y: state.height / 2 };
 
-    // If transitioning directly between two functions while already in detail view
     if (state.mode === 'detail' && targetMode === 'detail') {
       state.warpAnchor = {
         x: state.width < 900 ? state.width * 0.5 : state.width * 0.24,
-        y: state.width < 900 ? 128 : state.height * 0.5,
+        y: state.width < 900 ? state.height * 0.46 : state.height * 0.5,
       };
     }
 
@@ -266,7 +280,7 @@ export function initNineFunctionsJourney(rootEl, functionsData) {
       const len = Math.hypot(dx, dy) || 1;
       const nx = -dy / len;
       const ny = dx / len;
-      const amp = Math.min(16, len * 0.08);
+      const amp = Math.min(14, len * 0.08);
       const segments = 14;
       const tendrilsCount = edge.primary ? 5 : 2;
       const tendrilPaths = [];
@@ -336,7 +350,7 @@ export function initNineFunctionsJourney(rootEl, functionsData) {
         const px = path[i1].x + (path[i2].x - path[i1].x) * frac;
         const py = path[i1].y + (path[i2].y - path[i1].y) * frac;
 
-        const glowR = (isActive ? 7.5 : 5.5) * Math.min(1.25, Math.max(0.75, scaleFactor));
+        const glowR = (isActive ? 7.5 : 5.2) * Math.min(1.25, Math.max(0.72, scaleFactor));
         const col = SPOKE_COLORS[(edge.source.index + s) % SPOKE_COLORS.length];
         const grad = ctx.createRadialGradient(px, py, 0, px, py, glowR);
         grad.addColorStop(0, col);
@@ -350,7 +364,7 @@ export function initNineFunctionsJourney(rootEl, functionsData) {
     });
   }
 
-  function drawNode(node, time, x, y, scaleFactor, showLabels, isNarrow) {
+  function drawNode(node, time, x, y, scaleFactor, showLabels, isCompact) {
     const isHovered = state.hoveredNodeKey === node.key;
     const isHighlighted = isHovered || node.isCenter;
     const r = node.radius * Math.max(0.55, Math.min(1.6, scaleFactor));
@@ -369,7 +383,6 @@ export function initNineFunctionsJourney(rootEl, functionsData) {
     ctx.stroke();
     ctx.setLineDash([]);
 
-    // Radar hover ping
     if (isHighlighted) {
       const ping = 1.0 + ((time * 1.1 + Math.abs(node.hash)) % 1.0) * 0.65;
       ctx.strokeStyle = 'rgba(228, 203, 156, 0.28)';
@@ -380,9 +393,9 @@ export function initNineFunctionsJourney(rootEl, functionsData) {
     }
 
     // Radial gold atmospheric glow
-    const glowR = r * (isHighlighted ? 2.7 : 1.9);
+    const glowR = r * (isHighlighted ? 2.6 : 1.85);
     const glowGrad = ctx.createRadialGradient(x, y, 0, x, y, glowR);
-    glowGrad.addColorStop(0, 'rgba(215, 188, 140, 0.36)');
+    glowGrad.addColorStop(0, 'rgba(215, 188, 140, 0.34)');
     glowGrad.addColorStop(0.4, 'rgba(183, 154, 105, 0.14)');
     glowGrad.addColorStop(1, 'rgba(21, 36, 58, 0)');
     ctx.beginPath();
@@ -390,8 +403,8 @@ export function initNineFunctionsJourney(rootEl, functionsData) {
     ctx.fillStyle = glowGrad;
     ctx.fill();
 
-    // Inner gold orb + white dot
-    const coreR = r * (isHighlighted ? 0.36 : 0.28);
+    // Glowing orb nucleus
+    const coreR = r * (isHighlighted ? 0.42 : 0.34);
     ctx.beginPath();
     ctx.arc(x, y, coreR, 0, Math.PI * 2);
     ctx.fillStyle = isHighlighted ? CORE9_COLORS.goldBright : CORE9_COLORS.goldCore;
@@ -400,17 +413,26 @@ export function initNineFunctionsJourney(rootEl, functionsData) {
     ctx.fill();
     ctx.shadowBlur = 0;
 
-    ctx.beginPath();
-    ctx.arc(x, y, coreR * 0.38, 0, Math.PI * 2);
-    ctx.fillStyle = '#ffffff';
-    ctx.fill();
+    if (node.data && isCompact) {
+      // Crisp number right inside the orb on mobile
+      ctx.font = '700 8.5px system-ui, -apple-system, sans-serif';
+      ctx.fillStyle = '#15243a';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(String(node.index + 1), x, y + 0.5);
+    } else {
+      ctx.beginPath();
+      ctx.arc(x, y, coreR * 0.36, 0, Math.PI * 2);
+      ctx.fillStyle = '#ffffff';
+      ctx.fill();
+    }
 
     if (!showLabels) return;
 
-    // Position circle labels cleanly outward around 360° with zero collisions
     if (node.data) {
       const cosA = Math.cos(node.angle);
-      const isTop = Math.abs(cosA) < 0.08 && Math.sin(node.angle) < 0;
+      const sinA = Math.sin(node.angle);
+      const isTop = Math.abs(cosA) < 0.08 && sinA < 0;
       const numLabel = node.data.num;
       const nameLabel = node.data.name;
 
@@ -418,36 +440,52 @@ export function initNineFunctionsJourney(rootEl, functionsData) {
 
       if (isTop) {
         ctx.textAlign = 'center';
-        ctx.font = `700 ${isNarrow ? 10 : 11}px system-ui, -apple-system, sans-serif`;
+        ctx.font = `700 ${isCompact ? 9.5 : 11}px system-ui, -apple-system, sans-serif`;
         ctx.fillStyle = CORE9_COLORS.goldCore;
-        ctx.fillText(numLabel, x, y - haloR - (isNarrow ? 23 : 28));
+        ctx.fillText(isCompact ? `01` : numLabel, x, y - haloR - (isCompact ? 22 : 28));
 
-        ctx.font = `600 ${isNarrow ? 12 : 14}px Georgia, "Times New Roman", serif`;
+        ctx.font = `600 ${isCompact ? 12 : 14}px Georgia, "Times New Roman", serif`;
         ctx.fillStyle = '#ffffff';
-        ctx.fillText(nameLabel, x, y - haloR - (isNarrow ? 9 : 12));
-      } else {
+        ctx.fillText(nameLabel, x, y - haloR - (isCompact ? 9 : 12));
+      } else if (isCompact) {
+        // Mobile radial short-wrapped labels cleanly spaced without side-edge clipping
         const onRight = cosA >= 0;
-        const pad = haloR + (isNarrow ? 10 : 15);
+        const pad = haloR + 7;
         const lx = onRight ? x + pad : x - pad;
         ctx.textAlign = onRight ? 'left' : 'right';
 
-        ctx.font = `700 ${isNarrow ? 10 : 10.5}px system-ui, -apple-system, sans-serif`;
+        const lines = splitMobileLabel(nameLabel);
+        ctx.font = '600 10.5px Georgia, "Times New Roman", serif';
+        ctx.fillStyle = isHovered ? '#ffffff' : CORE9_COLORS.pearl;
+        if (lines.length === 1) {
+          ctx.fillText(lines[0], lx, y);
+        } else {
+          ctx.fillText(lines[0], lx, y - 6);
+          ctx.fillText(lines[1], lx, y + 7);
+        }
+      } else {
+        const onRight = cosA >= 0;
+        const pad = haloR + 15;
+        const lx = onRight ? x + pad : x - pad;
+        ctx.textAlign = onRight ? 'left' : 'right';
+
+        ctx.font = '700 10.5px system-ui, -apple-system, sans-serif';
         ctx.fillStyle = isHovered ? CORE9_COLORS.goldBright : CORE9_COLORS.goldCore;
         ctx.fillText(`FUNCTION ${numLabel}`, lx, y - 7);
 
-        ctx.font = `600 ${isNarrow ? 11.5 : 14}px Georgia, "Times New Roman", serif`;
+        ctx.font = '600 14px Georgia, "Times New Roman", serif';
         ctx.fillStyle = isHovered ? '#ffffff' : CORE9_COLORS.pearl;
         ctx.fillText(nameLabel, lx, y + 9);
       }
     } else if (node.subLabel) {
       ctx.textBaseline = 'middle';
       ctx.textAlign = 'center';
-      ctx.font = '700 10px system-ui, -apple-system, sans-serif';
+      ctx.font = `700 ${isCompact ? 8.5 : 10}px system-ui, -apple-system, sans-serif`;
       ctx.fillStyle = CORE9_COLORS.goldCore;
-      ctx.fillText(node.subLabel, x, y + haloR + 14);
-      ctx.font = '600 13px Georgia, "Times New Roman", serif';
+      ctx.fillText(node.subLabel, x, y + haloR + (isCompact ? 10 : 14));
+      ctx.font = `600 ${isCompact ? 11 : 13}px Georgia, "Times New Roman", serif`;
       ctx.fillStyle = '#ffffff';
-      ctx.fillText(node.title, x, y + haloR + 30);
+      ctx.fillText(node.title, x, y + haloR + (isCompact ? 23 : 30));
     }
   }
 
@@ -457,7 +495,6 @@ export function initNineFunctionsJourney(rootEl, functionsData) {
     const { width, height } = state;
     const time = Date.now() * 0.001;
 
-    // Advance fractal warp animation if active
     let scaleFactor = 1.0;
     let sceneAlpha = 1.0;
 
@@ -491,14 +528,12 @@ export function initNineFunctionsJourney(rootEl, functionsData) {
       }
     }
 
-    // CORE9 Deep Midnight Navy Backdrop
     const bgGrad = ctx.createLinearGradient(0, 0, 0, height);
     bgGrad.addColorStop(0, CORE9_COLORS.bgTop);
     bgGrad.addColorStop(1, CORE9_COLORS.bgBottom);
     ctx.fillStyle = bgGrad;
     ctx.fillRect(0, 0, width, height);
 
-    // Subtle champagne gold ambient aura
     const aura = ctx.createRadialGradient(
       width * 0.5,
       height * 0.5,
@@ -517,39 +552,38 @@ export function initNineFunctionsJourney(rootEl, functionsData) {
     ctx.globalAlpha = sceneAlpha;
 
     if (state.mode === 'circle') {
-      const { cx, cy, ringRadius, isNarrow, nodes, edges } = getCircleLayout();
+      const { cx, cy, rx, ry, isNarrow, nodes, edges } = getCircleLayout();
       const pivotX = state.isWarping ? state.warpAnchor.x : cx;
       const pivotY = state.isWarping ? state.warpAnchor.y : cy;
 
-      // Subtle architectural circle guide & center invitation
       ctx.strokeStyle = 'rgba(215, 188, 140, 0.14)';
       ctx.lineWidth = 1;
       ctx.beginPath();
-      ctx.arc(
+      ctx.ellipse(
         pivotX + (cx - pivotX) * scaleFactor,
         pivotY + (cy - pivotY) * scaleFactor,
-        ringRadius * scaleFactor,
+        rx * scaleFactor,
+        ry * scaleFactor,
+        0,
         0,
         Math.PI * 2
       );
       ctx.stroke();
 
       if (!state.isWarping) {
-        const centerX = cx;
-        const centerY = cy;
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
-        ctx.font = '700 10.5px system-ui, -apple-system, sans-serif';
+        ctx.font = `700 ${isNarrow ? 9 : 10.5}px system-ui, -apple-system, sans-serif`;
         ctx.fillStyle = 'rgba(215, 188, 140, 0.78)';
-        ctx.fillText('CORE9 RESOLVE™', centerX, centerY - 11);
+        ctx.fillText('CORE9 RESOLVE™', cx, cy - (isNarrow ? 12 : 13));
 
-        ctx.font = `italic 600 ${isNarrow ? 15 : 19}px Georgia, "Times New Roman", serif`;
+        ctx.font = `italic 600 ${isNarrow ? 13.5 : 19}px Georgia, "Times New Roman", serif`;
         ctx.fillStyle = '#ffffff';
-        ctx.fillText('The Circle of Nine', centerX, centerY + 10);
+        ctx.fillText('Circle of Nine', cx, cy + (isNarrow ? 4 : 8));
 
-        ctx.font = `${isNarrow ? 10.5 : 12}px system-ui, -apple-system, sans-serif`;
+        ctx.font = `${isNarrow ? 9.5 : 12}px system-ui, -apple-system, sans-serif`;
         ctx.fillStyle = 'rgba(207, 215, 227, 0.72)';
-        ctx.fillText('Select a point to fractal in', centerX, centerY + 32);
+        ctx.fillText(isNarrow ? 'Tap any point' : 'Select a point to fractal in', cx, cy + (isNarrow ? 21 : 30));
       }
 
       drawTendrilsAndSpores(edges, time, scaleFactor, pivotX, pivotY);
@@ -570,7 +604,6 @@ export function initNineFunctionsJourney(rootEl, functionsData) {
       });
     }
 
-    // Subtle expanding fractal burst ring during warp transition
     if (state.isWarping) {
       const burstR = state.warpProgress * Math.max(width, height) * 0.45;
       ctx.strokeStyle = `rgba(228, 203, 156, ${0.38 * (1 - state.warpProgress)})`;
@@ -591,12 +624,16 @@ export function initNineFunctionsJourney(rootEl, functionsData) {
     const my = clientY - rect.top;
     const { nodes } = getCircleLayout();
 
+    let closest = null;
+    let minDist = Infinity;
     for (const node of nodes) {
-      if (Math.hypot(mx - node.x, my - node.y) <= node.radius + 20) {
-        return node;
+      const dist = Math.hypot(mx - node.x, my - node.y);
+      if (dist <= node.radius + 26 && dist < minDist) {
+        minDist = dist;
+        closest = node;
       }
     }
-    return null;
+    return closest;
   }
 
   canvas.addEventListener('mousemove', (e) => {
