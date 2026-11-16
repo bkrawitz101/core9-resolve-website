@@ -182,6 +182,18 @@ _inputs:
   status_note:
     type: textarea
     label: Status Note
+  question:
+    type: text
+    label: Opening Question Hook
+  summary:
+    type: textarea
+    label: Function Summary
+  flow_label:
+    type: text
+    label: Flow Connection Pill Label
+  role_tag:
+    type: text
+    label: Orbital Tag (e.g. FUNCTION 01 · VISION)
   episode_number:
     type: number
     label: Episode #

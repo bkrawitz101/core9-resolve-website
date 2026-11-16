@@ -1,21 +1,101 @@
 {
-  "page_title": "Nine Functions | CORE9 RESOLVE™",
-  "eyebrow": "Integration prototype · Not for publication",
-  "heading": "Explore the Nine Functions",
-  "intro": "This is a navigation shell linking the original saved interactive Function 1–9 HTML files. The source experiences are copied byte-for-byte, without changes to their wording or interactions.",
-  "notice_prefix": "Review notice: ",
-  "notice_body": "The original Circle of Nine artwork is not yet integrated. The tiles below are a temporary staging navigation, not a replacement design. Some original pages may contain draft labels or disabled next-function links; these are preserved intentionally.",
-  "closing": "Assessments, consultation booking, and the business landing page will be connected after their current approved implementations and destination URLs are verified.",
+  "page_title": "Journey Through the Nine Functions | CORE9 RESOLVE™",
+  "eyebrow": "Interactive System Map · Phase 2",
+  "heading": "Journey Through the Nine Functions",
+  "intro": "Explore how the nine core functions flow as one living system—from envisioning a future and building trust to expanding your impact, restoring vitality, and renewing the cycle.",
+  "notice_prefix": "Interactive visual: ",
+  "notice_body": "Drag to orbit in 3D, scroll to zoom, or click any glowing node (01–09) to focus on that function and step through its story.",
+  "closing": "Want to see where these functions show up in your life or business today? Start with one of the three Reflections or explore any interactive function story above.",
   "tiles": [
-    { "num": "01", "name": "Strategy", "href": "/functions/FUNCTION_01_INTERACTIVE.html" },
-    { "num": "02", "name": "Relationships", "href": "/functions/FUNCTION_02_INTERACTIVE_REVIEW.html" },
-    { "num": "03", "name": "Analysis & Systems", "href": "/functions/FUNCTION_03_REVISED_INTERACTIVE_REVIEW.html" },
-    { "num": "04", "name": "Knowledge & Priorities", "href": "/functions/FUNCTION_04_INTERACTIVE_REVIEW.html" },
-    { "num": "05", "name": "Contribution & Expansion", "href": "/functions/FUNCTION_05_INTERACTIVE_REVIEW.html" },
-    { "num": "06", "name": "Psychology & Creativity", "href": "/functions/FUNCTION_06_INTERACTIVE_APPROVED.html" },
-    { "num": "07", "name": "Mission & Action", "href": "/functions/FUNCTION_07_INTERACTIVE_APPROVED.html" },
-    { "num": "08", "name": "Material Results", "href": "/functions/FUNCTION_08_INTERACTIVE_APPROVED.html" },
-    { "num": "09", "name": "Completion & Renewal", "href": "/functions/FUNCTION_09_INTERACTIVE_APPROVED_v2.html" }
+    {
+      "num": "01",
+      "name": "Strategy",
+      "category": "input",
+      "role_tag": "FUNCTION 01 · VISION",
+      "flow_label": "Shared Direction",
+      "question": "What Future Is Waiting for You to Create?",
+      "summary": "You have the potential to imagine a future that doesn't exist yet—and begin creating it.",
+      "href": "/functions/FUNCTION_01_INTERACTIVE.html"
+    },
+    {
+      "num": "02",
+      "name": "Relationships",
+      "category": "biology",
+      "role_tag": "FUNCTION 02 · CONNECTION",
+      "flow_label": "Trusted Pattern",
+      "question": "What Makes You Feel Truly Connected?",
+      "summary": "You have the potential to understand others, build trust, and create relationships where people feel heard, valued, and willing to work together.",
+      "href": "/functions/FUNCTION_02_INTERACTIVE_REVIEW.html"
+    },
+    {
+      "num": "03",
+      "name": "Analysis & Systems",
+      "category": "output",
+      "role_tag": "FUNCTION 03 · COHERENCE",
+      "flow_label": "Clear Priorities",
+      "question": "What Happens When You See Only Part of the Picture?",
+      "summary": "You have the potential to understand how different elements connect, recognize patterns and consequences, and build a coherent framework for decisions and action.",
+      "href": "/functions/FUNCTION_03_REVISED_INTERACTIVE_REVIEW.html"
+    },
+    {
+      "num": "04",
+      "name": "Knowledge & Priorities",
+      "category": "processing",
+      "role_tag": "FUNCTION 04 · CHOICE",
+      "flow_label": "Threshold to Expand",
+      "question": "When Everything Seems Important, What Do You Choose?",
+      "summary": "You have the potential to recognize what matters, discover new possibilities, and choose where to direct your attention and energy.",
+      "href": "/functions/FUNCTION_04_INTERACTIVE_REVIEW.html"
+    },
+    {
+      "num": "05",
+      "name": "Contribution & Expansion",
+      "category": "energy",
+      "role_tag": "FUNCTION 05 · CENTER CORE",
+      "flow_label": "Creative Vitality",
+      "question": "What If Your Contribution Could Reach Further Than You Imagine?",
+      "summary": "Function 5 is the center of the nine-function system—turning the foundation of Functions 1–4 into outward contribution without burnout.",
+      "href": "/functions/FUNCTION_05_INTERACTIVE_REVIEW.html"
+    },
+    {
+      "num": "06",
+      "name": "Psychology, Beauty & Fulfillment",
+      "category": "legal",
+      "role_tag": "FUNCTION 06 · FULFILLMENT",
+      "flow_label": "Vitality & Purpose",
+      "question": "What If Feeling Wonderful Wasn't a Reward, but a Way of Living?",
+      "summary": "You have the potential to create a life in which beauty, comfort, nourishment, pleasure, love, and emotional satisfaction are natural parts of your everyday experience.",
+      "href": "/functions/FUNCTION_06_INTERACTIVE_APPROVED.html"
+    },
+    {
+      "num": "07",
+      "name": "Mission & Action",
+      "category": "output",
+      "role_tag": "FUNCTION 07 · REALIZATION",
+      "flow_label": "Material Value",
+      "question": "What If the Work Could Give You Energy Instead of Taking It Away?",
+      "summary": "You have the potential to discover what brings your abilities alive, see hidden connections, restore movement in difficult situations, and turn possibilities into reality.",
+      "href": "/functions/FUNCTION_07_INTERACTIVE_APPROVED.html"
+    },
+    {
+      "num": "08",
+      "name": "Material Results",
+      "category": "processing",
+      "role_tag": "FUNCTION 08 · PROSPERITY",
+      "flow_label": "Distilled Wisdom",
+      "question": "What If You Could Build More Wealth Without Working Harder?",
+      "summary": "You have the potential to create, organize, and sustain material prosperity without continually increasing the demands on your time, energy, money, and personal resources.",
+      "href": "/functions/FUNCTION_08_INTERACTIVE_APPROVED.html"
+    },
+    {
+      "num": "09",
+      "name": "Completion & Renewal",
+      "category": "input",
+      "role_tag": "FUNCTION 09 · RENEWAL",
+      "flow_label": "Next Cycle",
+      "question": "What If Every Completion Brought You Closer to an Extraordinary Achievement?",
+      "summary": "You have the potential to recognize when something has fulfilled its purpose, discover what remains valuable, and open a new chapter.",
+      "href": "/functions/FUNCTION_09_INTERACTIVE_APPROVED_v2.html"
+    }
   ]
 }
-
