@@ -1,4 +1,6 @@
 ---
+import { withBase } from '../utils/url';
+
 interface FunctionTile {
   num: string;
   name: string;
@@ -16,7 +18,8 @@ interface Props {
 }
 
 const { tiles } = Astro.props;
-const safeJson = JSON.stringify(tiles).replace(/</g, '\\u003c');
+const resolvedTiles = tiles.map((t) => ({ ...t, href: withBase(t.href) }));
+const safeJson = JSON.stringify(resolvedTiles).replace(/</g, '\\u003c');
 ---
 <div id="nine-functions-root" class="c9-circle-wrapper">
   <div id="circle-stage" class="c9-circle-stage" role="region" aria-label="Interactive Circle of Nine">
@@ -38,8 +41,8 @@ const safeJson = JSON.stringify(tiles).replace(/</g, '\\u003c');
       <div class="c9-detail-actions">
         <button type="button" id="btn-prev-fn" class="c9-btn-step">← Prev</button>
         <button type="button" id="btn-next-fn" class="c9-btn-step">Next →</button>
-        <a id="detail-story-link" class="c9-btn-story" href={tiles[0].href} target="_blank" rel="noopener noreferrer">
-          Open Function {tiles[0].num} Interactive Story →
+        <a id="detail-story-link" class="c9-btn-story" href={resolvedTiles[0].href} target="_blank" rel="noopener noreferrer">
+          Open Function {resolvedTiles[0].num} Interactive Story →
         </a>
       </div>
     </aside>

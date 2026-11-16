@@ -1,5 +1,6 @@
 ---
 import site from '../data/site.json';
+import { withBase } from '../utils/url';
 
 interface NavLink {
   label: string;
@@ -35,7 +36,7 @@ const navItems: NavLink[] = navMode === 'phase2' ? site.phase2_nav : site.primar
   <meta name="viewport" content="width=device-width, initial-scale=1">
   {!site.allow_search_indexing && <meta name="robots" content="noindex,nofollow">}
   <title>{title}</title>
-  {loadBookingConfig && <script is:inline src="/assessments/booking-config.js"></script>}
+  {loadBookingConfig && <script is:inline src={withBase('/assessments/booking-config.js')}></script>}
   <style is:global>
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -80,7 +81,7 @@ const navItems: NavLink[] = navMode === 'phase2' ? site.phase2_nav : site.primar
     <strong>{site.brand_name}</strong>
     <nav aria-label="Main navigation">
       {navItems.map((item) => (
-        <a href={item.href} aria-current={item.href === currentHref ? 'page' : undefined}>
+        <a href={withBase(item.href)} aria-current={item.href === currentHref ? 'page' : undefined}>
           {item.label}
         </a>
       ))}
@@ -94,7 +95,7 @@ const navItems: NavLink[] = navMode === 'phase2' ? site.phase2_nav : site.primar
     {navItems.map((item) => (
       <>
         {' · '}
-        <a href={item.href}>{item.label}</a>
+        <a href={withBase(item.href)}>{item.label}</a>
       </>
     ))}
     {footerExtra && <p>{footerExtra}</p>}

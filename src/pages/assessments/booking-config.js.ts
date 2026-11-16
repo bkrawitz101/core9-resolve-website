@@ -3,7 +3,7 @@ import site from '../../data/site.json';
 export function GET() {
   const bookingUrl = (site.booking_url || '').trim();
   const body = `// Central booking destination for all CORE9 assessment result screens.
-// Managed from CloudCannon Site Settings (src/data/site.json -> booking_url).
+// Configured via src/data/site.json -> booking_url.
 window.CORE9_BOOKING_URL = ${JSON.stringify(bookingUrl)};
 
 window.setupBookingCta = function setupBookingCta(buttonId, statusId) {

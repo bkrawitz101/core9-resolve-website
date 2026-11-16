@@ -24,7 +24,6 @@
   },
   "homepage": "https://github.com/bkrawitz101/core9-resolve-website#readme",
   "dependencies": {
-    "@cloudcannon/editable-regions": "^0.0.22",
     "astro": "^7.4.12"
   }
 }

@@ -4,6 +4,7 @@ import ReflectionCard from '../components/ReflectionCard.astro';
 import CircleOfNineStage from '../components/CircleOfNineStage.astro';
 import home from '../data/pages/home.json';
 import functionsPage from '../data/pages/functions.json';
+import { withBase } from '../utils/url';
 ---
 <BaseLayout title={home.page_title} currentHref="/index.html" navMode="primary">
   <style is:global slot="head">
@@ -182,49 +183,44 @@ import functionsPage from '../data/pages/functions.json';
   <main>
     <section class="hero" id="home">
       <div class="hero-pillars">
-        <span data-editable="text" data-prop="hero_line_1">{home.hero_line_1}</span>
-        <span data-editable="text" data-prop="hero_line_2">{home.hero_line_2}</span>
-        <span data-editable="text" data-prop="hero_line_3">{home.hero_line_3}</span>
+        <span>{home.hero_line_1}</span>
+        <span>{home.hero_line_2}</span>
+        <span>{home.hero_line_3}</span>
       </div>
       <p class="hero-turn">
-        <span data-editable="text" data-prop="hero_turn_prefix">{home.hero_turn_prefix}</span><em data-editable="text" data-prop="hero_turn_accent">{home.hero_turn_accent}</em>
+        <span>{home.hero_turn_prefix}</span><em>{home.hero_turn_accent}</em>
       </p>
       <div class="hero-divider" aria-hidden="true"></div>
       <p class="hero-sub">
-        <span data-editable="text" data-prop="hero_sub_lead">{home.hero_sub_lead}</span><strong data-editable="text" data-prop="hero_sub_b1">{home.hero_sub_b1}</strong><span data-editable="text" data-prop="hero_sub_mid">{home.hero_sub_mid}</span><strong data-editable="text" data-prop="hero_sub_b2">{home.hero_sub_b2}</strong><span data-editable="text" data-prop="hero_sub_after">{home.hero_sub_after}</span><span class="outcome" data-editable="text" data-prop="hero_sub_outcome">{home.hero_sub_outcome}</span><span data-editable="text" data-prop="hero_sub_end">{home.hero_sub_end}</span>
+        <span>{home.hero_sub_lead}</span><strong>{home.hero_sub_b1}</strong><span>{home.hero_sub_mid}</span><strong>{home.hero_sub_b2}</strong><span>{home.hero_sub_after}</span><span class="outcome">{home.hero_sub_outcome}</span><span>{home.hero_sub_end}</span>
       </p>
     </section>
 
     <section class="explore" id="assessments">
-      <div class="eyebrow" data-editable="text" data-prop="section_eyebrow">{home.section_eyebrow}</div>
+      <div class="eyebrow">{home.section_eyebrow}</div>
       <h2 class="split-heading">
-        <span data-editable="text" data-prop="section_heading_top">{home.section_heading_top}</span>
-        <span class="accent" data-editable="text" data-prop="section_heading_accent">{home.section_heading_accent}</span>
+        <span>{home.section_heading_top}</span>
+        <span class="accent">{home.section_heading_accent}</span>
       </h2>
-      <div
-        class="function-grid"
-        data-editable="array"
-        data-prop="cards"
-        data-direction="row"
-      >
+      <div class="function-grid">
         {home.cards.map((card) => (
-          <article class="test-card" data-editable="array-item">
+          <article class="test-card">
             <ReflectionCard {...card} />
           </article>
         ))}
       </div>
       <p class="footnote">
-        <span data-editable="text" data-prop="footnote_prefix">{home.footnote_prefix}</span><a href="/book-session.html" data-editable="text" data-prop="footnote_link_label">{home.footnote_link_label}</a><span data-editable="text" data-prop="footnote_suffix">{home.footnote_suffix}</span>
+        <span>{home.footnote_prefix}</span><a href={withBase('/book-session.html')}>{home.footnote_link_label}</a><span>{home.footnote_suffix}</span>
       </p>
     </section>
 
     <section class="circle-section" id="functions">
-      <div class="eyebrow" data-editable="text" data-prop="functions_eyebrow">{home.functions_eyebrow}</div>
+      <div class="eyebrow">{home.functions_eyebrow}</div>
       <h2 class="split-heading">
-        <span data-editable="text" data-prop="functions_heading_top">{home.functions_heading_top}</span>
-        <span class="accent" data-editable="text" data-prop="functions_heading_accent">{home.functions_heading_accent}</span>
+        <span>{home.functions_heading_top}</span>
+        <span class="accent">{home.functions_heading_accent}</span>
       </h2>
-      <p class="circle-section-intro" data-editable="text" data-prop="functions_intro">{home.functions_intro}</p>
+      <p class="circle-section-intro">{home.functions_intro}</p>
       <CircleOfNineStage tiles={functionsPage.tiles} />
     </section>
   </main>

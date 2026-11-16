@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import page from '../../data/pages/assessments-hub.json';
+import { withBase } from '../../utils/url';
 ---
 <BaseLayout title={page.page_title} currentHref="/assessments/index.html" navMode="primary" bodyBackground="#f7f4ed" headerMaxWidth={850}>
   <style slot="head">
@@ -43,20 +44,20 @@ import page from '../../data/pages/assessments-hub.json';
 
   <main>
     <div class="intro">
-      <small data-editable="text" data-prop="eyebrow">{page.eyebrow}</small>
-      <h1 data-editable="text" data-prop="heading">{page.heading}</h1>
-      <p data-editable="text" data-prop="intro">{page.intro}</p>
+      <small>{page.eyebrow}</small>
+      <h1>{page.heading}</h1>
+      <p>{page.intro}</p>
     </div>
 
-    <div data-editable="array" data-prop="cards">
+    <div>
       {page.cards.map((card) => (
-        <a class="card" href={card.href} data-editable="array-item">
+        <a class="card" href={withBase(card.href)}>
           <span class="card-meta">
-            <small data-editable="text" data-prop="category">{card.category}</small>
-            <span class="count-pill" data-editable="text" data-prop="count_label">{card.count_label}</span>
+            <small>{card.category}</small>
+            <span class="count-pill">{card.count_label}</span>
           </span>
-          <strong class="title" data-editable="text" data-prop="title">{card.title}</strong>
-          <span data-editable="text" data-prop="description">{card.description}</span>
+          <strong class="title">{card.title}</strong>
+          <span>{card.description}</span>
         </a>
       ))}
     </div>

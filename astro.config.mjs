@@ -2,7 +2,6 @@ import { copyFile, mkdir } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { join } from 'node:path';
 import { defineConfig } from 'astro/config';
-import editableRegions from '@cloudcannon/editable-regions/astro-integration';
 
 const preserveAssessmentsIndex = {
   name: 'preserve-assessments-index',
@@ -18,8 +17,10 @@ const preserveAssessmentsIndex = {
 };
 
 export default defineConfig({
+  site: 'https://bkrawitz101.github.io',
+  base: process.env.ASTRO_BASE || '/',
   build: {
     format: 'file',
   },
-  integrations: [editableRegions(), preserveAssessmentsIndex],
+  integrations: [preserveAssessmentsIndex],
 });

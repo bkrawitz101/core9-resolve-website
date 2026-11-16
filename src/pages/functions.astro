@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CircleOfNineStage from '../components/CircleOfNineStage.astro';
 import page from '../data/pages/functions.json';
+import { withBase } from '../utils/url';
 ---
 <BaseLayout
   title={page.page_title}
@@ -146,33 +147,33 @@ import page from '../data/pages/functions.json';
 
   <main>
     <div class="page-intro">
-      <p class="eyebrow" data-editable="text" data-prop="eyebrow">{page.eyebrow}</p>
-      <h1 data-editable="text" data-prop="heading">{page.heading}</h1>
-      <p class="lead" data-editable="text" data-prop="intro">{page.intro}</p>
+      <p class="eyebrow">{page.eyebrow}</p>
+      <h1>{page.heading}</h1>
+      <p class="lead">{page.intro}</p>
     </div>
 
     <CircleOfNineStage tiles={page.tiles} />
 
     <aside class="notice-bar">
-      <strong data-editable="text" data-prop="notice_prefix">{page.notice_prefix}</strong>
-      <span data-editable="text" data-prop="notice_body">{page.notice_body}</span>
+      <strong>{page.notice_prefix}</strong>
+      <span>{page.notice_body}</span>
     </aside>
 
-    <div class="grid" data-editable="array" data-prop="tiles" data-direction="row">
+    <div class="grid">
       {page.tiles.map((tile) => (
-        <a class="tile" href={tile.href} target="_blank" rel="noopener noreferrer" data-editable="array-item">
+        <a class="tile" href={withBase(tile.href)} target="_blank" rel="noopener noreferrer">
           <div class="tile-meta">
-            <span class="num">FUNCTION <span data-editable="text" data-prop="num">{tile.num}</span></span>
-            <span class="flow-pill" data-editable="text" data-prop="flow_label">{tile.flow_label}</span>
+            <span class="num">FUNCTION <span>{tile.num}</span></span>
+            <span class="flow-pill">{tile.flow_label}</span>
           </div>
-          <span class="name" data-editable="text" data-prop="name">{tile.name}</span>
-          <span class="tile-q" data-editable="text" data-prop="question">{tile.question}</span>
-          <span class="tile-sum" data-editable="text" data-prop="summary">{tile.summary}</span>
+          <span class="name">{tile.name}</span>
+          <span class="tile-q">{tile.question}</span>
+          <span class="tile-sum">{tile.summary}</span>
           <span class="open">Open Interactive Story →</span>
         </a>
       ))}
     </div>
 
-    <p class="closing" data-editable="text" data-prop="closing">{page.closing}</p>
+    <p class="closing">{page.closing}</p>
   </main>
 </BaseLayout>

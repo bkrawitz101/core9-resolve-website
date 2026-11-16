@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import page from '../data/pages/shows.json';
 import site from '../data/site.json';
+import { withBase } from '../utils/url';
 
 const bookingUrl = (site.booking_url || '').trim();
 ---
@@ -80,84 +81,82 @@ const bookingUrl = (site.booking_url || '').trim();
 
   <main>
     <section class="hero">
-      <div class="eyebrow" data-editable="text" data-prop="hero_eyebrow">{page.hero_eyebrow}</div>
-      <h1 data-editable="text" data-prop="hero_heading">{page.hero_heading}</h1>
-      <p data-editable="text" data-prop="hero_intro">{page.hero_intro}</p>
-      <p class="muted" data-editable="text" data-prop="hero_cadence">{page.hero_cadence}</p>
+      <div class="eyebrow">{page.hero_eyebrow}</div>
+      <h1>{page.hero_heading}</h1>
+      <p>{page.hero_intro}</p>
+      <p class="muted">{page.hero_cadence}</p>
       <div>
         <a class="button" href="#archive">Listen to the Latest Episode</a>
         <a class="button alt" href="#both-shows">Explore Both Shows</a>
       </div>
     </section>
 
-    <section class="section grid" id="both-shows" data-editable="array" data-prop="shows" data-direction="row">
+    <section class="section grid" id="both-shows">
       {page.shows.map((show) => (
-        <article class="card" data-editable="array-item">
+        <article class="card">
           <div class="media">
             <div>
-              <span data-editable="text" data-prop="badge">{show.badge}</span>
+              <span>{show.badge}</span>
               <strong>{show.title}</strong>
             </div>
           </div>
-          <h2 data-editable="text" data-prop="title">{show.title}</h2>
-          <p class="tagline" data-editable="text" data-prop="tagline">{show.tagline}</p>
-          <p data-editable="text" data-prop="description">{show.description}</p>
-          <p class="muted" data-editable="text" data-prop="status_note">{show.status_note}</p>
+          <h2>{show.title}</h2>
+          <p class="tagline">{show.tagline}</p>
+          <p>{show.description}</p>
+          <p class="muted">{show.status_note}</p>
         </article>
       ))}
     </section>
 
     <section class="section">
       <div class="bridge">
-        <div class="eyebrow" data-editable="text" data-prop="bridge_eyebrow">{page.bridge_eyebrow}</div>
-        <h2 data-editable="text" data-prop="bridge_heading">{page.bridge_heading}</h2>
-        <p data-editable="text" data-prop="bridge_body">{page.bridge_body}</p>
+        <div class="eyebrow">{page.bridge_eyebrow}</div>
+        <h2>{page.bridge_heading}</h2>
+        <p>{page.bridge_body}</p>
       </div>
     </section>
 
     <section class="section" id="archive">
-      <div class="eyebrow" data-editable="text" data-prop="archive_eyebrow">{page.archive_eyebrow}</div>
-      <h2 data-editable="text" data-prop="archive_heading">{page.archive_heading}</h2>
-      <p class="note" data-editable="text" data-prop="archive_note">{page.archive_note}</p>
+      <div class="eyebrow">{page.archive_eyebrow}</div>
+      <h2>{page.archive_heading}</h2>
+      <p class="note">{page.archive_note}</p>
     </section>
 
     <section class="section">
-      <div class="eyebrow" data-editable="text" data-prop="subscribe_eyebrow">{page.subscribe_eyebrow}</div>
-      <h2 data-editable="text" data-prop="subscribe_heading">{page.subscribe_heading}</h2>
-      <p data-editable="text" data-prop="subscribe_body">{page.subscribe_body}</p>
-      <p class="note" data-editable="text" data-prop="subscribe_note">{page.subscribe_note}</p>
+      <div class="eyebrow">{page.subscribe_eyebrow}</div>
+      <h2>{page.subscribe_heading}</h2>
+      <p>{page.subscribe_body}</p>
+      <p class="note">{page.subscribe_note}</p>
     </section>
 
     <section class="cta-panel">
-      <div class="eyebrow" data-editable="text" data-prop="cta_eyebrow">{page.cta_eyebrow}</div>
-      <h2 style="color:#fff;" data-editable="text" data-prop="cta_heading">{page.cta_heading}</h2>
-      <p data-editable="text" data-prop="cta_p1">{page.cta_p1}</p>
-      <p data-editable="text" data-prop="cta_p2">{page.cta_p2}</p>
+      <div class="eyebrow">{page.cta_eyebrow}</div>
+      <h2 style="color:#fff;">{page.cta_heading}</h2>
+      <p>{page.cta_p1}</p>
+      <p>{page.cta_p2}</p>
       <p>
-        <strong data-editable="text" data-prop="cta_p3_strong">{page.cta_p3_strong}</strong>
-        <span data-editable="text" data-prop="cta_p3_rest">{page.cta_p3_rest}</span>
+        <strong>{page.cta_p3_strong}</strong>
+        <span>{page.cta_p3_rest}</span>
       </p>
-      <p data-editable="text" data-prop="cta_p4">{page.cta_p4}</p>
+      <p>{page.cta_p4}</p>
       <p>
         <a
           class="button"
-          href={bookingUrl || '/book-session.html'}
+          href={bookingUrl || withBase('/book-session.html')}
           target={bookingUrl ? '_blank' : undefined}
           rel={bookingUrl ? 'noopener noreferrer' : undefined}
-          data-editable="text"
-          data-prop="cta_button_label"
         >
           {page.cta_button_label}
         </a>
       </p>
-      <p class="muted" style="color:#d6dce5;" data-editable="text" data-prop="cta_sub">{page.cta_sub}</p>
+      <p class="muted" style="color:#d6dce5;">{page.cta_sub}</p>
     </section>
 
     <section class="section">
-      <h2 data-editable="text" data-prop="explore_heading">{page.explore_heading}</h2>
-      <p data-editable="text" data-prop="explore_intro">{page.explore_intro}</p>
-      <a class="button" href="/functions.html">Explore Nine Functions</a>
-      <a class="button alt" href="/assessments/index.html">Explore Assessments</a>
+      <h2>{page.explore_heading}</h2>
+      <p>{page.explore_intro}</p>
+      <a class="button" href={withBase('/functions.html')}>Explore Nine Functions</a>
+      <a class="button alt" href={withBase('/assessments/index.html')}>Explore Assessments</a>
     </section>
   </main>
 </BaseLayout>
