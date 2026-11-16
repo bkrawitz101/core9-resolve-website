@@ -238,11 +238,34 @@ export function initNineFunctionsJourney(rootEl, functionsData) {
     return { cx, cy, isMobileSheet, nodes, edges };
   }
 
-  function startFractalTransition(targetMode, targetIndex) {
+  function parseHashIndex() {
+    const match = window.location.hash.match(/^#fn-(\d{2})$/);
+    if (!match) return -1;
+    return functionsData.findIndex((item) => item.num === match[1]);
+  }
+
+  function syncHistoryForMode(targetMode, targetIndex, push) {
+    if (targetMode === 'detail') {
+      const fn = functionsData[targetIndex];
+      const hash = fn ? `#fn-${fn.num}` : '#functions';
+      if (window.location.hash !== hash) {
+        if (push) {
+          history.pushState({ c9FunctionIndex: targetIndex }, '', hash);
+        } else {
+          history.replaceState({ c9FunctionIndex: targetIndex }, '', hash);
+        }
+      }
+    } else if (window.location.hash.startsWith('#fn-')) {
+      history.replaceState(null, '', '#functions');
+    }
+  }
+
+  function startFractalTransition(targetMode, targetIndex, historyMode = 'auto') {
     if (state.isWarping) return;
 
     const currentLayout = getCircleLayout();
-    const anchorNode = currentLayout.nodes[targetIndex] || currentLayout.nodes[0];
+    const normalizedIndex = ((targetIndex % functionsData.length) + functionsData.length) % functionsData.length;
+    const anchorNode = currentLayout.nodes[normalizedIndex] || currentLayout.nodes[0];
 
     state.warpDirection = targetMode === 'detail' ? 'down' : 'up';
     state.warpAnchor =
@@ -258,8 +281,12 @@ export function initNineFunctionsJourney(rootEl, functionsData) {
       };
     }
 
+    if (historyMode !== 'skip') {
+      syncHistoryForMode(targetMode, normalizedIndex, historyMode === 'push' || (historyMode === 'auto' && state.mode === 'circle' && targetMode === 'detail'));
+    }
+
     state.pendingMode = targetMode;
-    state.pendingIndex = ((targetIndex % functionsData.length) + functionsData.length) % functionsData.length;
+    state.pendingIndex = normalizedIndex;
     state.warpProgress = 0;
     state.isWarping = true;
     state.hoveredNodeKey = null;
@@ -650,23 +677,39 @@ export function initNineFunctionsJourney(rootEl, functionsData) {
   canvas.addEventListener('click', (e) => {
     const clicked = findInteractiveCircleNode(e.clientX, e.clientY);
     if (clicked) {
-      startFractalTransition('detail', clicked.index);
+      startFractalTransition('detail', clicked.index, 'push');
     }
   });
 
   backCircleBtn?.addEventListener('click', () => {
     if (state.mode === 'detail') {
-      startFractalTransition('circle', state.selectedIndex);
+      if (history.state && typeof history.state.c9FunctionIndex === 'number') {
+        history.back();
+      } else {
+        startFractalTransition('circle', state.selectedIndex, 'replace');
+      }
     }
   });
 
   prevBtn?.addEventListener('click', () => {
-    startFractalTransition('detail', state.selectedIndex - 1);
+    startFractalTransition('detail', state.selectedIndex - 1, 'replace');
   });
 
   nextBtn?.addEventListener('click', () => {
-    startFractalTransition('detail', state.selectedIndex + 1);
+    startFractalTransition('detail', state.selectedIndex + 1, 'replace');
   });
+
+  function onPopState() {
+    if (state.isWarping) return;
+    const hashIdx = parseHashIndex();
+    if (hashIdx >= 0) {
+      if (state.mode !== 'detail' || state.selectedIndex !== hashIdx) {
+        startFractalTransition('detail', hashIdx, 'skip');
+      }
+    } else if (state.mode === 'detail') {
+      startFractalTransition('circle', state.selectedIndex, 'skip');
+    }
+  }
 
   let resizeObserver = null;
   if (typeof ResizeObserver !== 'undefined') {
@@ -675,13 +718,23 @@ export function initNineFunctionsJourney(rootEl, functionsData) {
   }
 
   window.addEventListener('resize', resize);
+  window.addEventListener('popstate', onPopState);
   resize();
-  updateDetailCard(0);
+
+  const initialHashIndex = parseHashIndex();
+  if (initialHashIndex >= 0) {
+    state.mode = 'detail';
+    state.selectedIndex = initialHashIndex;
+    updateDetailCard(initialHashIndex);
+  } else {
+    updateDetailCard(0);
+  }
   syncOverlayVisibility();
   frameId = requestAnimationFrame(draw);
 
   return () => {
     window.removeEventListener('resize', resize);
+    window.removeEventListener('popstate', onPopState);
     resizeObserver?.disconnect();
     document.documentElement.classList.remove('c9-modal-open');
     cancelAnimationFrame(frameId);
