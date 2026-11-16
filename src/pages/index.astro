@@ -1,7 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ReflectionCard from '../components/ReflectionCard.astro';
+import CircleOfNineStage from '../components/CircleOfNineStage.astro';
 import home from '../data/pages/home.json';
+import functionsPage from '../data/pages/functions.json';
 ---
 <BaseLayout title={home.page_title} currentHref="/index.html" navMode="primary">
   <style is:global slot="head">
@@ -157,6 +159,16 @@ import home from '../data/pages/home.json';
       text-decoration: underline;
       text-underline-offset: 3px;
     }
+    .circle-section {
+      background: #fbfaf7;
+      border-top: 1px solid #e4dfd5;
+      padding: clamp(48px, 6vw, 76px) max(22px, calc((100vw - 1080px) / 2));
+    }
+    .circle-section-intro {
+      color: #44505e;
+      max-width: 660px;
+      margin: 0 auto 28px;
+    }
     @media (max-width: 700px) {
       .function-grid { grid-template-columns: 1fr; }
     }
@@ -199,6 +211,16 @@ import home from '../data/pages/home.json';
       <p class="footnote">
         <span data-editable="text" data-prop="footnote_prefix">{home.footnote_prefix}</span><a href="/book-session.html" data-editable="text" data-prop="footnote_link_label">{home.footnote_link_label}</a><span data-editable="text" data-prop="footnote_suffix">{home.footnote_suffix}</span>
       </p>
+    </section>
+
+    <section class="circle-section" id="functions">
+      <div class="eyebrow" data-editable="text" data-prop="functions_eyebrow">{home.functions_eyebrow}</div>
+      <h2 class="split-heading">
+        <span data-editable="text" data-prop="functions_heading_top">{home.functions_heading_top}</span>
+        <span class="accent" data-editable="text" data-prop="functions_heading_accent">{home.functions_heading_accent}</span>
+      </h2>
+      <p class="circle-section-intro" data-editable="text" data-prop="functions_intro">{home.functions_intro}</p>
+      <CircleOfNineStage tiles={functionsPage.tiles} />
     </section>
   </main>
 </BaseLayout>
