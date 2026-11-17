@@ -118,12 +118,20 @@ export function initNineFunctionsJourney(rootEl, functionsData) {
     const { width, height } = state;
     const isNarrow = width < 680;
     const cx = width / 2;
-    const cy = height / 2;
 
-    // True 1:1 circle on both desktop and mobile (never elongated into an oval)
+    // True 1:1 circle on both desktop and mobile (never elongated into an oval).
+    // On mobile, leave ~16px of dark-navy bleed around the outer halos while keeping
+    // nodeRadius large (~31–34px) and ~32–36px of connecting tendrils visible.
+    const halfMin = Math.min(width, height) / 2;
+    const outerLimit = Math.max(106, halfMin - 16);
+    const nodeRadius = isNarrow
+      ? Math.max(24, Math.min(35, Math.round(outerLimit * 0.185)))
+      : 30;
     const r = isNarrow
-      ? Math.max(82, Math.min(width * 0.34, height * 0.34, 140))
+      ? Math.max(84, outerLimit - nodeRadius)
       : Math.min(width * 0.36, height * 0.38, 225);
+    // Visually center the 9-gon vertically (top vertex extends slightly further than bottom pair)
+    const cy = isNarrow ? height / 2 + r * 0.03 : height / 2;
 
     const nodes = functionsData.map((fn, idx) => {
       const angle = -Math.PI / 2 + (idx / functionsData.length) * Math.PI * 2;
@@ -135,7 +143,7 @@ export function initNineFunctionsJourney(rootEl, functionsData) {
         x,
         y,
         angle,
-        radius: isNarrow ? 20 : 30,
+        radius: nodeRadius,
         hash: getHash(`fn-${fn.num}`),
         data: fn,
       };
@@ -148,7 +156,7 @@ export function initNineFunctionsJourney(rootEl, functionsData) {
         source: src,
         target: tgt,
         primary: true,
-        bias: isNarrow ? 9 : 14,
+        bias: isNarrow ? -11 : 14,
         hash: getHash(`c-edge-${idx}`),
       };
     });
@@ -291,6 +299,7 @@ export function initNineFunctionsJourney(rootEl, functionsData) {
   }
 
   function drawTendrilsAndSpores(edges, time, scaleFactor, cxOrigin, cyOrigin) {
+    const isCompact = state.width < 680;
     edges.forEach((edge) => {
       const sx0 = cxOrigin + (edge.source.x - cxOrigin) * scaleFactor;
       const sy0 = cyOrigin + (edge.source.y - cyOrigin) * scaleFactor;
@@ -336,22 +345,42 @@ export function initNineFunctionsJourney(rootEl, functionsData) {
             j === 0
               ? isActive
                 ? 0.72
-                : 0.34
+                : isCompact
+                  ? 0.42
+                  : 0.34
               : j === 1
                 ? isActive
                   ? 0.45
-                  : 0.2
+                  : isCompact
+                    ? 0.25
+                    : 0.2
                 : isActive
                   ? 0.26
-                  : 0.08;
+                  : isCompact
+                    ? 0.11
+                    : 0.08;
           ctx.strokeStyle =
             j === 1
               ? `rgba(243, 239, 231, ${alpha})`
               : `rgba(215, 188, 140, ${alpha})`;
-          ctx.lineWidth = j === 0 ? 1.15 : j === 1 ? 0.7 : 0.5;
+          ctx.lineWidth = isCompact
+            ? j === 0
+              ? 1.3
+              : j === 1
+                ? 0.85
+                : 0.6
+            : j === 0
+              ? 1.15
+              : j === 1
+                ? 0.7
+                : 0.5;
         } else {
-          ctx.strokeStyle = isActive ? 'rgba(215, 188, 140, 0.14)' : 'rgba(215, 188, 140, 0.045)';
-          ctx.lineWidth = 0.6;
+          ctx.strokeStyle = isActive
+            ? 'rgba(215, 188, 140, 0.16)'
+            : isCompact
+              ? 'rgba(215, 188, 140, 0.085)'
+              : 'rgba(215, 188, 140, 0.045)';
+          ctx.lineWidth = isCompact ? 0.75 : 0.6;
         }
         ctx.lineCap = 'round';
         ctx.stroke();
@@ -417,8 +446,8 @@ export function initNineFunctionsJourney(rootEl, functionsData) {
       ctx.stroke();
     }
 
-    // Radial gold atmospheric glow
-    const glowR = r * (isHighlighted ? 2.6 : 1.85);
+    // Radial gold atmospheric glow (trimmed on compact screens so connecting tendrils stay crisp)
+    const glowR = r * (isHighlighted ? 2.4 : isCompact ? 1.55 : 1.85);
     const glowGrad = ctx.createRadialGradient(x, y, 0, x, y, glowR);
     glowGrad.addColorStop(0, 'rgba(215, 188, 140, 0.34)');
     glowGrad.addColorStop(0.4, 'rgba(183, 154, 105, 0.14)');
@@ -614,11 +643,12 @@ export function initNineFunctionsJourney(rootEl, functionsData) {
     const my = clientY - rect.top;
     const { nodes } = getCircleLayout();
 
+    const hitPad = state.width < 680 ? 18 : 26;
     let closest = null;
     let minDist = Infinity;
     for (const node of nodes) {
       const dist = Math.hypot(mx - node.x, my - node.y);
-      if (dist <= node.radius + 26 && dist < minDist) {
+      if (dist <= node.radius + hitPad && dist < minDist) {
         minDist = dist;
         closest = node;
       }
